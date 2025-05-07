@@ -19,6 +19,8 @@
 4. Use github issues if you encounter a bug or merge conflict
 5. Always git pull before beginning work
 6. Add detailed commit messages
+7. Add comment above method with your name if working on it - don't touch other peoples methods
+8. Create github issues and communicate when issues with someone else method
 
 
 ## Studio Rules
