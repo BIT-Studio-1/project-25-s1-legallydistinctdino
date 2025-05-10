@@ -5,7 +5,7 @@
         // Starting point for code, anyone can adjust as needed
         static void Main(string[] args)
         {
-
+            SetupGame();
         }
 
         // Alina
@@ -24,6 +24,7 @@
         static void SetupGame()
         {
 
+            RunGame();
         }
 
         // Braedon
@@ -33,12 +34,12 @@
         }
 
         // Samuel & Braedon
-        static void PlayGame()
+        static void RunGame()
         {
 
         }
 
-        static void EndGame()
+        static void GameOver()
         {
 
         }
