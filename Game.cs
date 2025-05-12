@@ -129,6 +129,13 @@
         //Braedon(Placed here temporarily so it doesn't get int the way)
         static void HitDetection()
         {
+            int obstacle = 5;
+            int player = 5;
+            if (obstacle == player) 
+            {
+                GameOver()
+            }
+
 
         }
 
