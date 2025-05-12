@@ -5,8 +5,8 @@
         static int PlayerDFS = 20; // DFS = Distance from safety
         static int Danger = 10;
         static int DangerDFP = PlayerDFS + Danger; // DFP = Distance from player
-        static int ObjectPOS;
-        static int PlayerPOS = 1;
+        static int ObjectPOS; // Object Position
+        static int PlayerPOS = 1; // Player Position
 
         // Starting point for code, anyone can adjust as needed
         static void Main(string[] args)
@@ -84,8 +84,8 @@
             RunGame();
         }
 
-        // Braedon
-        static void CreateCharacter()
+        // Braedon & Samuel
+        static void SetupBackground()
         {
 
         }
@@ -127,9 +127,8 @@
             if (ObjectPOS == PlayerPOS) 
             {
                 GameOver();
-
             }
-            return ((PlayerDFS > 0) && (DangerDFP - PlayerDFS > 0));
+            return (PlayerDFS > 0) && (DangerDFP - PlayerDFS > 0);
         }
 
         // Called once the game has finished
