@@ -64,6 +64,7 @@
         }
 
         // Samuel
+        // Called before the game is started to setup variables and generate required variables
         static void SetupGame()
         {
             Console.Write("3....");
@@ -83,15 +84,16 @@
         }
 
         // Samuel & Braedon
+        // Called to run the actual game once everything is set up and ready
         static void RunGame()
         {
             Random rand = new Random();
-            int playerDFS = 20; // DFS = Distance from saftey
+            int playerDFS = 20; // DFS = Distance from safety
             int danger = 10;
             int dangerDFP = playerDFS + danger; // DFP = Distance from player
 
-            Console.WriteLine($"\nPlayer is {playerDFS} metres from safety!");
-            Console.WriteLine($"Danger is {dangerDFP - playerDFS} metres from Player!");
+            Console.WriteLine($"\nPlayer is {playerDFS} meters from safety!");
+            Console.WriteLine($"Danger is {dangerDFP - playerDFS} meters from Player!");
 
             while ((playerDFS > 0) && (dangerDFP - playerDFS > 0))
             {
@@ -107,12 +109,12 @@
                     Console.WriteLine("\nPlayer is Walking, danger picks up speed!");
                     dangerDFP--;
                 }
-                // Regular 'walking' movment
+                // Regular 'walking' movement
                 playerDFS--;
                 dangerDFP--;
                 Thread.Sleep(200);
-                Console.WriteLine($"Player is {playerDFS} metres from safety!");
-                Console.WriteLine($"Danger is {dangerDFP - playerDFS} metres from Player!");
+                Console.WriteLine($"Player is {playerDFS} meters from safety!");
+                Console.WriteLine($"Danger is {dangerDFP - playerDFS} meters from Player!");
             }
             Thread.Sleep(50);
             if (playerDFS <= 0)
@@ -126,6 +128,7 @@
             Console.ReadLine();
         }
 
+        // Called once the game has finished
         static void GameOver()
         {
 
