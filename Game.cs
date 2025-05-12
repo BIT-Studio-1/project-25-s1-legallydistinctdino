@@ -41,27 +41,23 @@
         {
             Console.WriteLine("Main Menu");
             Console.WriteLine("Press 0 to start");
-            Console.WriteLine("Press 1 : Create Character");
-            Console.WriteLine("Press 2 : Settings");
-            Console.WriteLine("Press 3 : Exit");
+            Console.WriteLine("Press 1 : Back to Title Screen");
+            Console.WriteLine("Press 2 : Exit");
             int num = Convert.ToInt32(Console.ReadLine());
 
             switch (num)
             {
                 case 0:
-                    PlayGame();
+                    SetupGame(); //starts game
                     break;
 
                 case 1:
-                    CreateCharacter();
+                    TitleScreen(); //back to title screen
                     break;
+
 
                 case 2:
-                    SetupGame();
-                    break;
-
-                case 3:
-                    EndGame();
+                    ExitGame(); 
                     break;
 
 
@@ -142,6 +138,12 @@
                 Console.WriteLine("Danger ate Player :(");
             }
             Console.ReadLine();
+
+        }
+
+        //when you decide you don't actually want to play
+        static void ExitGame()
+        {
 
         }
     }
