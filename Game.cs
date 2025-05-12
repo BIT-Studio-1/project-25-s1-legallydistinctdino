@@ -2,13 +2,19 @@
 {
     internal class Game
     {
+        static int PlayerDFS = 20; // DFS = Distance from safety
+        static int Danger = 10;
+        static int DangerDFP = PlayerDFS + Danger; // DFP = Distance from player
+        static int ObjectPOS;
+        static int PlayerPOS;
+
         // Starting point for code, anyone can adjust as needed
         static void Main(string[] args)
         {
             SetupGame();
         }
 
-        //Alina
+        // Alina
         static void TitleScreen()
         {
             // Welcome
@@ -61,9 +67,10 @@
 
             }
 
-}
+        }
 
         // Samuel
+        // Called before the game is started to setup variables and generate required variables
         static void SetupGame()
         {
             Console.Write("3....");
@@ -83,15 +90,11 @@
         }
 
         // Samuel & Braedon
+        // Called to run the actual game once everything is set up and ready
         static void RunGame()
         {
             Random rand = new Random();
-            int playerDFS = 20; // DFS = Distance from saftey
-            int danger = 10;
-            int dangerDFP = playerDFS + danger; // DFP = Distance from player
-
-            Console.WriteLine($"\nPlayer is {playerDFS} metres from safety!");
-            Console.WriteLine($"Danger is {dangerDFP - playerDFS} metres from Player!");
+            
 
             while (LoseConditions())
             {
@@ -99,23 +102,23 @@
                 {
                     // Player has started running instead of walking
                     Console.WriteLine("\nPlayer is Running!");
-                    playerDFS--;
+                    PlayerDFS--;
                 }
                 else
                 {
                     // Player is still walking, danger increases speed
                     Console.WriteLine("\nPlayer is Walking, danger picks up speed!");
-                    dangerDFP--;
+                    DangerDFP--;
                 }
-                // Regular 'walking' movment
-                playerDFS--;
-                dangerDFP--;
+                // Regular 'walking' movement
+                PlayerDFS--;
+                DangerDFP--;
                 Thread.Sleep(200);
-                Console.WriteLine($"Player is {playerDFS} metres from safety!");
-                Console.WriteLine($"Danger is {dangerDFP - playerDFS} metres from Player!");
+                Console.WriteLine($"Player is {PlayerDFS} meters from safety!");
+                Console.WriteLine($"Danger is {DangerDFP - PlayerDFS} meters from Player!");
             }
             Thread.Sleep(50);
-            if (playerDFS <= 0)
+            if (PlayerDFS <= 0)
             {
                 Console.WriteLine("Player made it!");
             }
@@ -129,14 +132,15 @@
         //Braedon
         static bool LoseConditions()
         {
-            if (obstacle != player) 
+            if (ObjectPOS == PlayerPOS) 
             {
                 GameOver();
 
             }
-            return ((playerDFS > 0) && (dangerDFP - playerDFS > 0));
+            return ((PlayerDFS > 0) && (DangerDFP - PlayerDFS > 0));
         }
 
+        // Called once the game has finished
         static void GameOver()
         {
 
