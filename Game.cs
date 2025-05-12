@@ -42,7 +42,14 @@
 
             Console.Clear();
 
-            Console.WriteLine("Main Menu");
+            Console.WriteLine(" __   __  _______  ___   __    _      __   __  _______  __    _  __   __ ");
+            Console.WriteLine("|  |_|  ||   _   ||   | |  |  | |    |  |_|  ||       ||  |  | ||  | |  |");
+            Console.WriteLine("|       ||  |_|  ||   | |   |_| |    |       ||    ___||   |_| ||  | |  |");
+            Console.WriteLine("|       ||       ||   | |       |    |       ||   |___ |       ||  |_|  |");
+            Console.WriteLine("|       ||       ||   | |  _    |    |       ||    ___||  _    ||       |");
+            Console.WriteLine("| ||_|| ||   _   ||   | | | |   |    | ||_|| ||   |___ | | |   ||       |");
+            Console.WriteLine("|_|   |_||__| |__||___| |_|  |__|    |_|   |_||_______||_|  |__||_______|");
+            Console.WriteLine();
             Console.WriteLine("Press 0 to start");
             Console.WriteLine("Press 1 : Back to Title Screen");
             Console.WriteLine("Press 2 : Exit");
@@ -51,6 +58,7 @@
             switch (num)
             {
                 case 0:
+                    Console.Clear();
                     SetupGame(); //starts game
                     break;
 
