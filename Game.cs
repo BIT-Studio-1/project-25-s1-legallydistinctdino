@@ -69,6 +69,7 @@
 
 
                 case 2:
+                    Console.Clear();
                     ExitGame(); 
                     break;
 
@@ -156,7 +157,10 @@
         //when you decide you don't actually want to play
         static void ExitGame()
         {
-
+            Console.WriteLine("\nThank you for playing!");
+            Console.WriteLine("Press enter to exit...");
+            Console.ReadKey(); 
+            Environment.Exit(0);
         }
     }
 }
