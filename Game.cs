@@ -126,6 +126,12 @@
             Console.ReadLine();
         }
 
+        //Braedon(Placed here temporarily so it doesn't get int the way)
+        static void HitDetection()
+        {
+
+        }
+
         static void GameOver()
         {
 
