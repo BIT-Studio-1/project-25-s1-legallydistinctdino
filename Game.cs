@@ -39,6 +39,9 @@
         // Maria
         static void MainMenu()
         {
+
+            Console.Clear();
+
             Console.WriteLine("Main Menu");
             Console.WriteLine("Press 0 to start");
             Console.WriteLine("Press 1 : Back to Title Screen");
@@ -52,6 +55,7 @@
                     break;
 
                 case 1:
+                    Console.Clear();
                     TitleScreen(); //back to title screen
                     break;
 
