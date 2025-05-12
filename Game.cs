@@ -8,7 +8,7 @@
             SetupGame();
         }
 
-        // Alina
+        //Alina
         static void TitleScreen()
         {
             // Welcome
@@ -61,7 +61,7 @@
 
             }
 
-        }
+}
 
         // Samuel
         static void SetupGame()
@@ -93,7 +93,7 @@
             Console.WriteLine($"\nPlayer is {playerDFS} metres from safety!");
             Console.WriteLine($"Danger is {dangerDFP - playerDFS} metres from Player!");
 
-            while ((playerDFS > 0) && (dangerDFP - playerDFS > 0))
+            while (LoseConditions())
             {
                 if (Console.KeyAvailable && Console.ReadKey().Key == ConsoleKey.RightArrow)
                 {
@@ -126,7 +126,7 @@
             Console.ReadLine();
         }
 
-        //Braedon(Placed here temporarily so it doesn't get int the way)
+        //Braedon
         static bool LoseConditions()
         {
             if (obstacle != player) 
