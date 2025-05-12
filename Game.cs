@@ -127,16 +127,14 @@
         }
 
         //Braedon(Placed here temporarily so it doesn't get int the way)
-        static void HitDetection()
+        static bool LoseConditions()
         {
-            int obstacle = 5;
-            int player = 5;
-            if (obstacle == player) 
+            if (obstacle != player) 
             {
-                GameOver()
+                GameOver();
+
             }
-
-
+            return ((playerDFS > 0) && (dangerDFP - playerDFS > 0));
         }
 
         static void GameOver()
