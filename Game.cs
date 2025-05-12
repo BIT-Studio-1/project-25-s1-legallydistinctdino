@@ -2,6 +2,10 @@
 {
     internal class Game
     {
+        static int PlayerDFS = 20; // DFS = Distance from safety
+        static int Danger = 10;
+        static int DangerDFP = PlayerDFS + Danger; // DFP = Distance from player
+
         // Starting point for code, anyone can adjust as needed
         static void Main(string[] args)
         {
@@ -88,36 +92,34 @@
         static void RunGame()
         {
             Random rand = new Random();
-            int playerDFS = 20; // DFS = Distance from safety
-            int danger = 10;
-            int dangerDFP = playerDFS + danger; // DFP = Distance from player
+            
 
-            Console.WriteLine($"\nPlayer is {playerDFS} meters from safety!");
-            Console.WriteLine($"Danger is {dangerDFP - playerDFS} meters from Player!");
+            Console.WriteLine($"\nPlayer is {PlayerDFS} meters from safety!");
+            Console.WriteLine($"Danger is {DangerDFP - PlayerDFS} meters from Player!");
 
-            while ((playerDFS > 0) && (dangerDFP - playerDFS > 0))
+            while ((PlayerDFS > 0) && (DangerDFP - PlayerDFS > 0))
             {
                 if (Console.KeyAvailable && Console.ReadKey().Key == ConsoleKey.RightArrow)
                 {
                     // Player has started running instead of walking
                     Console.WriteLine("\nPlayer is Running!");
-                    playerDFS--;
+                    PlayerDFS--;
                 }
                 else
                 {
                     // Player is still walking, danger increases speed
                     Console.WriteLine("\nPlayer is Walking, danger picks up speed!");
-                    dangerDFP--;
+                    DangerDFP--;
                 }
                 // Regular 'walking' movement
-                playerDFS--;
-                dangerDFP--;
+                PlayerDFS--;
+                DangerDFP--;
                 Thread.Sleep(200);
-                Console.WriteLine($"Player is {playerDFS} meters from safety!");
-                Console.WriteLine($"Danger is {dangerDFP - playerDFS} meters from Player!");
+                Console.WriteLine($"Player is {PlayerDFS} meters from safety!");
+                Console.WriteLine($"Danger is {DangerDFP - PlayerDFS} meters from Player!");
             }
             Thread.Sleep(50);
-            if (playerDFS <= 0)
+            if (PlayerDFS <= 0)
             {
                 Console.WriteLine("Player made it!");
             }
