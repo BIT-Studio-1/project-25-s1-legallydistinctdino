@@ -2,6 +2,7 @@
 {
     internal class Game
     {
+        Random rand = new Random();
         static int PlayerDFS = 20; // DFS = Distance from safety
         static int Danger = 10;
         static int DangerDFP = PlayerDFS + Danger; // DFP = Distance from player
@@ -94,9 +95,6 @@
         // Called to run the actual game once everything is set up and ready
         static void RunGame()
         {
-            Random rand = new Random();
-            
-
             while (LoseConditions())
             {
                 if (Console.KeyAvailable && Console.ReadKey().Key == ConsoleKey.RightArrow)
