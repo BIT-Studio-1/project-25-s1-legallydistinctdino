@@ -6,7 +6,7 @@
         static int Danger = 10;
         static int DangerDFP = PlayerDFS + Danger; // DFP = Distance from player
         static int ObjectPOS;
-        static int PlayerPOS;
+        static int PlayerPOS = 1;
 
         // Starting point for code, anyone can adjust as needed
         static void Main(string[] args)
@@ -117,16 +117,7 @@
                 Console.WriteLine($"Player is {PlayerDFS} meters from safety!");
                 Console.WriteLine($"Danger is {DangerDFP - PlayerDFS} meters from Player!");
             }
-            Thread.Sleep(50);
-            if (PlayerDFS <= 0)
-            {
-                Console.WriteLine("Player made it!");
-            }
-            else
-            {
-                Console.WriteLine("Danger ate Player :(");
-            }
-            Console.ReadLine();
+            GameOver();
         }
 
         //Braedon
@@ -143,6 +134,16 @@
         // Called once the game has finished
         static void GameOver()
         {
+            Thread.Sleep(50);
+            if (PlayerDFS <= 0)
+            {
+                Console.WriteLine("Player made it!");
+            }
+            else
+            {
+                Console.WriteLine("Danger ate Player :(");
+            }
+            Console.ReadLine();
 
         }
     }
