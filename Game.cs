@@ -1,5 +1,4 @@
-﻿using static System.Net.Mime.MediaTypeNames;
-
+﻿
 namespace LegallyDistinctDino
 {
     internal class Game
@@ -148,6 +147,7 @@ namespace LegallyDistinctDino
             if (Console.KeyAvailable) {
                 Console.ReadKey(intercept: true);
             }
+            char[,] background = new char[120, 30];
             RunGame();
         }
 
