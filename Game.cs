@@ -154,7 +154,7 @@
         }
 
         // set an entire row to an array of chars
-        public void SetRow(char[] rowData, int rowIndex)
+        static void SetRow(char[] rowData, int rowIndex)
         {
             if (rowIndex < 0 || rowIndex >= height)
             {
@@ -173,7 +173,7 @@
         }
 
         // Change a specific chars at row & col to value
-        public void SetCharAt(int row, int col, char value)
+        static void SetCharAt(int row, int col, char value)
         {
             if (row < 0 || row >= height || col < 0 || col >= width)
             {
@@ -184,7 +184,7 @@
         }
 
         // Print the Gamescreen to the console
-        public void PrintGameScreen()
+        static void PrintGameScreen()
         {
             for (int row = 0; row < height; row++)
             {
