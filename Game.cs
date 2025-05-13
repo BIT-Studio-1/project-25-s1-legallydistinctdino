@@ -159,6 +159,13 @@
             Console.WriteLine("                                                                                 ");
             Console.WriteLine("                                                                                 ");
             Console.WriteLine("_________________________________________________________________________________");
+            char[,] background = new char[Console.WindowWidth,Console.WindowHeight];
+            {
+                { }{ };
+                { };
+            }
+            background[120, 30] = 'i';
+
             string person = "  o\r\n" +
                 " /|\\\r\n" +
                 " / \\";
@@ -197,6 +204,17 @@
         }
 
         //Braedon
+        static void LevelCompScreen()
+        {
+            Console.Clear();
+            Console.WriteLine(".____                      .__    _________                       .__          __        ._. \r\n|    |    _______  __ ____ |  |   \\_   ___ \\  ____   _____ ______ |  |   _____/  |_  ____| | \r\n|    |  _/ __ \\  \\/ // __ \\|  |   /    \\  \\/ /  _ \\ /     \\\\____ \\|  | _/ __ \\   __\\/ __ \\ | \r\n|    |__\\  ___/\\   /\\  ___/|  |__ \\     \\___(  <_> )  Y Y  \\  |_> >  |_\\  ___/|  | \\  ___/\\| \r\n|_______ \\___  >\\_/  \\___  >____/  \\______  /\\____/|__|_|  /   __/|____/\\___  >__|  \\___  >_ \r\n        \\/   \\/          \\/               \\/             \\/|__|             \\/          \\/\\/");
+            Thread.Sleep(1000);
+            Console.Clear();
+            Console.WriteLine(" ______\n |    |\n |    |\n |    |\n/      \\\n|      |\n|      |\n|      |\n|      |\n|      |\n|      |\n________");
+            Console.WriteLine("   ___ _           ___      _ _           _           _ \r\n  / _ (_)_ __     / __\\___ | | | ___  ___| |_ ___  __| |\r\n / /_\\/ | '_ \\   / /  / _ \\| | |/ _ \\/ __| __/ _ \\/ _` |\r\n/ /_\\\\| | | | | / /__| (_) | | |  __/ (__| ||  __/ (_| |\r\n\\____/|_|_| |_| \\____/\\___/|_|_|\\___|\\___|\\__\\___|\\__,_|");
+        }
+
+        //Braedon
         static bool PlayConditions()
         {
             if (ObjectPOS == PlayerPOS) 
@@ -213,6 +231,7 @@
             if (PlayerDFS <= 0)
             {
                 Console.WriteLine("Player made it!");
+                LevelCompScreen();
             }
             else
             {
