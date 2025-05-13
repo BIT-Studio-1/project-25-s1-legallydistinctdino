@@ -19,6 +19,30 @@
         // Alina
         static void TitleScreen()
         {
+            while (!Console.KeyAvailable)
+            {
+                Console.ForegroundColor = ConsoleColor.Blue;
+                PrintWelcome();
+                Thread.Sleep(300);
+                Console.Clear();
+                Console.ForegroundColor = ConsoleColor.Red;
+                PrintWelcome();
+                Thread.Sleep(300);
+                Console.Clear();  
+            }
+            
+
+            Console.ResetColor();
+
+            // Ideas to build up later
+            // Changing Background-color
+            // dynamic welcome sign
+            MainMenu();
+        }
+
+        // print welcome
+        static void PrintWelcome()
+        {
             // Welcome
             Console.WriteLine("   _____________________________________________________________________________________________________");
             Console.WriteLine("   |                                                                                                   |");
@@ -32,13 +56,6 @@
             Console.WriteLine("   |                             -- Press ENTER to go to the Main Menu --                              |");
             Console.WriteLine("   |                                                                                                   |");
             Console.WriteLine("   |___________________________________________________________________________________________________|");
-            Console.ReadLine();
-
-            // Ideas to build up later
-            // Changing Background-color
-            // add frame
-            // dynamic welcome sign
-            MainMenu();
         }
 
         // Maria
