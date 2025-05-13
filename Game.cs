@@ -19,23 +19,44 @@
         // Alina
         static void TitleScreen()
         {
+            ConsoleColor[] colors = { 
+                ConsoleColor.DarkBlue,
+                ConsoleColor.DarkCyan,
+                ConsoleColor.DarkRed,
+                ConsoleColor.DarkYellow,
+                ConsoleColor.Gray,
+                ConsoleColor.DarkGray,
+                ConsoleColor.Blue,
+                ConsoleColor.Green,
+                ConsoleColor.DarkMagenta,
+                ConsoleColor.Cyan,
+                ConsoleColor.Red,
+                ConsoleColor.Magenta,
+                ConsoleColor.Yellow,
+                ConsoleColor.DarkGreen
+            };
+            int iterator = 0;
+
             while (!Console.KeyAvailable)
             {
-                Console.ForegroundColor = ConsoleColor.Blue;
+                Console.ForegroundColor = colors[iterator];
                 PrintWelcome();
                 Thread.Sleep(300);
                 Console.Clear();
-                Console.ForegroundColor = ConsoleColor.Red;
-                PrintWelcome();
-                Thread.Sleep(300);
-                Console.Clear();  
+                if (iterator < (colors.Length - 1))
+                {
+                    iterator += 1;
+                }
+                else
+                {
+                    iterator = 0;
+                }
+              
             }
             
-
             Console.ResetColor();
 
             // Ideas to build up later
-            // Changing Background-color
             // dynamic welcome sign
             MainMenu();
         }
