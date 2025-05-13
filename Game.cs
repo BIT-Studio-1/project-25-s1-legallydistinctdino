@@ -3,9 +3,9 @@
     internal class Game
     {
         Random rand = new Random();
-        static int PlayerDFS = 20; // DFS = Distance from safety
-        static int Danger = 10;
-        static int DangerDFP = PlayerDFS + Danger; // DFP = Distance from player
+        static int PlayerDFS; // DFS = Distance from safety
+        static int Danger;
+        static int DangerDFP; // DFP = Distance from player
         static int ObjectPOS; // Object Position
         static int PlayerPOS = 1; // Player Position
 
@@ -13,7 +13,7 @@
         static void Main(string[] args)
         {
             TitleScreen();
-            MainMenu();
+            
         }
 
         // Alina
@@ -27,13 +27,14 @@
             Console.WriteLine("   \\     _     |  |  |_____  |  |_____  |  |_____  |  |__|  |  |  |        |  |  |  |_____  ____  ");
             Console.WriteLine("    \\___/ \\___/   |_______|  |_______|  |_______|  |________|  |__|        |__|  |_______|  |__|  ");
             Console.WriteLine("\n");
-            Console.WriteLine("                          -- Press ENTER to go to the Main Menu --");
+            Console.WriteLine("                          -- Press ENTER to go to the Main Menu --                                   ");
             Console.ReadLine();
 
             // Ideas to build up later
             // Changing Background-color
             // add frame
             // dynamic welcome sign
+            MainMenu();
         }
 
         // Maria
@@ -84,6 +85,9 @@
         // Called before the game is started to setup variables and generate required variables
         static void SetupGame()
         {
+            PlayerDFS = 20;
+            Danger = 10;
+            DangerDFP = PlayerDFS + Danger;
             Console.Write("3....");
             Thread.Sleep(1000);
             Console.Write("2...");
@@ -91,6 +95,9 @@
             Console.Write("1..");
             Thread.Sleep(1000);
             Console.Write("GO!");
+            if (Console.KeyAvailable) {
+                Console.ReadKey(intercept: true);
+            }
             RunGame();
         }
 
@@ -106,7 +113,7 @@
         // Called to run the actual game once everything is set up and ready
         static void RunGame()
         {
-            while (LoseConditions())
+            while (PlayConditions())
             {
                 if (Console.KeyAvailable && Console.ReadKey().Key == ConsoleKey.RightArrow)
                 {
@@ -123,15 +130,19 @@
                 // Regular 'walking' movement
                 PlayerDFS--;
                 DangerDFP--;
-                Thread.Sleep(200);
                 Console.WriteLine($"Player is {PlayerDFS} meters from safety!");
                 Console.WriteLine($"Danger is {DangerDFP - PlayerDFS} meters from Player!");
+                while (Console.KeyAvailable)
+                {
+                    Console.ReadKey(intercept: true);
+                }
+                Thread.Sleep(200);
             }
             GameOver();
         }
 
         //Braedon
-        static bool LoseConditions()
+        static bool PlayConditions()
         {
             if (ObjectPOS == PlayerPOS) 
             {
@@ -153,7 +164,7 @@
                 Console.WriteLine("Danger ate Player :(");
             }
             Console.ReadLine();
-
+            MainMenu();
         }
 
         //when you decide you don't actually want to play
