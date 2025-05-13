@@ -3,9 +3,9 @@
     internal class Game
     {
         Random rand = new Random();
-        static int PlayerDFS = 20; // DFS = Distance from safety
-        static int Danger = 10;
-        static int DangerDFP = PlayerDFS + Danger; // DFP = Distance from player
+        static int PlayerDFS; // DFS = Distance from safety
+        static int Danger;
+        static int DangerDFP; // DFP = Distance from player
         static int ObjectPOS; // Object Position
         static int PlayerPOS = 1; // Player Position
 
@@ -84,6 +84,9 @@
         // Called before the game is started to setup variables and generate required variables
         static void SetupGame()
         {
+            PlayerDFS = 200;
+            Danger = 10;
+            DangerDFP = PlayerDFS + Danger;
             Console.Write("3....");
             Thread.Sleep(1000);
             Console.Write("2...");
@@ -91,6 +94,9 @@
             Console.Write("1..");
             Thread.Sleep(1000);
             Console.Write("GO!");
+            if (Console.KeyAvailable) {
+                Console.ReadKey(intercept: true);
+            }
             RunGame();
         }
 
@@ -123,6 +129,10 @@
                 DangerDFP--;
                 Console.WriteLine($"Player is {PlayerDFS} meters from safety!");
                 Console.WriteLine($"Danger is {DangerDFP - PlayerDFS} meters from Player!");
+                while (Console.KeyAvailable)
+                {
+                    Console.ReadKey(intercept: true);
+                }
                 Thread.Sleep(200);
             }
             GameOver();
