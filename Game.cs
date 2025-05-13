@@ -84,7 +84,7 @@
         // Called before the game is started to setup variables and generate required variables
         static void SetupGame()
         {
-            PlayerDFS = 200;
+            PlayerDFS = 20;
             Danger = 10;
             DangerDFP = PlayerDFS + Danger;
             Console.Write("3....");
