@@ -203,6 +203,7 @@
             if (PlayerDFS <= 0)
             {
                 Console.WriteLine("Player made it!");
+                LevelCompScreen();
             }
             else
             {
