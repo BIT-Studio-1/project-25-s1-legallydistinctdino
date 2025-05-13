@@ -108,7 +108,22 @@
         // Braedon & Samuel
         static void SetupBackground()
         {
-
+            Console.WriteLine("                          _____                               ____               ");
+            Console.WriteLine("                       ___|   \\                              _|   \\              ");
+            Console.WriteLine("                      /________\\                           /________\\            ");
+            Console.WriteLine("                                                                                 ");
+            Console.WriteLine("                                                                                 ");
+            Console.WriteLine("                                                                                 ");
+            Console.WriteLine("                                                                                 ");
+            Console.WriteLine("                                                                                 ");
+            Console.WriteLine("                                                                                 ");
+            Console.WriteLine("                                                                                 ");
+            Console.WriteLine("                                                                                 ");
+            Console.WriteLine("                                                                                 ");
+            Console.WriteLine("_________________________________________________________________________________");
+            string person = "  o\r\n" +
+                " /|\\\r\n" +
+                " / \\";
         }
 
         // Samuel & Braedon
