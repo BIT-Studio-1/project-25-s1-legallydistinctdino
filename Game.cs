@@ -1,4 +1,6 @@
-﻿namespace LegallyDistinctDino
+﻿using static System.Net.Mime.MediaTypeNames;
+
+namespace LegallyDistinctDino
 {
     internal class Game
     {
@@ -55,6 +57,10 @@
             }
             
             Console.ResetColor();
+            while (Console.KeyAvailable)
+            {
+                Console.ReadKey(intercept: true);
+            }
 
             // Ideas to build up later
             // dynamic welcome sign
@@ -64,6 +70,8 @@
         // print welcome
         static void PrintWelcome()
         {
+           
+            // System.Console.SetCursorPosition(System.Console.WindowWidth / 2 - 52, System.Console.CursorTop);
             // Welcome
             Console.WriteLine("   _____________________________________________________________________________________________________");
             Console.WriteLine("   |                                                                                                   |");
