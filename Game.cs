@@ -13,7 +13,7 @@
         static void Main(string[] args)
         {
             TitleScreen();
-            MainMenu();
+            
         }
 
         // Alina
@@ -34,6 +34,7 @@
             // Changing Background-color
             // add frame
             // dynamic welcome sign
+            MainMenu();
         }
 
         // Maria
