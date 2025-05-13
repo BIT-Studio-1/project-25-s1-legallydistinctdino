@@ -1,5 +1,4 @@
-﻿
-namespace LegallyDistinctDino
+﻿namespace LegallyDistinctDino
 {
     internal class Game
     {
@@ -9,6 +8,10 @@ namespace LegallyDistinctDino
         static int DangerDFP; // DFP = Distance from player
         static int ObjectPOS; // Object Position
         static int PlayerPOS = 1; // Player Position
+
+        static int height = 30;
+        static int width = 120;
+        static char[,] GameScreen = new char[120, 30]; // Main Matrix used to print to the screen
 
         // Starting point for code, anyone can adjust as needed
         static void Main(string[] args)
@@ -147,9 +150,52 @@ namespace LegallyDistinctDino
             if (Console.KeyAvailable) {
                 Console.ReadKey(intercept: true);
             }
-            char[,] background = new char[120, 30];
             RunGame();
         }
+
+        // set an entire row to an array of chars
+        public void SetRow(char[] rowData, int rowIndex)
+        {
+            if (rowIndex < 0 || rowIndex >= height)
+            {
+                throw new ArgumentOutOfRangeException(nameof(rowIndex), "Row index is out of bounds.");
+            }
+
+            if (rowData.Length > width)
+            {
+                throw new ArgumentException("Row data is too long.");
+            }
+
+            for (int col = 0; col < rowData.Length; col++)
+            {
+                GameScreen[rowIndex, col] = rowData[col];
+            }
+        }
+
+        // Change a specific chars at row & col to value
+        public void SetCharAt(int row, int col, char value)
+        {
+            if (row < 0 || row >= height || col < 0 || col >= width)
+            {
+                throw new ArgumentOutOfRangeException("Coordinates are out of bounds.");
+            }
+
+            GameScreen[row, col] = value;
+        }
+
+        // Print the Gamescreen to the console
+        public void PrintGameScreen()
+        {
+            for (int row = 0; row < height; row++)
+            {
+                for (int col = 0; col < width; col++)
+                {
+                    Console.Write(GameScreen[row, col]);
+                }
+                Console.WriteLine();
+            }
+        }
+
 
         // Braedon & Samuel
         static void SetupBackground()
@@ -167,22 +213,6 @@ namespace LegallyDistinctDino
             Console.WriteLine("                                                                                 ");
             Console.WriteLine("                                                                                 ");
             Console.WriteLine("_________________________________________________________________________________");
-            char[,] background = new char[120,30];
-            {
-                { }{ }{ }{ }{ }{ }{ }{ }{ };
-                { }{ }{ }{ }{ }{ }{ }{ }{ };
-                { }{ }{ }{ }{ }{ }{ }{ }{ };
-                { }{ }{ }{ }{ }{ }{ }{ }{ };
-                { }{ }{ }{ }{ }{ }{ }{ }{ };
-                { }{ }{ }{ }{ }{ }{ }{ }{ };
-                { }{ }{ }{ }{ }{ }{ }{ }{ };
-                { }{ }{ }{ }{ }{ }{ }{ }{ };
-                { }{ }{ }{ }{ }{ }{ }{ }{ };
-                { }{ }{ }{ }{ }{ }{ }{ }{ };
-                { }{ }{ }{ }{ }{ }{ }{ }{ };
-                { }{ }{ }{ }{ }{ }{ }{ }{ };
-            }
-            background[120, 30] = 'i';
 
             string person = 
                 "  o\r\n" +
