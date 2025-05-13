@@ -121,9 +121,9 @@
                 // Regular 'walking' movement
                 PlayerDFS--;
                 DangerDFP--;
-                Thread.Sleep(200);
                 Console.WriteLine($"Player is {PlayerDFS} meters from safety!");
                 Console.WriteLine($"Danger is {DangerDFP - PlayerDFS} meters from Player!");
+                Thread.Sleep(200);
             }
             GameOver();
         }
