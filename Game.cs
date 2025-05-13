@@ -19,6 +19,30 @@
         // Alina
         static void TitleScreen()
         {
+            while (!Console.KeyAvailable)
+            {
+                Console.ForegroundColor = ConsoleColor.Blue;
+                PrintWelcome();
+                Thread.Sleep(300);
+                Console.Clear();
+                Console.ForegroundColor = ConsoleColor.Red;
+                PrintWelcome();
+                Thread.Sleep(300);
+                Console.Clear();  
+            }
+            
+
+            Console.ResetColor();
+
+            // Ideas to build up later
+            // Changing Background-color
+            // dynamic welcome sign
+            MainMenu();
+        }
+
+        // print welcome
+        static void PrintWelcome()
+        {
             // Welcome
             Console.WriteLine("   _____________________________________________________________________________________________________");
             Console.WriteLine("   |                                                                                                   |");
@@ -32,13 +56,6 @@
             Console.WriteLine("   |                             -- Press ENTER to go to the Main Menu --                              |");
             Console.WriteLine("   |                                                                                                   |");
             Console.WriteLine("   |___________________________________________________________________________________________________|");
-            Console.ReadLine();
-
-            // Ideas to build up later
-            // Changing Background-color
-            // add frame
-            // dynamic welcome sign
-            MainMenu();
         }
 
         // Maria
@@ -163,6 +180,17 @@
                 Thread.Sleep(200);
             }
             GameOver();
+        }
+
+        //Braedon
+        static void LevelCompScreen()
+        {
+            Console.Clear();
+            Console.WriteLine(".____                      .__    _________                       .__          __        ._. \r\n|    |    _______  __ ____ |  |   \\_   ___ \\  ____   _____ ______ |  |   _____/  |_  ____| | \r\n|    |  _/ __ \\  \\/ // __ \\|  |   /    \\  \\/ /  _ \\ /     \\\\____ \\|  | _/ __ \\   __\\/ __ \\ | \r\n|    |__\\  ___/\\   /\\  ___/|  |__ \\     \\___(  <_> )  Y Y  \\  |_> >  |_\\  ___/|  | \\  ___/\\| \r\n|_______ \\___  >\\_/  \\___  >____/  \\______  /\\____/|__|_|  /   __/|____/\\___  >__|  \\___  >_ \r\n        \\/   \\/          \\/               \\/             \\/|__|             \\/          \\/\\/");
+            Thread.Sleep(1000);
+            Console.Clear();
+            Console.WriteLine(" ______\n |    |\n |    |\n |    |\n/      \\\n|      |\n|      |\n|      |\n|      |\n|      |\n|      |\n________");
+            Console.WriteLine("   ___ _           ___      _ _           _           _ \r\n  / _ (_)_ __     / __\\___ | | | ___  ___| |_ ___  __| |\r\n / /_\\/ | '_ \\   / /  / _ \\| | |/ _ \\/ __| __/ _ \\/ _` |\r\n/ /_\\\\| | | | | / /__| (_) | | |  __/ (__| ||  __/ (_| |\r\n\\____/|_|_| |_| \\____/\\___/|_|_|\\___|\\___|\\__\\___|\\__,_|");
         }
 
         //Braedon
