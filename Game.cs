@@ -97,7 +97,9 @@
         // Braedon & Samuel
         static void SetupBackground()
         {
-
+            string person = "  o\r\n" +
+                " /|\\\r\n" +
+                " / \\";
         }
 
         // Samuel & Braedon
