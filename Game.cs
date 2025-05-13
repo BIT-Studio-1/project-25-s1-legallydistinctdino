@@ -27,7 +27,7 @@
             Console.WriteLine("   \\     _     |  |  |_____  |  |_____  |  |_____  |  |__|  |  |  |        |  |  |  |_____  ____  ");
             Console.WriteLine("    \\___/ \\___/   |_______|  |_______|  |_______|  |________|  |__|        |__|  |_______|  |__|  ");
             Console.WriteLine("\n");
-            Console.WriteLine("                          -- Press ENTER to go to the Main Menu --");
+            Console.WriteLine("                          -- Press ENTER to go to the Main Menu --                                   ");
             Console.ReadLine();
 
             // Ideas to build up later
@@ -110,7 +110,7 @@
         // Called to run the actual game once everything is set up and ready
         static void RunGame()
         {
-            while (LoseConditions())
+            while (PlayConditions())
             {
                 if (Console.KeyAvailable && Console.ReadKey().Key == ConsoleKey.RightArrow)
                 {
@@ -139,7 +139,7 @@
         }
 
         //Braedon
-        static bool LoseConditions()
+        static bool PlayConditions()
         {
             if (ObjectPOS == PlayerPOS) 
             {
