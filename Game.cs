@@ -121,6 +121,13 @@
             Console.WriteLine("                                                                                 ");
             Console.WriteLine("                                                                                 ");
             Console.WriteLine("_________________________________________________________________________________");
+            char[,] background = new char[Console.WindowWidth,Console.WindowHeight];
+            {
+                { }{ };
+                { };
+            }
+            background[120, 30] = 'i';
+
             string person = "  o\r\n" +
                 " /|\\\r\n" +
                 " / \\";
