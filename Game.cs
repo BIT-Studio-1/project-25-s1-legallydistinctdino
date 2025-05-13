@@ -151,7 +151,7 @@
                 Console.WriteLine("Danger ate Player :(");
             }
             Console.ReadLine();
-
+            MainMenu();
         }
 
         //when you decide you don't actually want to play
