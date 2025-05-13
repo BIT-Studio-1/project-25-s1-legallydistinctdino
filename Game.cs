@@ -70,10 +70,11 @@ namespace LegallyDistinctDino
         // print welcome
         static void PrintWelcome()
         {
-           
-            // System.Console.SetCursorPosition(System.Console.WindowWidth / 2 - 52, System.Console.CursorTop);
-            // Welcome
+            int xPosition = System.Console.WindowWidth / 2 - 52;
+            int yPosition = System.Console.CursorTop;
+            System.Console.SetCursorPosition(xPosition, yPosition);
             Console.WriteLine("   _____________________________________________________________________________________________________");
+            System.Console.SetCursorPosition(xPosition, ++yPosition);
             Console.WriteLine("   |                                                                                                   |");
             Console.WriteLine("   |   ____     ____  _________  ____       _________  _________   ____        ____  _________  ____   |");
             Console.WriteLine("   |   |  |     |  |  |   ____|  |  |       |   ____|  |  ____  |  |   \\  __  /   |  |   ____|  |  |   |");
