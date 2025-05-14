@@ -1,0 +1,12 @@
+GsmeScreen.SetRow("jhvthkfvghkvbjh".ToCharArray(),28);
+y30 x120
+
+PLAYER
+      O
+   \_/|\_/
+     |||
+	 ---
+	 | |
+	 | |
+
+	
