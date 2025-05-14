@@ -9,10 +9,7 @@
         static int ObjectPOS; // Object Position
         static int PlayerPOS = 1; // Player Position
 
-        static int Rows = 30;
-        static int Columns = 120;
-        static char[,] GameScreen = new char[Columns, Rows]; // Main Matrix used to print to the screen
-        static char[,] PrevGameScreen = new char[Columns, Rows];
+        
 
         // Starting point for code, anyone can adjust as needed
         static void Main(string[] args)
@@ -158,64 +155,6 @@
             RunGame();
         }
 
-        static void ClearGameScreen(char fill = ' ')
-        {
-            for (int row = 0; row < Rows; row++)
-            {
-                for (int col = 0; col < Columns; col++)
-                {
-                    GameScreen[col, row] = fill;
-                }
-            }
-        }
-
-
-
-        // set an entire row to an array of chars
-        static void SetRow(char[] rowData, int rowIndex)
-        {
-            if (rowIndex < 0 || rowIndex >= Rows)
-            {
-                throw new ArgumentOutOfRangeException(nameof(rowIndex), "Row index is out of bounds.");
-            }
-
-            if (rowData.Length > Columns)
-            {
-                throw new ArgumentException("Row data is too long.");
-            }
-
-            for (int col = 0; col < rowData.Length; col++)
-            {
-                GameScreen[col, rowIndex] = rowData[col];
-            }
-        }
-
-        // Change a specific chars at row & col to value
-        static void SetCharAt(int row, int col, char value)
-        {
-            if (row < 0 || row >= Rows || col < 0 || col >= Columns)
-            {
-                throw new ArgumentOutOfRangeException("Coordinates are out of bounds.");
-            }
-
-            GameScreen[col, row] = value;
-        }
-
-        // Print the Gamescreen to the console, but only print the changes and not the whole screen, this Greatly reduces flicker 
-        static void RenderGameScreen()
-        {
-            for (int row = 0; row < Rows; row++)
-            {
-                for (int col = 0; col < Columns; col++)
-                {
-                    if (GameScreen[col, row] != PrevGameScreen[col, row]) { 
-                        Console.SetCursorPosition(col, row);
-                        Console.Write(GameScreen[col, row]);
-                        PrevGameScreen[col, row] = GameScreen[col, row];
-                    }
-                }
-            }
-        }
 
 
         // Braedon & Samuel
