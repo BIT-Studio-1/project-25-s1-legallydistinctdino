@@ -55,38 +55,30 @@ namespace LegallyDistinctDino
                 Console.ReadKey(intercept: true);
             }
 
-            // MainMenu();
+            MainMenu();
         }
 
         // print welcome
         static void PrintWelcome()
         {
-            int xPosition = System.Console.WindowWidth / 2 - 52;
+            int xPosition = System.Console.WindowWidth / 2 - 46;
             int yPosition = System.Console.CursorTop;
             System.Console.SetCursorPosition(xPosition, yPosition);
-            Console.WriteLine("   _____________________________________________________________________________________________________");
+            Console.WriteLine("____     ____  _________  ____       _________  _________   ____        ____  _________  ____");
             System.Console.SetCursorPosition(xPosition, ++yPosition);
-            Console.WriteLine("   |                                                                                                   |");
+            Console.WriteLine("|  |     |  |  |   ____|  |  |       |   ____|  |  ____  |  |   \\  __  /   |  |   ____|  |  |");
             System.Console.SetCursorPosition(xPosition, ++yPosition);
-            Console.WriteLine("   |   ____     ____  _________  ____       _________  _________   ____        ____  _________  ____   |");
+            Console.WriteLine("|  | ___ |  |  |  |___    |  |       |  |       |  |  |  |  |    \\/  \\/    |  |  |___    |  |");
             System.Console.SetCursorPosition(xPosition, ++yPosition);
-            Console.WriteLine("   |   |  |     |  |  |   ____|  |  |       |   ____|  |  ____  |  |   \\  __  /   |  |   ____|  |  |   |");
+            Console.WriteLine("|  \\/   \\/  |  |   ___|   |  |       |  |       |  |  |  |  |  |\\__/\\__/|  |  |   ___|   |__|");
             System.Console.SetCursorPosition(xPosition, ++yPosition);
-            Console.WriteLine("   |   |  | ___ |  |  |  |___    |  |       |  |       |  |  |  |  |    \\/  \\/    |  |  |___    |  |   |");
+            Console.WriteLine("\\     _     |  |  |_____  |  |_____  |  |_____  |  |__|  |  |  |        |  |  |  |_____  ____");
             System.Console.SetCursorPosition(xPosition, ++yPosition);
-            Console.WriteLine("   |   |  \\/   \\/  |  |   ___|   |  |       |  |       |  |  |  |  |  |\\__/\\__/|  |  |   ___|   |__|   |");
+            Console.WriteLine(" \\___/ \\___/   |_______|  |_______|  |_______|  |________|  |__|        |__|  |_______|  |__|");
             System.Console.SetCursorPosition(xPosition, ++yPosition);
-            Console.WriteLine("   |   \\     _     |  |  |_____  |  |_____  |  |_____  |  |__|  |  |  |        |  |  |  |_____  ____   |");
+            Console.WriteLine("\n");
             System.Console.SetCursorPosition(xPosition, ++yPosition);
-            Console.WriteLine("   |    \\___/ \\___/   |_______|  |_______|  |_______|  |________|  |__|        |__|  |_______|  |__|   |");
-            System.Console.SetCursorPosition(xPosition, ++yPosition);
-            Console.WriteLine("   |                                                                                                   |");
-            System.Console.SetCursorPosition(xPosition, ++yPosition);
-            Console.WriteLine("   |                             -- Press ENTER to go to the Main Menu --                              |");
-            System.Console.SetCursorPosition(xPosition, ++yPosition);
-            Console.WriteLine("   |                                                                                                   |");
-            System.Console.SetCursorPosition(xPosition, ++yPosition);
-            Console.WriteLine("   |___________________________________________________________________________________________________|");
+            Console.WriteLine("                                 -- Press ENTER to go to the Main Menu --");
         }
 
         static void PrintDino()
