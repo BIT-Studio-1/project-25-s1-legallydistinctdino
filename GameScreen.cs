@@ -9,7 +9,7 @@
         public static char[,] Screen = new char[Columns, Rows]; // Main Matrix used to print to the screen
         public static char[,] PrevScreen = new char[Columns, Rows];
 
-
+        // Clear the current screen, optionally specify a filler char
         public static void Clear(char fill = ' ')
         {
             for (int row = 0; row < Rows; row++)
@@ -68,11 +68,12 @@
                 }
             }
         }
+
+        // Clear the screen and re-render everything instead of just what has changed
         public static void ClearThenRender()
         {
             Clear();
             Render();
-
         }
     }
 }
