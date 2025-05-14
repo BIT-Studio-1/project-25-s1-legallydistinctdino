@@ -8,7 +8,7 @@
         static char[,] PrevScreen = new char[Columns, Rows];
 
 
-        static void ClearGameScreen(char fill = ' ')
+        static void Clear(char fill = ' ')
         {
             for (int row = 0; row < Rows; row++)
             {
@@ -17,6 +17,7 @@
                     Screen[col, row] = fill;
                 }
             }
+            Console.Clear();
         }
 
         // set an entire row to an array of chars
@@ -50,7 +51,7 @@
         }
 
         // Print the Gamescreen to the console, but only print the changes and not the whole screen, this Greatly reduces flicker 
-        static void RenderGameScreen()
+        static void Render()
         {
             for (int row = 0; row < Rows; row++)
             {
@@ -64,6 +65,12 @@
                     }
                 }
             }
+        }
+        static void ClearThenRender()
+        {
+            Clear();
+            Render();
+
         }
     }
 }
