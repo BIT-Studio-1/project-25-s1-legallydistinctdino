@@ -14,138 +14,23 @@
         // Starting point for code, anyone can adjust as needed
         static void Main(string[] args)
         {
-            GameScreen.TestRenderEngine();
             TitleScreen();
             
         }
 
-        // Alina
-        static void TitleScreen()
-        {
-            ConsoleColor[] colors = { 
-                ConsoleColor.DarkBlue,
-                ConsoleColor.DarkCyan,
-                ConsoleColor.DarkRed,
-                ConsoleColor.DarkYellow,
-                ConsoleColor.Gray,
-                ConsoleColor.DarkGray,
-                ConsoleColor.Blue,
-                ConsoleColor.Green,
-                ConsoleColor.DarkMagenta,
-                ConsoleColor.Cyan,
-                ConsoleColor.Red,
-                ConsoleColor.Magenta,
-                ConsoleColor.Yellow,
-                ConsoleColor.DarkGreen
-            };
-            int iterator = 0;
-
-            while (!Console.KeyAvailable)
-            {
-                Console.ForegroundColor = colors[iterator];
-                PrintWelcome();
-                Thread.Sleep(300);
-                Console.Clear();
-                if (iterator < (colors.Length - 1))
-                {
-                    iterator += 1;
-                }
-                else
-                {
-                    iterator = 0;
-                }
-              
-            }
-            
-            Console.ResetColor();
-            while (Console.KeyAvailable)
-            {
-                Console.ReadKey(intercept: true);
-            }
-
-            // Ideas to build up later
-            // dynamic welcome sign
-            MainMenu();
-        }
-
-        // print welcome
-        static void PrintWelcome()
-        {
-            int xPosition = System.Console.WindowWidth / 2 - 52;
-            int yPosition = System.Console.CursorTop;
-            System.Console.SetCursorPosition(xPosition, yPosition);
-            Console.WriteLine("   _____________________________________________________________________________________________________");
-            System.Console.SetCursorPosition(xPosition, ++yPosition);
-            Console.WriteLine("   |                                                                                                   |");
-            System.Console.SetCursorPosition(xPosition, ++yPosition);
-            Console.WriteLine("   |   ____     ____  _________  ____       _________  _________   ____        ____  _________  ____   |");
-            System.Console.SetCursorPosition(xPosition, ++yPosition);
-            Console.WriteLine("   |   |  |     |  |  |   ____|  |  |       |   ____|  |  ____  |  |   \\  __  /   |  |   ____|  |  |   |");
-            System.Console.SetCursorPosition(xPosition, ++yPosition);
-            Console.WriteLine("   |   |  | ___ |  |  |  |___    |  |       |  |       |  |  |  |  |    \\/  \\/    |  |  |___    |  |   |");
-            System.Console.SetCursorPosition(xPosition, ++yPosition);
-            Console.WriteLine("   |   |  \\/   \\/  |  |   ___|   |  |       |  |       |  |  |  |  |  |\\__/\\__/|  |  |   ___|   |__|   |");
-            System.Console.SetCursorPosition(xPosition, ++yPosition);
-            Console.WriteLine("   |   \\     _     |  |  |_____  |  |_____  |  |_____  |  |__|  |  |  |        |  |  |  |_____  ____   |");
-            System.Console.SetCursorPosition(xPosition, ++yPosition);
-            Console.WriteLine("   |    \\___/ \\___/   |_______|  |_______|  |_______|  |________|  |__|        |__|  |_______|  |__|   |");
-            System.Console.SetCursorPosition(xPosition, ++yPosition);
-            Console.WriteLine("   |                                                                                                   |");
-            System.Console.SetCursorPosition(xPosition, ++yPosition);
-            Console.WriteLine("   |                             -- Press ENTER to go to the Main Menu --                              |");
-            System.Console.SetCursorPosition(xPosition, ++yPosition);
-            Console.WriteLine("   |                                                                                                   |");
-            System.Console.SetCursorPosition(xPosition, ++yPosition);
-            Console.WriteLine("   |___________________________________________________________________________________________________|");
-        }
+        
 
         // Maria
         static void MainMenu()
         {
 
-            Console.Clear();
-
-            Console.WriteLine(" __   __  _______  ___   __    _      __   __  _______  __    _  __   __ ");
-            Console.WriteLine("|  |_|  ||   _   ||   | |  |  | |    |  |_|  ||       ||  |  | ||  | |  |");
-            Console.WriteLine("|       ||  |_|  ||   | |   |_| |    |       ||    ___||   |_| ||  | |  |");
-            Console.WriteLine("|       ||       ||   | |       |    |       ||   |___ |       ||  |_|  |");
-            Console.WriteLine("|       ||       ||   | |  _    |    |       ||    ___||  _    ||       |");
-            Console.WriteLine("| ||_|| ||   _   ||   | | | |   |    | ||_|| ||   |___ | | |   ||       |");
-            Console.WriteLine("|_|   |_||__| |__||___| |_|  |__|    |_|   |_||_______||_|  |__||_______|");
-            Console.WriteLine();
-            Console.WriteLine("Press 0 to start");
-            Console.WriteLine("Press 1 : Back to Title Screen");
-            Console.WriteLine("Press 2 : Exit");
-            int num = Convert.ToInt32(Console.ReadLine());
-
-            switch (num)
-            {
-                case 0:
-                    Console.Clear();
-                    SetupGame(); //starts game
-                    break;
-
-                case 1:
-                    Console.Clear();
-                    TitleScreen(); //back to title screen
-                    break;
-
-
-                case 2:
-                    Console.Clear();
-                    ExitGame(); 
-                    break;
-
-
-
-
-            }
+            
 
         }
 
         // Samuel
         // Called before the game is started to setup variables and generate required variables
-        static void SetupGame()
+        public static void SetupGame()
         {
             PlayerDFS = 20;
             Danger = 10;
@@ -193,7 +78,7 @@
 
         // Samuel & Braedon
         // Called to run the actual game once everything is set up and ready
-        static void RunGame()
+        public static void RunGame()
         {
             while (PlayConditions())
             {
@@ -237,7 +122,7 @@
         }
 
         //(Braedon) Checks if the conditions for playing are active and returns if changes allowing the game to end
-        static bool PlayConditions()
+        public static bool PlayConditions()
         {
             if (ObjectPOS == PlayerPOS)
             {
@@ -247,7 +132,7 @@
         }
 
         // Called once the game has finished
-        static void GameOver()
+        public static void GameOver()
         {
             Thread.Sleep(50);
             if (PlayerDFS <= 0)
@@ -268,7 +153,7 @@
         }
 
         //when you decide you don't actually want to play
-        static void ExitGame()
+        public static void ExitGame()
         {
             Console.WriteLine("\nThank you for playing!");
             Console.WriteLine("Press enter to exit...");
