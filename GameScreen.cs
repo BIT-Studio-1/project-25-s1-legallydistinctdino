@@ -80,10 +80,6 @@
             bool run = true;
             Random rand = new Random();
             char[] chars = new char[128];
-            Rows = Console.WindowHeight;
-            Columns = Console.WindowWidth;
-            Screen = new char[Columns, Rows]; // Main Matrix used to print to the screen
-            PrevScreen = new char[Columns, Rows];
             
             "ABCDEFGHIJKLMNOPQRSTUVWXYZ".ToCharArray().CopyTo(chars, 0);
             "ABCDEFGHIJKLMNOPQRSTUVWXYZ".ToLower().ToCharArray().CopyTo(chars, 25);
@@ -100,10 +96,14 @@
             Console.WriteLine("Press Escape to exit!");
             
             Thread.Sleep(5000);
+            Rows = Console.WindowHeight;
+            Columns = Console.WindowWidth;
+            Screen = new char[Columns, Rows]; // Main Matrix used to print to the screen
+            PrevScreen = new char[Columns, Rows];
             Console.Clear();
             while (run)
             {
-                GameScreen.SetCharAt(rand.Next(GameScreen.Rows), rand.Next(GameScreen.Columns), Convert.ToChar(chars[rand.Next(chars.Length)]));
+                GameScreen.SetCharAt(rand.Next(GameScreen.Rows), rand.Next(GameScreen.Columns), chars[rand.Next(chars.Length)]);
                 GameScreen.Render();
                 //if (rand.Next(10001) == 0)
                 //{
