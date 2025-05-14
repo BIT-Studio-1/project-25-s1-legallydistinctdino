@@ -2,6 +2,7 @@ GsmeScreen.SetRow("jhvthkfvghkvbjh".ToCharArray(),28);
 y30 x120
 
 PLAYER
+
 default
       O
    \_/|\_/
@@ -57,7 +58,7 @@ level 5	dog
   
  alternative option
            _
-   /-----/0-
+   /-----/ 0-
   / ------/
 	|| ||
 	
