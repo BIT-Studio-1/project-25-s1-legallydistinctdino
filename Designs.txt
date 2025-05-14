@@ -77,4 +77,11 @@ level 5	dog
    /-----/ 0-
   / ------/
 	|| ||
+
+
+Obstacle 1
+
+Obstacle 2
+
+Obstacle 3
 	
