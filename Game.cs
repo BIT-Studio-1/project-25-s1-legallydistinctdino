@@ -212,18 +212,20 @@
             GameOver();
         }
 
-        //Braedon
+        //(Braedon) Prints a screen when you complete a level
         static void LevelCompScreen()
         {
             Console.Clear();
+            //This ASCII art says level complete
             Console.WriteLine(".____                      .__    _________                       .__          __        ._. \r\n|    |    _______  __ ____ |  |   \\_   ___ \\  ____   _____ ______ |  |   _____/  |_  ____| | \r\n|    |  _/ __ \\  \\/ // __ \\|  |   /    \\  \\/ /  _ \\ /     \\\\____ \\|  | _/ __ \\   __\\/ __ \\ | \r\n|    |__\\  ___/\\   /\\  ___/|  |__ \\     \\___(  <_> )  Y Y  \\  |_> >  |_\\  ___/|  | \\  ___/\\| \r\n|_______ \\___  >\\_/  \\___  >____/  \\______  /\\____/|__|_|  /   __/|____/\\___  >__|  \\___  >_ \r\n        \\/   \\/          \\/               \\/             \\/|__|             \\/          \\/\\/");
             Thread.Sleep(1000);
             Console.Clear();
+            //Clears and then prints a bottle of gin in ASCII and says gin collected in ASCII
             Console.WriteLine(" ______\n |    |\n |    |\n |    |\n/      \\\n|      |\n|      |\n|      |\n|      |\n|      |\n|      |\n________");
             Console.WriteLine("   ___ _           ___      _ _           _           _ \r\n  / _ (_)_ __     / __\\___ | | | ___  ___| |_ ___  __| |\r\n / /_\\/ | '_ \\   / /  / _ \\| | |/ _ \\/ __| __/ _ \\/ _` |\r\n/ /_\\\\| | | | | / /__| (_) | | |  __/ (__| ||  __/ (_| |\r\n\\____/|_|_| |_| \\____/\\___/|_|_|\\___|\\___|\\__\\___|\\__,_|");
         }
 
-        //Braedon
+        //(Braedon) Checks if the conditions for playing are active and returns if changes allowing the game to end
         static bool PlayConditions()
         {
             if (ObjectPOS == PlayerPOS)
@@ -261,6 +263,7 @@
             Console.WriteLine("Press enter to exit...");
             Console.ReadKey(); 
             Environment.Exit(0);
+            
         }
     }
 }
