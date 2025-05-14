@@ -2,12 +2,33 @@ GsmeScreen.SetRow("jhvthkfvghkvbjh".ToCharArray(),28);
 y30 x120
 
 PLAYER
+default
       O
    \_/|\_/
      |||
 	 ---
 	 | |
 	 | |
+getting ready to jump
+      O
+   \_/|\_/
+     |||
+	 ---
+	 / \
+	|   |
+	
+in air
+      O
+	_/|\_/
+   / ||| 
+	 ---
+	 | |
+	 / /
+
+ducking
+           
+     _____O
+  __|----\_
 
 CHASER
 
@@ -39,3 +60,4 @@ level 5	dog
    /-----/0-
   / ------/
 	|| ||
+	
