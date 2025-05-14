@@ -82,6 +82,8 @@
             char[] chars = new char[128];
             Rows = Console.WindowWidth;
             Columns = Console.WindowHeight;
+            Screen = new char[Columns, Rows]; // Main Matrix used to print to the screen
+            PrevScreen = new char[Columns, Rows];
             
             "ABCDEFGHIJKLMNOPQRSTUVWXYZ".ToCharArray().CopyTo(chars, 0);
             "ABCDEFGHIJKLMNOPQRSTUVWXYZ".ToLower().ToCharArray().CopyTo(chars, 25);
