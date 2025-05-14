@@ -4,8 +4,8 @@
     // This reduces the flickering effect and optimizes the 'rendering' process
     internal class GameScreen
     {
-        public static int Rows = 30; //30
-        public static int Columns = 120; //120
+        public static int Rows = 30; //30 Height
+        public static int Columns = 120; //120 Width
         public static char[,] Screen = new char[Columns, Rows]; // Main Matrix used to print to the screen
         public static char[,] PrevScreen = new char[Columns, Rows];
 
@@ -80,8 +80,8 @@
             bool run = true;
             Random rand = new Random();
             char[] chars = new char[128];
-            Rows = Console.WindowWidth;
-            Columns = Console.WindowHeight;
+            Rows = Console.WindowHeight;
+            Columns = Console.WindowWidth;
             Screen = new char[Columns, Rows]; // Main Matrix used to print to the screen
             PrevScreen = new char[Columns, Rows];
             
