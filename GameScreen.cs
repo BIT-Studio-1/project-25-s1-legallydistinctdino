@@ -2,13 +2,13 @@
 {
     internal class GameScreen
     {
-        static int Rows = 30;
-        static int Columns = 120;
-        static char[,] Screen = new char[Columns, Rows]; // Main Matrix used to print to the screen
-        static char[,] PrevScreen = new char[Columns, Rows];
+        public static int Rows = 30;
+        public static int Columns = 120;
+        public static char[,] Screen = new char[Columns, Rows]; // Main Matrix used to print to the screen
+        public static char[,] PrevScreen = new char[Columns, Rows];
 
 
-        static void Clear(char fill = ' ')
+        public static void Clear(char fill = ' ')
         {
             for (int row = 0; row < Rows; row++)
             {
@@ -21,7 +21,7 @@
         }
 
         // set an entire row to an array of chars
-        static void SetRow(char[] rowData, int rowIndex)
+        public static void SetRow(char[] rowData, int rowIndex)
         {
             if (rowIndex < 0 || rowIndex >= Rows)
             {
@@ -40,7 +40,7 @@
         }
 
         // Change a specific chars at row & col to value
-        static void SetCharAt(int row, int col, char value)
+        public static void SetCharAt(int row, int col, char value)
         {
             if (row < 0 || row >= Rows || col < 0 || col >= Columns)
             {
@@ -51,7 +51,7 @@
         }
 
         // Print the Gamescreen to the console, but only print the changes and not the whole screen, this Greatly reduces flicker 
-        static void Render()
+        public static void Render()
         {
             for (int row = 0; row < Rows; row++)
             {
@@ -66,7 +66,7 @@
                 }
             }
         }
-        static void ClearThenRender()
+        public static void ClearThenRender()
         {
             Clear();
             Render();
