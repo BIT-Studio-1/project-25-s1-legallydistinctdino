@@ -1,5 +1,7 @@
 ﻿namespace LegallyDistinctDino
 {
+    // Samuel's Matrix system used to render the Game animations without reprinting the entire console screen each time
+    // This reduces the flickering effect and optimizes the 'rendering' process
     internal class GameScreen
     {
         public static int Rows = 30;
