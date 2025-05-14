@@ -12,6 +12,7 @@ namespace LegallyDistinctDino
         // Alina
         public static void TitleScreen()
         {
+            // Enum with colors to change the welcome sign
             ConsoleColor[] colors = {
                 ConsoleColor.DarkBlue,
                 ConsoleColor.DarkCyan,
@@ -34,6 +35,7 @@ namespace LegallyDistinctDino
             {
                 Console.ForegroundColor = colors[iterator];
                 PrintWelcome();
+                PrintDino();
                 Thread.Sleep(300);
                 Console.Clear();
                 if (iterator < (colors.Length - 1))
@@ -85,6 +87,30 @@ namespace LegallyDistinctDino
             Console.WriteLine("   |                                                                                                   |");
             System.Console.SetCursorPosition(xPosition, ++yPosition);
             Console.WriteLine("   |___________________________________________________________________________________________________|");
+        }
+
+        static void PrintDino()
+        {
+            System.Console.WriteLine("                              ______________");
+            System.Console.WriteLine("                            __|  __         |__");
+            System.Console.WriteLine("                           |    |__|           |");
+            System.Console.WriteLine("                           |                   |");
+            System.Console.WriteLine("                           |         __________|");
+            System.Console.WriteLine("                           |         |_____");
+            System.Console.WriteLine("___                      __|       ________|");
+            System.Console.WriteLine("|  |                  __|          |");
+            System.Console.WriteLine("|  |__             __|             |_____");
+            System.Console.WriteLine("|     |__        __|                ___  |");
+            System.Console.WriteLine("|        |______|                  |  |__|");
+            System.Console.WriteLine("|                                |");
+            System.Console.WriteLine("|__                            __|");
+            System.Console.WriteLine("   |__                      __|");
+            System.Console.WriteLine("      |__                __|");
+            System.Console.WriteLine("         |__       ___   |");
+            System.Console.WriteLine("            |    __|  |  |");
+            System.Console.WriteLine("            |  __|    |  |");
+            System.Console.WriteLine("            |  |__    |  |__ ");
+            System.Console.WriteLine("            |_____|   |_____|");
         }
 
 
