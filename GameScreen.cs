@@ -4,8 +4,8 @@
     // This reduces the flickering effect and optimizes the 'rendering' process
     internal class GameScreen
     {
-        public static int Rows = 30; //30 Height
-        public static int Columns = 120; //120 Width
+        public static int Rows = 30; //30 Height Y 
+        public static int Columns = 120; //120 Width X
         public static char[,] Screen = new char[Columns, Rows]; // Main Matrix used to print to the screen
         public static char[,] PrevScreen = new char[Columns, Rows];
 
@@ -20,7 +20,7 @@
                 }
             }
         }
-
+        
         // set an entire row to an array of chars
         public static void SetRow(char[] rowData, int rowIndex)
         {
@@ -49,6 +49,29 @@
             }
 
             Screen[col, row] = value;
+        }
+
+
+        public static void SetStringAt(int  row, int col, string value)
+        {
+            if (row < 0 || row >= Rows || col < 0 || col >= Columns)
+            {
+                throw new ArgumentOutOfRangeException("Coordinates are out of bounds.");
+            }
+            string[] lines = value.Split('\n');
+            for (int i = 0; i < lines.Length; i++)
+            {
+                string line = lines[i];
+                line.Replace("\n", "");
+                char[] chars = line.ToCharArray();
+
+            }
+
+        }
+
+        public static void ClearArea(int row1, int col1, int row2, int col2)
+        {
+
         }
 
         // Print the Gamescreen to the console, but only print the changes and not the whole screen, this Greatly reduces flicker 
