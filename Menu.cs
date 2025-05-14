@@ -115,7 +115,7 @@ namespace LegallyDistinctDino
 
                 case 1:
                     Console.Clear();
-                    Game.PrintWelcome(); //back to title screen
+                    TitleScreen(); //back to title screen
                     break;
 
 
