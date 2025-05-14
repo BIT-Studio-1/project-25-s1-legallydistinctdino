@@ -4,8 +4,8 @@
     // This reduces the flickering effect and optimizes the 'rendering' process
     internal class GameScreen
     {
-        public static int Rows = 30;
-        public static int Columns = 120;
+        public static int Rows = 30; //30
+        public static int Columns = 120; //120
         public static char[,] Screen = new char[Columns, Rows]; // Main Matrix used to print to the screen
         public static char[,] PrevScreen = new char[Columns, Rows];
 
@@ -19,7 +19,6 @@
                     Screen[col, row] = fill;
                 }
             }
-            Console.Clear();
         }
 
         // set an entire row to an array of chars
@@ -74,6 +73,47 @@
         {
             Clear();
             Render();
+        }
+
+        public static void TestRenderEngine()
+        {
+            bool run = true;
+            Random rand = new Random();
+            char[] chars = new char[128];
+            Rows = Console.WindowWidth;
+            Columns = Console.WindowHeight;
+            
+            "ABCDEFGHIJKLMNOPQRSTUVWXYZ".ToCharArray().CopyTo(chars, 0);
+            "ABCDEFGHIJKLMNOPQRSTUVWXYZ".ToLower().ToCharArray().CopyTo(chars, 25);
+            "123456789".ToCharArray().CopyTo(chars, 51);
+            "`~!@#$%^&*()_+-={}|[]\\:;'<>?,./".ToCharArray().CopyTo(chars, 61);
+
+            Console.CursorVisible = false;
+            Console.WriteLine("Beginning render test using the below chars...");
+            foreach (char c in chars)
+            {
+                Console.Write(c);
+            }
+            Console.WriteLine("\n");
+            Console.WriteLine("Press Escape to exit!");
+            
+            Thread.Sleep(5000);
+            Console.Clear();
+            while (run)
+            {
+                GameScreen.SetCharAt(rand.Next(GameScreen.Rows), rand.Next(GameScreen.Columns), Convert.ToChar(chars[rand.Next(chars.Length)]));
+                GameScreen.Render();
+                //if (rand.Next(10001) == 0)
+                //{
+                //    GameScreen.Clear();
+                //}
+                if (Console.KeyAvailable && Console.ReadKey(intercept: true).Key == ConsoleKey.Escape)
+                {
+                    run = false;
+                }
+            }
+            Console.Clear();
+            GameScreen.Clear();
         }
     }
 }
