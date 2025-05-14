@@ -246,6 +246,10 @@
             {
                 Console.WriteLine("Danger ate Player :(");
             }
+            while (Console.KeyAvailable)
+            {
+                Console.ReadKey(intercept: true);
+            }
             Console.ReadLine();
             MainMenu();
         }
