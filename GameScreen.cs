@@ -62,14 +62,17 @@
             int currentRow = startRow;
             for (int i = 0; i < lines.Length; i++)
             {
+                if (currentRow >= Rows) break;
                 string line = lines[i];
-                line.Replace("\n", "");
                 char[] chars = line.ToCharArray();
                 int currentCol = startCol;
                 for (int j = 0; j < chars.Length; j++)
                 {
-                    Screen[currentRow, currentCol] = chars[j];
+                    if (currentCol >= Columns) break;
+                    Screen[currentCol, currentRow] = chars[j];
+                    currentCol++;
                 }
+                currentRow++;
             }
         }
 
@@ -82,6 +85,7 @@
         // Compare what is currently on the screen to what we would like to render on the screen and print the difference, this Greatly reduces flicker 
         public static void Render()
         {
+            Console.CursorVisible = false;
             for (int row = 0; row < Rows; row++)
             {
                 for (int col = 0; col < Columns; col++)
