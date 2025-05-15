@@ -108,7 +108,6 @@
         {
             bool run = true;
             Random rand = new Random();
-            char[] chars = new char[128];
             ConsoleColor[] colors = {
                 ConsoleColor.DarkBlue,
                 ConsoleColor.DarkCyan,
@@ -126,9 +125,10 @@
                 ConsoleColor.DarkGreen
             };
 
+            char[] chars = new char[93];
             "ABCDEFGHIJKLMNOPQRSTUVWXYZ".ToCharArray().CopyTo(chars, 0);
             "ABCDEFGHIJKLMNOPQRSTUVWXYZ".ToLower().ToCharArray().CopyTo(chars, 25);
-            "123456789".ToCharArray().CopyTo(chars, 51);
+            "0123456789".ToCharArray().CopyTo(chars, 51);
             "`~!@#$%^&*()_+-={}|[]\\:;'<>?,./\"".ToCharArray().CopyTo(chars, 61);
 
             Console.CursorVisible = false;
