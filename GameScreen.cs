@@ -4,12 +4,12 @@
     // This reduces the flickering effect and optimizes the 'rendering' process
     internal class GameScreen
     {
-        public static int Rows = 30; //30 Height Y 
-        public static int Columns = 120; //120 Width X
-        public static char[,] Screen = new char[Columns, Rows]; // Main Matrix used to print to the screen
-        public static char[,] PrevScreen = new char[Columns, Rows];
+        public static int Rows = 30; //30 Height - By defining a row you are defining a point along the Y axis
+        public static int Columns = 120; //120 Width - By defining a column you are defining a point along the X axis
+        public static char[,] Screen = new char[Columns, Rows]; // Main Matrix used to print to the screen - What we are going to write to the screen th enext time Render() is called
+        public static char[,] PrevScreen = new char[Columns, Rows]; // Secondary Matrix used to store what is currently on the screen
 
-        // Clear the current screen, optionally specify a filler char
+        // Clear the screen for the next render, optionally specify a filler char
         public static void Clear(char fill = ' ')
         {
             for (int row = 0; row < Rows; row++)
@@ -21,7 +21,7 @@
             }
         }
         
-        // set an entire row to an array of chars
+        // set an entire row to an array of chars. ie set row 5 to all "-"
         public static void SetRow(char[] rowData, int rowIndex)
         {
             if (rowIndex < 0 || rowIndex >= Rows)
@@ -40,7 +40,7 @@
             }
         }
 
-        // Change a specific chars at row & col to value
+        // Change a specific char at row & col to value. ie set char on row 5 col 10 to "-"
         public static void SetCharAt(int row, int col, char value)
         {
             if (row < 0 || row >= Rows || col < 0 || col >= Columns)
@@ -51,7 +51,7 @@
             Screen[col, row] = value;
         }
 
-
+        // Place a string at a point on the screen, these can be multi line strings
         public static void SetStringAt(int  startRow, int startCol, string value)
         {
             if (startRow < 0 || startRow >= Rows || startCol < 0 || startCol >= Columns)
@@ -68,19 +68,18 @@
                 int currentCol = startCol;
                 for (int j = 0; j < chars.Length; j++)
                 {
-                    Screen[currentCol, currentRow] = chars[j];
-                    currentCol++;
+                    Screen[currentRow, currentCol] = chars[j];
                 }
-                currentRow++;
             }
         }
 
+        // Clear a specified area on the screen
         public static void ClearArea(int row1, int col1, int row2, int col2)
         {
 
         }
 
-        // Print the Gamescreen to the console, but only print the changes and not the whole screen, this Greatly reduces flicker 
+        // Compare what is currently on the screen to what we would like to render on the screen and print the difference, this Greatly reduces flicker 
         public static void Render()
         {
             for (int row = 0; row < Rows; row++)
@@ -97,13 +96,14 @@
             }
         }
 
-        // Clear the screen and re-render everything instead of just what has changed
+        // Clear the screen and re-render everything instead of only rendering the difference
         public static void ClearThenRender()
         {
             Clear();
             Render();
         }
 
+        // Test the render engine by generating random chars at random points on the screen, optionally add colour to the screen
         public static void TestRenderEngine()
         {
             bool run = true;
