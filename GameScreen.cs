@@ -71,7 +71,16 @@
 
         public static void ClearArea(int row1, int col1, int row2, int col2)
         {
-
+            //Still being worked on (Not currently working)
+            char fill = ' ';
+            for (int i = row1; row1 < row2; row1++)
+            {
+                for (int j = col1; col1 < col2; col1++)
+                {
+                    Screen[j, i] = fill;
+                }
+            }
+        }
         }
 
         // Print the Gamescreen to the console, but only print the changes and not the whole screen, this Greatly reduces flicker 
