@@ -52,21 +52,27 @@
         }
 
 
-        public static void SetStringAt(int  row, int col, string value)
+        public static void SetStringAt(int  startRow, int startCol, string value)
         {
-            if (row < 0 || row >= Rows || col < 0 || col >= Columns)
+            if (startRow < 0 || startRow >= Rows || startCol < 0 || startCol >= Columns)
             {
                 throw new ArgumentOutOfRangeException("Coordinates are out of bounds.");
             }
             string[] lines = value.Split('\n');
+            int currentRow = startRow;
             for (int i = 0; i < lines.Length; i++)
             {
                 string line = lines[i];
                 line.Replace("\n", "");
                 char[] chars = line.ToCharArray();
-
+                int currentCol = startCol;
+                for (int j = 0; j < chars.Length; j++)
+                {
+                    Screen[currentCol, currentRow] = chars[j];
+                    currentCol++;
+                }
+                currentRow++;
             }
-
         }
 
         public static void ClearArea(int row1, int col1, int row2, int col2)
