@@ -56,7 +56,7 @@
         {
             if (startRow < 0 || startRow >= Rows || startCol < 0 || startCol >= Columns)
             {
-                throw new ArgumentOutOfRangeException("Coordinates are out of bounds.");
+                throw new ArgumentOutOfRangeException("Start Row or Start Columns is out of bounds.");
             }
             string[] lines = value.Split('\n');
             int currentRow = startRow;
