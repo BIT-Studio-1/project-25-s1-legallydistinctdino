@@ -170,6 +170,7 @@
                     run = false;
                 }
             }
+            Console.ResetColor();
             Console.Clear();
             Clear();
         }
