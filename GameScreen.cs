@@ -103,11 +103,27 @@
             bool run = true;
             Random rand = new Random();
             char[] chars = new char[128];
-            
+            ConsoleColor[] colors = {
+                ConsoleColor.DarkBlue,
+                ConsoleColor.DarkCyan,
+                ConsoleColor.DarkRed,
+                ConsoleColor.DarkYellow,
+                ConsoleColor.Gray,
+                ConsoleColor.DarkGray,
+                ConsoleColor.Blue,
+                ConsoleColor.Green,
+                ConsoleColor.DarkMagenta,
+                ConsoleColor.Cyan,
+                ConsoleColor.Red,
+                ConsoleColor.Magenta,
+                ConsoleColor.Yellow,
+                ConsoleColor.DarkGreen
+            };
+
             "ABCDEFGHIJKLMNOPQRSTUVWXYZ".ToCharArray().CopyTo(chars, 0);
             "ABCDEFGHIJKLMNOPQRSTUVWXYZ".ToLower().ToCharArray().CopyTo(chars, 25);
             "123456789".ToCharArray().CopyTo(chars, 51);
-            "`~!@#$%^&*()_+-={}|[]\\:;'<>?,./".ToCharArray().CopyTo(chars, 61);
+            "`~!@#$%^&*()_+-={}|[]\\:;'<>?,./\"".ToCharArray().CopyTo(chars, 61);
 
             Console.CursorVisible = false;
             Console.WriteLine("Beginning render test using the below chars...");
@@ -116,8 +132,14 @@
                 Console.Write(c);
             }
             Console.WriteLine("\n");
-            Console.WriteLine("Press Escape to exit!");
-            
+            Console.WriteLine("Would you like colours in the test? (y/n)");
+            bool color = false;
+            if (Console.ReadLine() == "y")
+            {
+                color = true;
+            }
+            Console.WriteLine("Test Will start in 5 seconds!");
+            Console.WriteLine("Press Escape at anytime to exit!");       
             Thread.Sleep(5000);
             Rows = Console.WindowHeight;
             Columns = Console.WindowWidth;
@@ -126,8 +148,13 @@
             Console.Clear();
             while (run)
             {
-                GameScreen.SetCharAt(rand.Next(GameScreen.Rows), rand.Next(GameScreen.Columns), chars[rand.Next(chars.Length)]);
-                GameScreen.Render();
+                if (color)
+                {
+                    Console.BackgroundColor = colors[rand.Next(colors.Length)];
+                    Console.ForegroundColor = colors[rand.Next(colors.Length)];
+                }
+                SetCharAt(rand.Next(Rows), rand.Next(Columns), chars[rand.Next(chars.Length)]);
+                Render();
                 //if (rand.Next(10001) == 0)
                 //{
                 //    GameScreen.Clear();
@@ -138,7 +165,7 @@
                 }
             }
             Console.Clear();
-            GameScreen.Clear();
+            Clear();
         }
     }
 }
