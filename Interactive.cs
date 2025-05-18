@@ -18,14 +18,15 @@ namespace LegallyDistinctDino
 
         static bool crouch = false;
 
-        static void calls()
+        public static void calls()
         {
             Input();
             Update();
+            Draw();
         }
 
         //player input
-        static void Input()
+        public static void Input()
         {
             while (true)
             {
@@ -45,7 +46,7 @@ namespace LegallyDistinctDino
         
         }
         
-        static void Update()
+        public static void Update()
         {
             if (jump)
             {
@@ -58,6 +59,18 @@ namespace LegallyDistinctDino
                     jump = false;
                 }
             }
+        }
+
+        //animation part
+        public static void Draw()
+        {
+            Console.SetCursorPosition(x, y);
+
+            if (jump)
+            {
+                Console.Write("O");
+            }
+           
         }
 
     }
