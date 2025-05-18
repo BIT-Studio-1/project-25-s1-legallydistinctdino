@@ -52,6 +52,13 @@ namespace LegallyDistinctDino
         
         public static void Update()
         {
+
+            x++;
+            if (x >= Console.WindowWidth - 1)
+            {
+                x = 0;
+            }
+
             if (jump)
             {
                 y = ground - jumpProgress;
@@ -68,13 +75,15 @@ namespace LegallyDistinctDino
         //animation part
         public static void Draw()
         {
+            Console.Clear();
+
             Console.SetCursorPosition(x, y);
 
             if (jump)
             {
                 Console.Write("O");
             }
-           
+
         }
 
     }
