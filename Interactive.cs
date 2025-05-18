@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace LegallyDistinctDino
 {
-    class Interactive_game
+    internal class Interactive
     {
         static int x = 0;
         static int y = 10;
@@ -18,7 +18,7 @@ namespace LegallyDistinctDino
 
         static bool crouch = false;
 
-        public static void calls()
+        public static void Calls()
         {
             Input();
             Update();
