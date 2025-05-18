@@ -21,6 +21,7 @@ namespace LegallyDistinctDino
         static void calls()
         {
             Input();
+            Update();
         }
 
         //player input
@@ -42,6 +43,21 @@ namespace LegallyDistinctDino
                 
             }
         
+        }
+        
+        static void Update()
+        {
+            if (jump)
+            {
+                y = ground - jumpProgress;
+                jumpProgress--;
+
+                if (y >= ground)
+                {
+                    y = ground;
+                    jump = false;
+                }
+            }
         }
 
     }
