@@ -14,7 +14,7 @@
         // Starting point for code, anyone can adjust as needed
         static void Main(string[] args)
         {
-            Interactive.Calls();
+            
             Menu.TitleScreen();
             
         }
