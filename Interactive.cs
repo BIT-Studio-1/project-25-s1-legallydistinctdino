@@ -17,6 +17,9 @@ namespace LegallyDistinctDino
         static int jumpProgress = 0;
 
         static bool crouch = false;
+        static bool holdingCrouch = false;
+        static int crouchTimer = 0;
+        static int crouchDuration = 10;
 
         public static void Calls()
         {
@@ -36,18 +39,15 @@ namespace LegallyDistinctDino
             {
                 ConsoleKeyInfo key = Console.ReadKey(true);
 
-                if (key.Key == ConsoleKey.Spacebar)
+                if (key.Key == ConsoleKey.Spacebar && !jump && crouchTimer == 0)
                 {
                     jump = true;
                     jumpProgress = jumpHeight;
                 }
                 else if (key.Key == ConsoleKey.C && !jump)
                 {
+                    crouchTimer = crouchDuration;
                     crouch = true;
-                }
-                else if (key.Key == ConsoleKey.C && crouch)
-                {
-                    crouch = false;
                 }
             }
 
@@ -73,7 +73,18 @@ namespace LegallyDistinctDino
                     jump = false;
                 }
             }
-            else if (!crouch)
+
+            if (crouchTimer > 0)
+            {
+                crouchTimer--;
+                crouch = true;
+            }
+            else
+            {
+                crouch = false;
+            }
+
+            if (!jump && !crouch)
             {
                 y = ground;
             }
