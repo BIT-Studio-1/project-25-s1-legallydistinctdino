@@ -110,6 +110,9 @@ namespace LegallyDistinctDino
                 Console.Write("O"); 
             }
 
+            //ground
+            Console.SetCursorPosition(0, ground + 1);
+            Console.Write(new string('_', Console.WindowWidth));
         }
 
     }
