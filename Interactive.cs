@@ -41,10 +41,13 @@ namespace LegallyDistinctDino
                     jump = true;
                     jumpProgress = jumpHeight;
                 }
-                else if (key.Key == ConsoleKey.C)
+                else if (key.Key == ConsoleKey.C && !jump)
                 {
-                    
                     crouch = true;
+                }
+                else if (key.Key == ConsoleKey.C && crouch)
+                {
+                    crouch = false;
                 }
             }
 
@@ -70,6 +73,10 @@ namespace LegallyDistinctDino
                     jump = false;
                 }
             }
+            else if (!crouch)
+            {
+                y = ground;
+            }
         }
 
         //animation part
@@ -82,6 +89,10 @@ namespace LegallyDistinctDino
             if (jump)
             {
                 Console.Write("O");
+            }
+            else if (crouch)
+            {
+                Console.Write("-"); 
             }
             else
             {
