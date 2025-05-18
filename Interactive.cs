@@ -8,19 +8,23 @@ namespace LegallyDistinctDino
 {
     internal class Interactive
     {
+        //Player location
         static int x = 0;
         static int y = 10;
         static int ground = 10;
 
+        //Variables needed for jump
         static bool jump = false;
         static int jumpHeight = 5;
         static int jumpProgress = 0;
 
+        //Variables needed for crouch
         static bool crouch = false;
         static bool holdingCrouch = false;
         static int crouchTimer = 0;
-        static int crouchDuration = 10;
+        static int crouchDuration = 10; //set crouch time
 
+        //loops while playing
         public static void Calls()
         {
             while (true)
@@ -52,21 +56,23 @@ namespace LegallyDistinctDino
             }
 
         }
-        
+
+        //Updates the player location after input is made
         public static void Update()
         {
-
+            //Automatically moves player to the right
             x++;
-            if (x >= Console.WindowWidth - 1)
+            if (x >= Console.WindowWidth - 1)  //resets at the start when it reaches end of console
             {
                 x = 0;
             }
 
             if (jump)
             {
-                y = ground - jumpProgress;
+                y = ground - jumpProgress; //starts at 5, goes down slowly
                 jumpProgress--;
-
+                
+                //at the ground, resets ground back to 10 
                 if (y >= ground)
                 {
                     y = ground;
@@ -84,10 +90,6 @@ namespace LegallyDistinctDino
                 crouch = false;
             }
 
-            if (!jump && !crouch)
-            {
-                y = ground;
-            }
         }
 
         //animation part
@@ -110,7 +112,7 @@ namespace LegallyDistinctDino
                 Console.Write("O"); 
             }
 
-            //ground
+            //ground drawn
             Console.SetCursorPosition(0, ground + 1);
             Console.Write(new string('_', Console.WindowWidth));
         }
