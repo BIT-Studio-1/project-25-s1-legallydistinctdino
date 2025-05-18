@@ -12,5 +12,37 @@ namespace LegallyDistinctDino
         static int y = 10;
         static int ground = 10;
 
+        static bool jump = false;
+        static int jumpHeight = 5;
+        static int jumpProgress = 0;
+
+        static bool crouch = false;
+
+        static void calls()
+        {
+            Input();
+        }
+
+        //player input
+        static void Input()
+        {
+            while (true)
+            {
+                ConsoleKeyInfo key = Console.ReadKey(true); //read key
+
+                if (key.Key == ConsoleKey.Spacebar)
+                {
+                    jump = true;
+                    jumpProgress = jumpHeight;
+                }
+                else if (key.Key == ConsoleKey.C)
+                {
+                    crouch = true;
+                }
+                
+            }
+        
+        }
+
     }
 }
