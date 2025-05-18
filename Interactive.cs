@@ -83,6 +83,10 @@ namespace LegallyDistinctDino
             {
                 Console.Write("O");
             }
+            else
+            {
+                Console.Write("O"); 
+            }
 
         }
 
