@@ -20,17 +20,21 @@ namespace LegallyDistinctDino
 
         public static void Calls()
         {
-            Input();
-            Update();
-            Draw();
+            while (true)
+            {
+                Input();
+                Update();
+                Draw();
+                Thread.Sleep(50);
+            }
         }
 
         //player input
         public static void Input()
         {
-            while (true)
+            while (Console.KeyAvailable)
             {
-                ConsoleKeyInfo key = Console.ReadKey(true); //read key
+                ConsoleKeyInfo key = Console.ReadKey(true);
 
                 if (key.Key == ConsoleKey.Spacebar)
                 {
@@ -39,11 +43,11 @@ namespace LegallyDistinctDino
                 }
                 else if (key.Key == ConsoleKey.C)
                 {
+                    
                     crouch = true;
                 }
-                
             }
-        
+
         }
         
         public static void Update()
