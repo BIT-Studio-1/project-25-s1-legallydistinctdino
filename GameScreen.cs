@@ -89,7 +89,7 @@
                 }
             }
         }
-        }
+        
 
         // Compare what is currently on the screen to what we would like to render on the screen and print the difference, this Greatly reduces flicker 
         public static void Render()
