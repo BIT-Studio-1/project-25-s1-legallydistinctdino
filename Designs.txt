@@ -88,6 +88,11 @@ level 5	dog
 
 Obstacle 1
 
+     /\
+    /  \
+   /____\
+     ||
+
 Obstacle 2
 
 Obstacle 3
