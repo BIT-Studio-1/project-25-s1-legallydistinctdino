@@ -81,15 +81,15 @@
         {
             //Still being worked on (Not currently working)
             char fill = ' ';
-            for (int i = row1; row1 < row2; row1++)
+            for (int i=row1; i < row2; i++)
             {
-                for (int j = col1; col1 < col2; col1++)
+                for (int j = col1; j < col2; j++)
                 {
                     Screen[j, i] = fill;
                 }
             }
         }
-        }
+    
 
         // Compare what is currently on the screen to what we would like to render on the screen and print the difference, this Greatly reduces flicker 
         public static void Render()
