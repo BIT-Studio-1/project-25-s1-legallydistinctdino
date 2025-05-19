@@ -4,24 +4,24 @@
     // This reduces the flickering effect and optimizes the 'rendering' process
     internal class GameScreen
     {
-        public static int Height = 30; // Height of the screen we are rendering or the Y coordinate
         public static int Width = 120; // Width of the screen we are rendering or the X coordinate
+        public static int Height = 30; // Height of the screen we are rendering or the Y coordinate
         public static char[,] NextFrame = new char[Width, Height]; // Main Matrix used to print to the screen - What we are going to write to the screen the next time Render() is called
         public static char[,] CurrentFrame = new char[Width, Height]; // Secondary Matrix used to store what is currently rendered on the screen
 
         // Clear the screen for the next render, optionally specify a filler char
         public static void Clear(char fill = ' ')
         {
-            for (int y = 0; y < Height; y++)
+            for (int x = 0; x < Width; x++)
             {
-                for (int x = 0; x < Width; x++)
+                for (int y = 0; y < Height; y++)
                 {
                     NextFrame[x, y] = fill;
                 }
             }
         }
-        
-        // set an entire row to an array of chars. ie set row 5 to all "-"
+
+        // set an entire row to an array of chars. ie set 5y to all "-"
         public static void SetRow(char[] rowData, int y)
         {
             if (y < 0 || y >= Height)
@@ -34,14 +34,14 @@
                 throw new ArgumentException("Row data is too long.");
             }
 
-            for (int col = 0; col < rowData.Length; col++)
+            for (int x = 0; x < rowData.Length; x++)
             {
-                NextFrame[col, y] = rowData[col];
+                NextFrame[x, y] = rowData[x];
             }
         }
 
-        // Change a specific char at row & col to value. ie set char on row 5 col 10 to "-"
-        public static void SetCharAt(int y, int x, char value)
+        // Change a specific char at x & y coords to value. ie set char at  5x 10y to "-"
+        public static void SetCharAt(int x, int y, char value)
         {
             if (y < 0 || y >= Height || x < 0 || x >= Width)
             {
@@ -52,52 +52,52 @@
         }
 
         // Place a string at a point on the screen, these can be multi line strings
-        public static void SetStringAt(int  startY, int startX, string value)
+        public static void SetStringAt(int startX, int startY, string value)
         {
             if (startY < 0 || startY >= Height || startX < 0 || startX >= Width)
             {
-                throw new ArgumentOutOfRangeException("Start Row or Start Columns is out of bounds.");
+                throw new ArgumentOutOfRangeException("Start coordinates are out of bounds.");
             }
             string[] lines = value.Split('\n');
-            int currentRow = startY;
+            int currentX = startX;
             for (int i = 0; i < lines.Length; i++)
             {
-                if (currentRow >= Height) break;
+                if (currentX >= Width) break;
                 string line = lines[i];
                 char[] chars = line.ToCharArray();
-                int currentCol = startX;
+                int currentY = startY;
                 for (int j = 0; j < chars.Length; j++)
                 {
-                    if (currentCol >= Width) break;
-                    NextFrame[currentCol, currentRow] = chars[j];
-                    currentCol++;
+                    if (currentY >= Height) break;
+                    NextFrame[currentX, currentY] = chars[j];
+                    currentY++;
                 }
-                currentRow++;
+                currentX++;
             }
         }
 
         // Clear a specified area on the screen
-        public static void ClearArea(int y1, int x1, int y2, int x2)
+        public static void ClearArea(int x1, int y1, int x2, int y2)
         {
-            //Still being worked on (Not currently working)
             char fill = ' ';
-            for (int i=y1; i < y2; i++)
+            for (int j = x1; j < x2; j++)
             {
-                for (int j = x1; j < x2; j++)
+                for (int i = y1; i < y2; i++)
                 {
                     NextFrame[j, i] = fill;
                 }
             }
         }
-    
+
 
         // Compare what is currently on the screen to what we would like to render on the screen and print the difference, this Greatly reduces flicker 
         public static void Render()
         {
             Console.CursorVisible = false;
-            for (int y = 0; y < Height; y++)
+
+            for (int x = 0; x < Width; x++)
             {
-                for (int x = 0; x < Width; x++)
+                for (int y = 0; y < Height; y++)
                 {
                     if (NextFrame[x, y] != CurrentFrame[x, y])
                     {
@@ -158,7 +158,7 @@
                 color = true;
             }
             Console.WriteLine("Test Will start in 5 seconds!");
-            Console.WriteLine("Press Escape at anytime to exit!");       
+            Console.WriteLine("Press Escape at anytime to exit!");
             Thread.Sleep(5000);
             Height = Console.WindowHeight;
             Width = Console.WindowWidth;
