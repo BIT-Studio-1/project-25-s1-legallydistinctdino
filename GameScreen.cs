@@ -4,10 +4,10 @@
     // This reduces the flickering effect and optimizes the 'rendering' process
     internal class GameScreen
     {
-        public static int Height = 30; //30 Height - By defining a row you are defining a point along the Y axis
-        public static int Width = 120; //120 Width - By defining a column you are defining a point along the X axis
-        public static char[,] Screen = new char[Width, Height]; // Main Matrix used to print to the screen - What we are going to write to the screen th enext time Render() is called
-        public static char[,] PrevScreen = new char[Width, Height]; // Secondary Matrix used to store what is currently on the screen
+        public static int Height = 30; // Height of the screen we are rendering or the Y coordinate
+        public static int Width = 120; // Width of the screen we are rendering or the X coordinate
+        public static char[,] NextFrame = new char[Width, Height]; // Main Matrix used to print to the screen - What we are going to write to the screen the next time Render() is called
+        public static char[,] CurrentFrame = new char[Width, Height]; // Secondary Matrix used to store what is currently rendered on the screen
 
         // Clear the screen for the next render, optionally specify a filler char
         public static void Clear(char fill = ' ')
@@ -16,7 +16,7 @@
             {
                 for (int col = 0; col < Width; col++)
                 {
-                    Screen[col, row] = fill;
+                    NextFrame[col, row] = fill;
                 }
             }
         }
@@ -36,7 +36,7 @@
 
             for (int col = 0; col < rowData.Length; col++)
             {
-                Screen[col, rowIndex] = rowData[col];
+                NextFrame[col, rowIndex] = rowData[col];
             }
         }
 
@@ -48,7 +48,7 @@
                 throw new ArgumentOutOfRangeException("Coordinates are out of bounds.");
             }
 
-            Screen[col, row] = value;
+            NextFrame[col, row] = value;
         }
 
         // Place a string at a point on the screen, these can be multi line strings
@@ -69,7 +69,7 @@
                 for (int j = 0; j < chars.Length; j++)
                 {
                     if (currentCol >= Width) break;
-                    Screen[currentCol, currentRow] = chars[j];
+                    NextFrame[currentCol, currentRow] = chars[j];
                     currentCol++;
                 }
                 currentRow++;
@@ -85,7 +85,7 @@
             {
                 for (int j = col1; j < col2; j++)
                 {
-                    Screen[j, i] = fill;
+                    NextFrame[j, i] = fill;
                 }
             }
         }
@@ -99,11 +99,11 @@
             {
                 for (int col = 0; col < Width; col++)
                 {
-                    if (Screen[col, row] != PrevScreen[col, row])
+                    if (NextFrame[col, row] != CurrentFrame[col, row])
                     {
                         Console.SetCursorPosition(col, row);
-                        Console.Write(Screen[col, row]);
-                        PrevScreen[col, row] = Screen[col, row];
+                        Console.Write(NextFrame[col, row]);
+                        CurrentFrame[col, row] = NextFrame[col, row];
                     }
                 }
             }
@@ -162,8 +162,8 @@
             Thread.Sleep(5000);
             Height = Console.WindowHeight;
             Width = Console.WindowWidth;
-            Screen = new char[Width, Height]; // Main Matrix used to print to the screen
-            PrevScreen = new char[Width, Height];
+            NextFrame = new char[Width, Height]; // Main Matrix used to print to the screen
+            CurrentFrame = new char[Width, Height];
             Console.Clear();
             while (run)
             {
