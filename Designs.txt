@@ -99,4 +99,10 @@ Obstacle 2 - something to duck under (might be a hanging rock)
   \__/
 
 Obstacle 3
+                 ______
+                 |     |
+      __________/      |______
+     |                        \
+ ____|                         \____
+/                                   \
 	
