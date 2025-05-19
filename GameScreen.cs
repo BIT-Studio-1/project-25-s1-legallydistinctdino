@@ -12,21 +12,21 @@
         // Clear the screen for the next render, optionally specify a filler char
         public static void Clear(char fill = ' ')
         {
-            for (int row = 0; row < Height; row++)
+            for (int y = 0; y < Height; y++)
             {
-                for (int col = 0; col < Width; col++)
+                for (int x = 0; x < Width; x++)
                 {
-                    NextFrame[col, row] = fill;
+                    NextFrame[x, y] = fill;
                 }
             }
         }
         
         // set an entire row to an array of chars. ie set row 5 to all "-"
-        public static void SetRow(char[] rowData, int rowIndex)
+        public static void SetRow(char[] rowData, int y)
         {
-            if (rowIndex < 0 || rowIndex >= Height)
+            if (y < 0 || y >= Height)
             {
-                throw new ArgumentOutOfRangeException(nameof(rowIndex), "Row index is out of bounds.");
+                throw new ArgumentOutOfRangeException(nameof(y), "y coordinate is out of bounds.");
             }
 
             if (rowData.Length > Width)
@@ -36,36 +36,36 @@
 
             for (int col = 0; col < rowData.Length; col++)
             {
-                NextFrame[col, rowIndex] = rowData[col];
+                NextFrame[col, y] = rowData[col];
             }
         }
 
         // Change a specific char at row & col to value. ie set char on row 5 col 10 to "-"
-        public static void SetCharAt(int row, int col, char value)
+        public static void SetCharAt(int y, int x, char value)
         {
-            if (row < 0 || row >= Height || col < 0 || col >= Width)
+            if (y < 0 || y >= Height || x < 0 || x >= Width)
             {
                 throw new ArgumentOutOfRangeException("Coordinates are out of bounds.");
             }
 
-            NextFrame[col, row] = value;
+            NextFrame[x, y] = value;
         }
 
         // Place a string at a point on the screen, these can be multi line strings
-        public static void SetStringAt(int  startRow, int startCol, string value)
+        public static void SetStringAt(int  startY, int startX, string value)
         {
-            if (startRow < 0 || startRow >= Height || startCol < 0 || startCol >= Width)
+            if (startY < 0 || startY >= Height || startX < 0 || startX >= Width)
             {
                 throw new ArgumentOutOfRangeException("Start Row or Start Columns is out of bounds.");
             }
             string[] lines = value.Split('\n');
-            int currentRow = startRow;
+            int currentRow = startY;
             for (int i = 0; i < lines.Length; i++)
             {
                 if (currentRow >= Height) break;
                 string line = lines[i];
                 char[] chars = line.ToCharArray();
-                int currentCol = startCol;
+                int currentCol = startX;
                 for (int j = 0; j < chars.Length; j++)
                 {
                     if (currentCol >= Width) break;
@@ -77,13 +77,13 @@
         }
 
         // Clear a specified area on the screen
-        public static void ClearArea(int row1, int col1, int row2, int col2)
+        public static void ClearArea(int y1, int x1, int y2, int x2)
         {
             //Still being worked on (Not currently working)
             char fill = ' ';
-            for (int i=row1; i < row2; i++)
+            for (int i=y1; i < y2; i++)
             {
-                for (int j = col1; j < col2; j++)
+                for (int j = x1; j < x2; j++)
                 {
                     NextFrame[j, i] = fill;
                 }
@@ -95,15 +95,15 @@
         public static void Render()
         {
             Console.CursorVisible = false;
-            for (int row = 0; row < Height; row++)
+            for (int y = 0; y < Height; y++)
             {
-                for (int col = 0; col < Width; col++)
+                for (int x = 0; x < Width; x++)
                 {
-                    if (NextFrame[col, row] != CurrentFrame[col, row])
+                    if (NextFrame[x, y] != CurrentFrame[x, y])
                     {
-                        Console.SetCursorPosition(col, row);
-                        Console.Write(NextFrame[col, row]);
-                        CurrentFrame[col, row] = NextFrame[col, row];
+                        Console.SetCursorPosition(x, y);
+                        Console.Write(NextFrame[x, y]);
+                        CurrentFrame[x, y] = NextFrame[x, y];
                     }
                 }
             }
