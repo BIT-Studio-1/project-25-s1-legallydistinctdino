@@ -86,14 +86,17 @@ level 5	dog
 	|| ||
 
 
-Obstacle 1
+Obstacle 1 - tree
 
      /\
     /  \
    /____\
      ||
 
-Obstacle 2
+Obstacle 2 - something to duck under (might be a hanging rock)
+\              /
+ \    ________/
+  \__/
 
 Obstacle 3
 	
