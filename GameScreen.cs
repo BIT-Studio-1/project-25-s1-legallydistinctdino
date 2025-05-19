@@ -9,8 +9,22 @@
         public static char[,] NextFrame = new char[Width, Height]; // Main Matrix used to print to the screen - What we are going to write to the screen the next time Render() is called
         // These variables should not be used outside of the class as they are only intended for internal use
         private static char[,] CurrentFrame = new char[Width, Height]; // Secondary Matrix used to store what is currently rendered on the screen
+        private static char[,] BlankFrame = CreateBlankFrame(); // Blank frame used to clear the screen
         private static bool[] ChangedX = new bool[Width]; // Cache of what has changed along an X coord
         private static bool[] ChangedY = new bool[Height]; // Cache of what has changed along a Y coord
+
+        private static char[,] CreateBlankFrame(char fill=' ')
+        {
+            char[,] frame = new char[Width, Height];
+            for (int x = 0; x < Width; x++)
+            {
+                for (int y = 0; y < Height; y++)
+                {
+                    frame[x, y] = fill;
+                }
+            }
+            return frame;
+        }
 
         public static void SetScreenDimensions(int width, int height)
         {
@@ -20,20 +34,21 @@
             CurrentFrame = new char[width, height];
             ChangedX = new bool[width];
             ChangedY = new bool[height];
+            BlankFrame = CreateBlankFrame();
         }
 
         // Clear the screen for the next render, optionally specify a filler char
         public static void Clear(char fill = ' ')
         {
-            for (int x = 0; x < Width; x++)
+            if (fill == ' ')
             {
-                for (int y = 0; y < Height; y++)
-                {
-                    NextFrame[x, y] = fill;
-                    ChangedY[y] = true;
-                }
-                ChangedX[x] = true;
+                Array.Copy(BlankFrame, NextFrame, BlankFrame.Length);
+            } else
+            {
+                Array.Copy(CreateBlankFrame(fill), NextFrame, Width * Height);
             }
+            Array.Fill(ChangedX, true);
+            Array.Fill(ChangedY, true);
         }
 
         // set an entire row to an array of chars. ie set 5y to all "-"
@@ -130,9 +145,9 @@
                     Console.Write(NextFrame[x, y]);
                     CurrentFrame[x, y] = NextFrame[x, y];
 
-                    ChangedX[x] = false;
                     ChangedY[y] = false;
                 }
+                ChangedX[x] = false;
             }
         }
 
