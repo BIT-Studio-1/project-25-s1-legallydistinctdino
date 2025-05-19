@@ -7,7 +7,20 @@
         public static int Width = 120; // Width of the screen we are rendering or the X coordinate
         public static int Height = 30; // Height of the screen we are rendering or the Y coordinate
         public static char[,] NextFrame = new char[Width, Height]; // Main Matrix used to print to the screen - What we are going to write to the screen the next time Render() is called
-        public static char[,] CurrentFrame = new char[Width, Height]; // Secondary Matrix used to store what is currently rendered on the screen
+        // These variables should not be used outside of the class as they are only intended for internal use
+        private static char[,] CurrentFrame = new char[Width, Height]; // Secondary Matrix used to store what is currently rendered on the screen
+        private static bool[] ChangedX = new bool[Width]; // Cache of what has changed along an X coord
+        private static bool[] ChangedY = new bool[Height]; // Cache of what has changed along a Y coord
+
+        public static void SetScreenDimensions(int width, int height)
+        {
+            Width = width;
+            Height = height;
+            NextFrame = new char[width, height]; // Main Matrix used to print to the screen
+            CurrentFrame = new char[width, height];
+            ChangedX = new bool[width];
+            ChangedY = new bool[height];
+        }
 
         // Clear the screen for the next render, optionally specify a filler char
         public static void Clear(char fill = ' ')
@@ -17,7 +30,9 @@
                 for (int y = 0; y < Height; y++)
                 {
                     NextFrame[x, y] = fill;
+                    ChangedY[y] = true;
                 }
+                ChangedX[x] = true;
             }
         }
 
@@ -37,6 +52,8 @@
             for (int x = 0; x < rowData.Length; x++)
             {
                 NextFrame[x, y] = rowData[x];
+                ChangedX[x] = true;
+                ChangedY[y] = true;
             }
         }
 
@@ -49,6 +66,8 @@
             }
 
             NextFrame[x, y] = value;
+            ChangedX[x] = true;
+            ChangedY[y] = true;
         }
 
         // Place a string at a point on the screen, these can be multi line strings
@@ -71,7 +90,9 @@
                     if (currentY >= Height) break;
                     NextFrame[currentX, currentY] = chars[j];
                     currentY++;
+                    ChangedY[currentY] = true;
                 }
+                ChangedX[currentX] = true;
                 currentX++;
             }
         }
@@ -85,7 +106,9 @@
                 for (int i = y1; i < y2; i++)
                 {
                     NextFrame[j, i] = fill;
+                    ChangedY[i] = true;
                 }
+                ChangedX[j] = true;
             }
         }
 
@@ -97,14 +120,18 @@
 
             for (int x = 0; x < Width; x++)
             {
+                if (!ChangedX[x]) continue;
                 for (int y = 0; y < Height; y++)
                 {
-                    if (NextFrame[x, y] != CurrentFrame[x, y])
-                    {
-                        Console.SetCursorPosition(x, y);
-                        Console.Write(NextFrame[x, y]);
-                        CurrentFrame[x, y] = NextFrame[x, y];
-                    }
+                    if (!ChangedY[y]) continue;
+                    if (NextFrame[x, y] == CurrentFrame[x, y]) continue;
+
+                    Console.SetCursorPosition(x, y);
+                    Console.Write(NextFrame[x, y]);
+                    CurrentFrame[x, y] = NextFrame[x, y];
+
+                    ChangedX[x] = false;
+                    ChangedY[y] = false;
                 }
             }
         }
@@ -160,10 +187,7 @@
             Console.WriteLine("Test Will start in 5 seconds!");
             Console.WriteLine("Press Escape at anytime to exit!");
             Thread.Sleep(5000);
-            Height = Console.WindowHeight;
-            Width = Console.WindowWidth;
-            NextFrame = new char[Width, Height]; // Main Matrix used to print to the screen
-            CurrentFrame = new char[Width, Height];
+            SetScreenDimensions(Console.WindowWidth, Console.WindowHeight);
             Console.Clear();
             while (run)
             {
@@ -172,7 +196,7 @@
                     Console.BackgroundColor = colors[rand.Next(colors.Length)];
                     Console.ForegroundColor = colors[rand.Next(colors.Length)];
                 }
-                SetCharAt(rand.Next(Height), rand.Next(Width), chars[rand.Next(chars.Length)]);
+                SetCharAt(rand.Next(Width), rand.Next(Height), chars[rand.Next(chars.Length)]);
                 Render();
                 //if (rand.Next(10001) == 0)
                 //{
