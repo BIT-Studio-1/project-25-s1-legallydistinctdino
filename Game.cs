@@ -56,6 +56,7 @@
 
         // Braedon & Samuel
         static void SetupBackground()
+            //test background/concept background
         {
             Console.WriteLine("                          _____                               ____               ");
             Console.WriteLine("                       ___|   \\                              _|   \\              ");
