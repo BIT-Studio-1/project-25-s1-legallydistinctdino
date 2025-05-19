@@ -7,11 +7,10 @@
         public static int Width = 120; // Width of the screen we are rendering or the X coordinate
         public static int Height = 30; // Height of the screen we are rendering or the Y coordinate
         public static char[,] NextFrame = new char[Width, Height]; // Main Matrix used to print to the screen - What we are going to write to the screen the next time Render() is called
+
         // These variables should not be used outside of the class as they are only intended for internal use
-        private static char[,] CurrentFrame = new char[Width, Height]; // Secondary Matrix used to store what is currently rendered on the screen
         private static char[,] BlankFrame = CreateBlankFrame(); // Blank frame used to clear the screen
-        private static bool[] ChangedX = new bool[Width]; // Cache of what has changed along an X coord
-        private static bool[] ChangedY = new bool[Height]; // Cache of what has changed along a Y coord
+        private static bool[,] ChangedFrame = new bool[Width,Height]; // Cache of what has changed 
 
         private static char[,] CreateBlankFrame(char fill=' ')
         {
@@ -31,9 +30,7 @@
             Width = width;
             Height = height;
             NextFrame = new char[width, height]; // Main Matrix used to print to the screen
-            CurrentFrame = new char[width, height];
-            ChangedX = new bool[width];
-            ChangedY = new bool[height];
+            ChangedFrame = new bool[width, height];
             BlankFrame = CreateBlankFrame();
         }
 
@@ -47,8 +44,7 @@
             {
                 Array.Copy(CreateBlankFrame(fill), NextFrame, Width * Height);
             }
-            Array.Fill(ChangedX, true);
-            Array.Fill(ChangedY, true);
+            ChangedFrame = new bool[Width, Height];
         }
 
         // set an entire row to an array of chars. ie set 5y to all "-"
@@ -67,8 +63,7 @@
             for (int x = 0; x < rowData.Length; x++)
             {
                 NextFrame[x, y] = rowData[x];
-                ChangedX[x] = true;
-                ChangedY[y] = true;
+                ChangedFrame[x, y] = true;
             }
         }
 
@@ -81,8 +76,7 @@
             }
 
             NextFrame[x, y] = value;
-            ChangedX[x] = true;
-            ChangedY[y] = true;
+            ChangedFrame[x, y] = true;
         }
 
         // Place a string at a point on the screen, these can be multi line strings
@@ -104,10 +98,9 @@
                 {
                     if (currentY >= Height) break;
                     NextFrame[currentX, currentY] = chars[j];
+                    ChangedFrame[currentX, currentY] = true;
                     currentY++;
-                    ChangedY[currentY] = true;
                 }
-                ChangedX[currentX] = true;
                 currentX++;
             }
         }
@@ -121,9 +114,8 @@
                 for (int i = y1; i < y2; i++)
                 {
                     NextFrame[j, i] = fill;
-                    ChangedY[i] = true;
+                    ChangedFrame[j, i] = true;
                 }
-                ChangedX[j] = true;
             }
         }
 
@@ -135,19 +127,14 @@
 
             for (int x = 0; x < Width; x++)
             {
-                if (!ChangedX[x]) continue;
                 for (int y = 0; y < Height; y++)
                 {
-                    if (!ChangedY[y]) continue;
-                    if (NextFrame[x, y] == CurrentFrame[x, y]) continue;
+                    if (!ChangedFrame[x, y]) continue;
 
                     Console.SetCursorPosition(x, y);
                     Console.Write(NextFrame[x, y]);
-                    CurrentFrame[x, y] = NextFrame[x, y];
-
-                    ChangedY[y] = false;
+                    ChangedFrame[x, y] = false;
                 }
-                ChangedX[x] = false;
             }
         }
 
