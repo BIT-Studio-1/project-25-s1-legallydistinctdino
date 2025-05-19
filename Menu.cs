@@ -142,6 +142,10 @@ namespace LegallyDistinctDino
                     Game.ExitGame();
                     break;
 
+                case 9999: // Dev menu item to test render engine
+                    GameScreen.TestRenderEngine();
+                    TitleScreen();
+                    break;
 
 
 
