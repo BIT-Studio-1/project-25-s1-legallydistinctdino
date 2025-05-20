@@ -8,7 +8,7 @@ namespace STUDIO1_PROJECT
         static Random rand = new Random();
 
         //Player Location start of game
-        static int x = 0;
+        static int x = 5;
         static int y = 10;
         static int ground = 10;
 
@@ -72,10 +72,16 @@ namespace STUDIO1_PROJECT
         //update after inputs from player
         static void Update()
         {
-            x++;
-            if (x >= Console.WindowWidth - 1)
+            //x++;
+            //if (x >= Console.WindowWidth - 1)
+            //{
+            //    x = 0;
+            //}
+
+            obstacleX--;
+            if (obstacleX < 0)
             {
-                x = 0;
+                obstacleX = Console.WindowWidth - 1;
             }
 
 
@@ -123,18 +129,21 @@ namespace STUDIO1_PROJECT
 
             Console.SetCursorPosition(x, y);
 
-            if (jump)
-            {
-                Console.Write("O");
-            }
-            else if (crouch)
-            {
-                Console.Write("-"); // Smaller for crouch
-            }
-            else
-            {
-                Console.Write("O"); // Normal
-            }
+            
+            Console.Write(jump ? "O" : crouch ? "-" : "O");
+
+            //if (jump)
+            //{
+            //    Console.Write("O");
+            //}
+            //else if (crouch)
+            //{
+            //    Console.Write("-"); // Smaller for crouch
+            //}
+            //else
+            //{
+            //    Console.Write("O"); // Normal
+            //}
 
             if (obstacleX >= 0 && obstacleX < Console.WindowWidth)
             {
