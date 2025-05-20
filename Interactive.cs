@@ -39,6 +39,11 @@ namespace LegallyDistinctDino
             }
         }
 
+        static void SpawnObstacle()
+        {
+
+        }
+
         //player input
         public static void Input()
         {
