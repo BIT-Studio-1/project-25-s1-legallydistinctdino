@@ -87,21 +87,29 @@
             {
                 throw new ArgumentOutOfRangeException("Start coordinates are out of bounds.");
             }
+            // Split value up into an array were each part of the array ends in a \n or line break
             string[] lines = value.Split('\n');
-            int currentX = startX;
+            // set our current y value to the y we want to start at
             int currentY = startY;
-            for (int i = 0; i < lines.Length; i++)
+            foreach (string line in lines)
             {
+                // if our current y is more than the height of our screen we don't do anything
                 if (currentY >= Height) break;
-                string line = lines[i];
+                // break each line up into the chars that it contains
                 char[] chars = line.ToCharArray();
-                for (int j = 0; j < chars.Length; j++)
+                // set our current x value to where we want the line to start, this needs to be reset for each line
+                int currentX = startX;
+                foreach (char c in chars)
                 {
+                    // if our current x value is more than the width of our screen we don't do anything
                     if (currentX >= Width) break;
-                    NextFrame[currentY, currentX] = chars[j];
-                    ChangedFrame[currentY, currentX] = true;
+                    // add the char to the next frame at the current x and y level
+                    NextFrame[currentX, currentY] = c;
+                    ChangedFrame[currentX, currentY] = true;
+                    // increment the x value before adding the next char in the line
                     currentX++;
                 }
+                // increment the y value before adding the next line
                 currentY++;
             }
         }
