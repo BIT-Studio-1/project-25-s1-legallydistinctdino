@@ -32,6 +32,9 @@ namespace LegallyDistinctDino
         static int minSpace = 10;
         static int maxSpace = 30;
 
+        static bool rightArrowPressed = false;
+        static int obstacleSpeed = 1;
+
         //loops while playing
         public static void Calls()
         {
@@ -76,6 +79,11 @@ namespace LegallyDistinctDino
                     crouchTimer = crouchDuration;
                     crouch = true;
                 }
+                else if (key.Key == ConsoleKey.RightArrow)
+                {
+                    obstacleSpeed = 2;
+
+                }
             }
 
         }
@@ -93,7 +101,7 @@ namespace LegallyDistinctDino
             //obstacle movement instead of player
             for (int i = 0; i < obstacleX.Length; i++)
             {
-                obstacleX[i]--;
+                obstacleX[i] -= obstacleSpeed;
 
                 //when it leaves the console by scrolling away, it spawns new one
                 if (obstacleX[i] < 0)
