@@ -162,7 +162,10 @@ namespace LegallyDistinctDino
         }
         public static void HowToPlay()
         {
-
+            //Says "How To Play!" in ascii art
+            Console.WriteLine(" _   _                 _____       ____  _             _ \r\n| | | | _____      __ |_   _|__   |  _ \\| | __ _ _   _| |\r\n| |_| |/ _ \\ \\ /\\ / /   | |/ _ \\  | |_) | |/ _` | | | | |\r\n|  _  | (_) \\ V  V /    | | (_) | |  __/| | (_| | |_| |_|\r\n|_| |_|\\___/ \\_/\\_/     |_|\\___/  |_|   |_|\\__,_|\\__, (_)\r\n                                                 |___/   ");
+            Console.WriteLine(new string('-',30));
+            Console.ReadLine();
         }
 
     }
