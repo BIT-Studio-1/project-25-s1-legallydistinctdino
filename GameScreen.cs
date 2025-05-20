@@ -89,20 +89,20 @@
             }
             string[] lines = value.Split('\n');
             int currentX = startX;
+            int currentY = startY;
             for (int i = 0; i < lines.Length; i++)
             {
-                if (currentX >= Width) break;
+                if (currentY >= Height) break;
                 string line = lines[i];
                 char[] chars = line.ToCharArray();
-                int currentY = startY;
                 for (int j = 0; j < chars.Length; j++)
                 {
-                    if (currentY >= Height) break;
-                    NextFrame[currentX, currentY] = chars[j];
-                    ChangedFrame[currentX, currentY] = true;
-                    currentY++;
+                    if (currentX >= Width) break;
+                    NextFrame[currentY, currentX] = chars[j];
+                    ChangedFrame[currentY, currentX] = true;
+                    currentX++;
                 }
-                currentX++;
+                currentY++;
             }
         }
 
