@@ -2,15 +2,14 @@
 
 ## Team Rules
 
-1. Communicate on Teams or Whatsapp for urgent or MISC communication
-2. Keep the Kanban (teams planner) board updated **with details**
-3. Be respectful of working hours, don't expect an urgent answer at 5am
-4. No fighting (excluding Maria)
-5. Make use of class time to communicate, do coding outside of class
-6. Aim for a 2-3 hours a week outside of class or 10 commits a week
-7. If absent post in teams channel or Whatsapp
-8. Add as much detail as possible when encountering an issue (screenshots, github issues)
-9. Check teams regularly
+1. Communicate on Whatsapp for urgent or MISC communication
+2. Be respectful of working hours, don't expect an urgent answer at 5am
+3. No fighting (excluding Maria)
+4. Make use of class time to communicate, do coding outside of class
+5. Aim for a 2-3 hours a week outside of class or 10 commits a week
+6. If absent post in teams channel or Whatsapp
+7. Add as much detail as possible when encountering an issue (screenshots, github issues)
+8. Check teams regularly
 
 ## Coding Best Practices
 1. Start simple, get it working then make it more advanced later
