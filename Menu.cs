@@ -170,7 +170,7 @@ namespace LegallyDistinctDino
         {
             //Says "How To Play!" in ascii art
             Console.WriteLine(" _   _                 _____       ____  _             _ \r\n| | | | _____      __ |_   _|__   |  _ \\| | __ _ _   _| |\r\n| |_| |/ _ \\ \\ /\\ / /   | |/ _ \\  | |_) | |/ _` | | | | |\r\n|  _  | (_) \\ V  V /    | | (_) | |  __/| | (_| | |_| |_|\r\n|_| |_|\\___/ \\_/\\_/     |_|\\___/  |_|   |_|\\__,_|\\__, (_)\r\n                                                 |___/   ");
-            Console.WriteLine(new string('-',30));
+            Console.WriteLine(new string('-',80));
             Console.WriteLine("In this game you're playing Vaughn and being chased while running and jumping over obstacles.\n How to play: \n Press Space to jump \n Press C to crouch \n Press right arrow to run faster");
             Console.WriteLine("-- Press ENTER to return to the Main Menu! --");
             Console.ReadLine();
