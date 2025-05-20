@@ -107,9 +107,9 @@ namespace LegallyDistinctDino
                 "\n" +
                 " ___\\o\n" +
                 "/)  | ";
-            GameScreen.ClearArea(x, y+50, x+50, y-50);
-            if (!crouch) GameScreen.SetStringAt(x, y, person);
-            else GameScreen.SetStringAt(x, y, crouched);
+            Console.Clear();
+            if (!crouch) GameScreen.SetStringAt(x, y-3, person);
+            else GameScreen.SetStringAt(x, y-3, crouched);
 
             GameScreen.SetRow(new string('_', Console.WindowWidth).ToCharArray(), ground);
 
