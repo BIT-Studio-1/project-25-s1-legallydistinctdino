@@ -178,7 +178,7 @@ namespace LegallyDistinctDino
             Console.Write("C ");
             Console.Write("to crouch \n\tPress ");
             Console.Write("right arrow ");
-            Console.WriteLine("to run faster\n");
+            Console.WriteLine("to run faster\n\n");
             Console.WriteLine("-- Press ENTER to return to the Main Menu! --");
             Console.ReadLine();
             MainMenu();
