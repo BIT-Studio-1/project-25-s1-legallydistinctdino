@@ -124,6 +124,7 @@ namespace LegallyDistinctDino
             Console.WriteLine("Press 1 : Back to Title Screen");
             Console.WriteLine("Press 2 : Exit");
             Console.WriteLine("Press 3 : INTERACTIVE TEST");
+            Console.WriteLine("Press 4 : How to play");
             int num = Convert.ToInt32(Console.ReadLine());
 
             switch (num)
@@ -149,6 +150,11 @@ namespace LegallyDistinctDino
                     Interactive.Calls();
                     break;
 
+                case 4:
+                    Console.Clear();
+                    HowToPlay();
+                    break;
+
                 case 9999: // Dev menu item to test render engine
                     GameScreen.TestRenderEngine();
                     TitleScreen();
@@ -162,7 +168,10 @@ namespace LegallyDistinctDino
         }
         public static void HowToPlay()
         {
-
+            //Says "How To Play!" in ascii art
+            Console.WriteLine(" _   _                 _____       ____  _             _ \r\n| | | | _____      __ |_   _|__   |  _ \\| | __ _ _   _| |\r\n| |_| |/ _ \\ \\ /\\ / /   | |/ _ \\  | |_) | |/ _` | | | | |\r\n|  _  | (_) \\ V  V /    | | (_) | |  __/| | (_| | |_| |_|\r\n|_| |_|\\___/ \\_/\\_/     |_|\\___/  |_|   |_|\\__,_|\\__, (_)\r\n                                                 |___/   ");
+            Console.WriteLine(new string('-',30));
+            Console.ReadLine();
         }
 
     }
