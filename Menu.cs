@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using System.Security.Cryptography.X509Certificates;
 using System.Text;
@@ -169,9 +170,26 @@ namespace LegallyDistinctDino
         public static void HowToPlay()
         {
             //Says "How To Play!" in ascii art
+            Console.ForegroundColor = ConsoleColor.Green;
             Console.WriteLine(" _   _                 _____       ____  _             _ \r\n| | | | _____      __ |_   _|__   |  _ \\| | __ _ _   _| |\r\n| |_| |/ _ \\ \\ /\\ / /   | |/ _ \\  | |_) | |/ _` | | | | |\r\n|  _  | (_) \\ V  V /    | | (_) | |  __/| | (_| | |_| |_|\r\n|_| |_|\\___/ \\_/\\_/     |_|\\___/  |_|   |_|\\__,_|\\__, (_)\r\n                                                 |___/   ");
-            Console.WriteLine(new string('-',30));
+            Console.ResetColor();
+            Console.WriteLine(new string('-',80));
+            Console.Write("In this game you're playing Vaughn and being chased while running and jumping over obstacles.\n\n\tHow to play: \n\tPress ");
+            Console.ForegroundColor = ConsoleColor.Green;
+            Console.Write("Space ");
+            Console.ResetColor();
+            Console.Write("to jump \n\tPress ");
+            Console.ForegroundColor = ConsoleColor.Green;
+            Console.Write("C ");
+            Console.ResetColor();
+            Console.Write("to crouch \n\tPress ");
+            Console.ForegroundColor = ConsoleColor.Green;
+            Console.Write("right arrow ");
+            Console.ResetColor();
+            Console.WriteLine("to run faster\n\n");
+            Console.WriteLine("-- Press ENTER to return to the Main Menu! --");
             Console.ReadLine();
+            MainMenu();
         }
 
     }
