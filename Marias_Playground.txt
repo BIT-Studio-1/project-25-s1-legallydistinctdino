@@ -1,0 +1,154 @@
+using System;
+using System.Threading;
+
+namespace STUDIO1_PROJECT
+{
+    internal class Game
+    {
+        static Random rand = new Random();
+
+        //Player Location start of game
+        static int x = 0;
+        static int y = 10;
+        static int ground = 10;
+
+        //variables needed for jump
+        static bool jump = false;
+        static int jumpHeight = 5;
+        static int jumpProgress = 0;
+
+        //variables needed for crouch
+        static bool crouch = false;
+        static bool holdingCrouch = false;
+        static int crouchTimer = 0;
+        static int crouchDuration = 10;
+
+        static int obstacleX = 30;
+        static int obstacleY = 10;
+
+        static bool gameOver = false;
+
+        static void Main()
+        {
+            Console.CursorVisible = false;
+
+            while (!gameOver)
+            {
+                Input();
+                Update();
+                Draw();
+                Thread.Sleep(50);
+            }
+
+            Console.Clear();  
+            Console.Write("Game over");
+
+            Console.ReadKey();
+        }
+
+        static void Input()
+        {
+
+
+            while (Console.KeyAvailable)
+            {
+                ConsoleKeyInfo key = Console.ReadKey(true);
+
+                if (key.Key == ConsoleKey.Spacebar && !jump && crouchTimer == 0)
+                {
+                    jump = true;
+                    jumpProgress = jumpHeight;
+                }
+                else if (key.Key == ConsoleKey.C && !jump)
+                {
+                    crouchTimer = crouchDuration;
+                    crouch = true;
+                }
+            }
+
+
+        }
+
+        //update after inputs from player
+        static void Update()
+        {
+            x++;
+            if (x >= Console.WindowWidth - 1)
+            {
+                x = 0;
+            }
+
+
+            if (jump)
+            {
+                y = ground - jumpProgress;
+                jumpProgress--;
+
+                if (y >= ground)
+                {
+                    y = ground;
+                    jump = false;
+                }
+            }
+
+            // Crouch timer countdown
+            if (crouchTimer > 0)
+            {
+                crouchTimer--;
+                crouch = true;
+            }
+            else
+            {
+                crouch = false;
+            }
+
+            // Reset y position if not jumping or crouching
+            if (!jump && !crouch)
+            {
+                y = ground;
+            }
+
+            if (x == obstacleX && y == obstacleY)
+            {
+                gameOver = true;
+            }
+
+        }
+
+        static void Draw()
+        {
+            Console.Clear();
+
+            Console.CursorVisible = false;
+
+            Console.SetCursorPosition(x, y);
+
+            if (jump)
+            {
+                Console.Write("O");
+            }
+            else if (crouch)
+            {
+                Console.Write("-"); // Smaller for crouch
+            }
+            else
+            {
+                Console.Write("O"); // Normal
+            }
+
+            if (obstacleX >= 0 && obstacleX < Console.WindowWidth)
+            {
+                Console.SetCursorPosition(obstacleX, obstacleY);
+                Console.Write("#");
+            }
+
+            // Optional ground line
+            Console.SetCursorPosition(0, ground + 1);
+            Console.Write(new string('_', Console.WindowWidth));
+
+           
+        }
+
+     
+    }
+}
