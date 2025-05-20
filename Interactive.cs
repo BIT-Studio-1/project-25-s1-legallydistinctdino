@@ -8,6 +8,8 @@ namespace LegallyDistinctDino
 {
     internal class Interactive
     {
+        static Random rand = new Random();
+
         //Player location
         static int x = 5;
         static int y = 10;
@@ -27,9 +29,15 @@ namespace LegallyDistinctDino
         static int[] obstacleX = new int[10];
         static int[] obstacleY = new int[10];
 
+        static int minSpace = 10;
+        static int maxSpace = 30;
+
         //loops while playing
         public static void Calls()
         {
+
+            SpawnObstacle();
+
             while (true)
             {
                 Input();
@@ -41,7 +49,14 @@ namespace LegallyDistinctDino
 
         static void SpawnObstacle()
         {
+            int start = Console.WindowWidth;
 
+            for (int i = 0; i < obstacleX.Length; i++)
+            {
+                obstacleX[i] = start;
+                obstacleY[i] = ground;
+                start += rand.Next(minSpace, maxSpace);
+            }
         }
 
         //player input
@@ -76,13 +91,27 @@ namespace LegallyDistinctDino
             //}
 
             //obstacle movement instead of player
-            //obstacleX--;
-            //if (obstacleX < 0)
-            //{
-            //    obstacleX = Console.WindowWidth - 1;
-            //}
+            for (int i = 0; i < obstacleX.Length; i++)
+            {
+                obstacleX[i]--;
 
-            if (jump)
+                //when it leaves the console by scrolling away, it spawns new one
+                if (obstacleX[i] < 0)
+                {
+
+                    obstacleX[i] = rand.Next(minSpace, maxSpace);
+                    obstacleY[i] = ground;
+                }
+
+                if (x == obstacleX[i] && y == obstacleY[i])
+                {
+                    Game.GameOver();
+                }
+
+            }
+
+
+                if (jump)
             {
                 y = ground - jumpProgress; //starts at 5, goes down slowly
                 jumpProgress--;
@@ -105,10 +134,7 @@ namespace LegallyDistinctDino
                 crouch = false;
             }
 
-            //if (x == obstacleX && y == obstacleY)
-            //{
-            //    Game.GameOver();
-            //}
+            
         }
 
         //animation part
@@ -154,11 +180,14 @@ namespace LegallyDistinctDino
             //    Console.Write("O"); 
             //}
 
-            //if (obstacleX >= 0 && obstacleX < Console.WindowWidth)
-            //{
-            //    Console.SetCursorPosition(obstacleX, obstacleY);
-            //    Console.Write("#");
-            //}
+            for (int i = 0; i < obstacleX.Length; i++)
+            {
+                if (obstacleX[i] >= 0 && obstacleX[i] < Console.WindowWidth)
+                {
+                    Console.SetCursorPosition(obstacleX[i], obstacleY[i]);
+                    Console.Write("#");
+                }
+            }
 
             //ground drawn
             //Console.SetCursorPosition(0, ground + 1);
