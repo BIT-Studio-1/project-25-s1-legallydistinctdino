@@ -143,6 +143,9 @@ namespace LegallyDistinctDino
             //Console.SetCursorPosition(0, ground + 1);
             //Console.Write(new string('_', Console.WindowWidth));
         }
+        
+        
+        //method to detect collisions
         public static void CollisionDetection()
         {
             if (x == obstacleX && y == obstacleY)
