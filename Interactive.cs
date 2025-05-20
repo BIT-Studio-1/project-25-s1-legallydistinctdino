@@ -133,6 +133,9 @@ namespace LegallyDistinctDino
 
             //Console.SetCursorPosition(x, y);
 
+            //This is to draw player
+            //Console.Write(jump ? "O" : crouch ? "-" : "O");
+
             //if (jump)
             //{
             //    Console.Write("O");
