@@ -36,7 +36,7 @@ namespace LegallyDistinctDino
             while (!Console.KeyAvailable)
             {
                 Console.ForegroundColor = colors[iterator];
-                PrintWelcome();
+                PrintWelcome(); 
                 PrintDino();
                 Thread.Sleep(300);
                 Console.Clear();
