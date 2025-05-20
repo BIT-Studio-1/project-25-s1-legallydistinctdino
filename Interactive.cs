@@ -24,13 +24,15 @@ namespace LegallyDistinctDino
         static int crouchTimer = 0;
         static int crouchDuration = 10; //set crouch time
 
+        static int obstacle = 20;
+
         //loops while playing
         public static void Calls()
         {
             while (true)
             {
                 Input();
-                //Update();
+                Update();
                 Draw();
                 Thread.Sleep(50);
             }
@@ -111,6 +113,12 @@ namespace LegallyDistinctDino
             else
             {
                 Console.Write("O"); 
+            }
+
+            if (obstacle >= 0 && obstacle < Console.WindowWidth)
+            {
+                Console.SetCursorPosition(obstacle, y);
+                Console.Write("#");
             }
 
             //ground drawn
