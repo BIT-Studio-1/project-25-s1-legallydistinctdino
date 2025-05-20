@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using System.Security.Cryptography.X509Certificates;
 using System.Text;
@@ -171,7 +172,13 @@ namespace LegallyDistinctDino
             //Says "How To Play!" in ascii art
             Console.WriteLine(" _   _                 _____       ____  _             _ \r\n| | | | _____      __ |_   _|__   |  _ \\| | __ _ _   _| |\r\n| |_| |/ _ \\ \\ /\\ / /   | |/ _ \\  | |_) | |/ _` | | | | |\r\n|  _  | (_) \\ V  V /    | | (_) | |  __/| | (_| | |_| |_|\r\n|_| |_|\\___/ \\_/\\_/     |_|\\___/  |_|   |_|\\__,_|\\__, (_)\r\n                                                 |___/   ");
             Console.WriteLine(new string('-',80));
-            Console.WriteLine("In this game you're playing Vaughn and being chased while running and jumping over obstacles.\n How to play: \n Press Space to jump \n Press C to crouch \n Press right arrow to run faster");
+            Console.Write("In this game you're playing Vaughn and being chased while running and jumping over obstacles.\n\tHow to play: \n\tPress ");
+            Console.Write("Space ");
+            Console.Write("to jump \n\tPress ");
+            Console.Write("C ");
+            Console.Write("to crouch \n\tPress ");
+            Console.Write("right arrow ");
+            Console.WriteLine("to run faster\n");
             Console.WriteLine("-- Press ENTER to return to the Main Menu! --");
             Console.ReadLine();
             MainMenu();
