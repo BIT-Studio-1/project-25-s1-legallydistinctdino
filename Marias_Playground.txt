@@ -23,17 +23,24 @@ namespace STUDIO1_PROJECT
         static int crouchTimer = 0;
         static int crouchDuration = 10;
 
-        static int obstacleX = 30;
-        static int obstacleY = 10;
+        static int[] obstacleX = new int[10]; 
+        static int[] obstacleY = new int[10];
+        static int minSpacing = 10;
+        static int maxSpacing = 30;
 
         static bool gameOver = false;
+
+        static bool rightArrowPressed = false;
+        static int obstacleSpeed = 1;
 
         static void Main()
         {
             Console.CursorVisible = false;
+            SpawnObstacles();
 
             while (!gameOver)
             {
+                
                 Input();
                 Update();
                 Draw();
@@ -46,8 +53,23 @@ namespace STUDIO1_PROJECT
             Console.ReadKey();
         }
 
+        static void SpawnObstacles()
+        {
+            int start = Console.WindowWidth;
+
+            for (int i = 0; i < obstacleX.Length; i++)
+            {
+                obstacleX[i] = start;
+                obstacleY[i] = ground;
+                start += rand.Next(minSpacing, maxSpacing);
+            }
+        }
+
+
         static void Input()
         {
+            rightArrowPressed = false;
+
 
 
             while (Console.KeyAvailable)
@@ -64,6 +86,12 @@ namespace STUDIO1_PROJECT
                     crouchTimer = crouchDuration;
                     crouch = true;
                 }
+                else if (key.Key == ConsoleKey.RightArrow)
+                {
+                    obstacleSpeed = 2;
+                    
+                }
+
             }
 
 
@@ -72,18 +100,7 @@ namespace STUDIO1_PROJECT
         //update after inputs from player
         static void Update()
         {
-            //x++;
-            //if (x >= Console.WindowWidth - 1)
-            //{
-            //    x = 0;
-            //}
-
-            obstacleX--;
-            if (obstacleX < 0)
-            {
-                obstacleX = Console.WindowWidth - 1;
-            }
-
+          
 
             if (jump)
             {
@@ -114,13 +131,44 @@ namespace STUDIO1_PROJECT
                 y = ground;
             }
 
-            if (x == obstacleX && y == obstacleY)
+
+            
+
+            //OBSTACLE 
+            for (int i = 0; i < obstacleX.Length; i++)
             {
-                gameOver = true;
+
+               
+                obstacleX[i] -= obstacleSpeed;
+                //when it leaves the console by scrolling away, it spawns new one
+                if (obstacleX[i] < 0)
+                {
+                   
+                    int furthestX = GetFurthestObstacleX();
+
+                    obstacleX[i] = furthestX + rand.Next(minSpacing, maxSpacing);
+                    obstacleY[i] = ground;
+                }
+
+                // Collision detection
+                if (x == obstacleX[i] && y == obstacleY[i])
+                {
+                    //gameOver = true;
+                }
             }
 
         }
 
+        static int GetFurthestObstacleX()
+        {
+            int max = 0;
+            for (int i = 0; i < obstacleX.Length; i++)
+            {
+                if (obstacleX[i] > max)
+                    max = obstacleX[i];
+            }
+            return max; //bring value into update method in furthestX
+        }
         static void Draw()
         {
             Console.Clear();
@@ -145,10 +193,13 @@ namespace STUDIO1_PROJECT
             //    Console.Write("O"); // Normal
             //}
 
-            if (obstacleX >= 0 && obstacleX < Console.WindowWidth)
+            for (int i = 0; i < obstacleX.Length; i++)
             {
-                Console.SetCursorPosition(obstacleX, obstacleY);
-                Console.Write("#");
+                if (obstacleX[i] >= 0 && obstacleX[i] < Console.WindowWidth)
+                {
+                    Console.SetCursorPosition(obstacleX[i], obstacleY[i]);
+                    Console.Write("#");
+                }
             }
 
             // Optional ground line
