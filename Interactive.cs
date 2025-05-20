@@ -95,6 +95,7 @@ namespace LegallyDistinctDino
         //animation part
         public static void Draw()
         {
+            Console.CursorVisible = false;
             Console.Clear();
 
             Console.SetCursorPosition(x, y);
