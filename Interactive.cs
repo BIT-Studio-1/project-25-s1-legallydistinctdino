@@ -145,9 +145,9 @@ namespace LegallyDistinctDino
         }
         public static void CollisionDetection()
         {
-            if (x == (FutureObjectX)&& y == (FutureObjectY))
+            if (x == obstacleX && y == obstacleY)
             {
-                GameOver();
+                Game.GameOver();
             }
 
         }
