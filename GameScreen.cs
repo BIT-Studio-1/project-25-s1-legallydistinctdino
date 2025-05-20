@@ -45,6 +45,7 @@
                 Array.Copy(CreateBlankFrame(fill), NextFrame, Width * Height);
             }
             ChangedFrame = new bool[Width, Height];
+            Render(true);
         }
 
         // set an entire row to an array of chars. ie set 5y to all "-"
@@ -121,7 +122,7 @@
 
 
         // Compare what is currently on the screen to what we would like to render on the screen and print the difference, this Greatly reduces flicker 
-        public static void Render()
+        public static void Render(bool force=false)
         {
             Console.CursorVisible = false;
 
@@ -129,7 +130,7 @@
             {
                 for (int y = 0; y < Height; y++)
                 {
-                    if (!ChangedFrame[x, y]) continue;
+                    if (!ChangedFrame[x, y] && !force) continue;
 
                     Console.SetCursorPosition(x, y);
                     Console.Write(NextFrame[x, y]);
@@ -199,19 +200,20 @@
                     Console.ForegroundColor = colors[rand.Next(colors.Length)];
                 }
                 SetCharAt(rand.Next(Width), rand.Next(Height), chars[rand.Next(chars.Length)]);
+                if (rand.Next(11) == 0)
+                {
+                    GameScreen.Clear();
+                }
                 Render();
-                //if (rand.Next(10001) == 0)
-                //{
-                //    GameScreen.Clear();
-                //}
+                
                 if (Console.KeyAvailable && Console.ReadKey(intercept: true).Key == ConsoleKey.Escape)
                 {
                     run = false;
                 }
             }
+            Clear();
             Console.ResetColor();
             Console.Clear();
-            Clear();
         }
     }
 }
