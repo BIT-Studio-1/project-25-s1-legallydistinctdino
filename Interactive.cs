@@ -30,7 +30,7 @@ namespace LegallyDistinctDino
             while (true)
             {
                 Input();
-                Update();
+                //Update();
                 Draw();
                 Thread.Sleep(50);
             }

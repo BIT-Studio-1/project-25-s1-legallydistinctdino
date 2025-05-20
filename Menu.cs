@@ -124,6 +124,7 @@ namespace LegallyDistinctDino
             Console.WriteLine("Press 1 : Back to Title Screen");
             Console.WriteLine("Press 2 : Exit");
             Console.WriteLine("Press 3 : INTERACTIVE TEST");
+            Console.WriteLine("Press 4 : How to play");
             int num = Convert.ToInt32(Console.ReadLine());
 
             switch (num)
@@ -147,6 +148,11 @@ namespace LegallyDistinctDino
                 case 3:
                     Console.Clear();
                     Interactive.Calls();
+                    break;
+
+                case 4:
+                    Console.Clear();
+                    HowToPlay();
                     break;
 
                 case 9999: // Dev menu item to test render engine
