@@ -31,7 +31,7 @@
 1. Progress == usable software.
 2. Only Write code that everyone in your team can understand and maintain.
 3. Always discuss with your team before you make any change to the code-base.
-4. Be Iterative. There is no such thing aas a finished software project.
+4. Be Iterative. There is no such thing as a finished software project.
 5. One feature finished is better than many features nearly finished.
 6. Make the simplest possible version then add incremental improvements.
 7. Do individual development work outside of class time.
