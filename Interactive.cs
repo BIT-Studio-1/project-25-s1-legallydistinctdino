@@ -10,8 +10,8 @@ namespace LegallyDistinctDino
     {
         //Player location
         static int x = 0;
-        static int y = 10;
-        static int ground = 10;
+        static int y = 25;
+        static int ground = 25;
 
         //Variables needed for jump
         static bool jump = false;
@@ -30,7 +30,7 @@ namespace LegallyDistinctDino
             while (true)
             {
                 Input();
-                //Update();
+                Update();
                 Draw();
                 Thread.Sleep(50);
             }
@@ -61,11 +61,11 @@ namespace LegallyDistinctDino
         public static void Update()
         {
             //Automatically moves player to the right
-            x++;
-            if (x >= Console.WindowWidth - 1)  //resets at the start when it reaches end of console
-            {
-                x = 0;
-            }
+            //x++;
+            //if (x >= Console.WindowWidth - 1)  //resets at the start when it reaches end of console
+            //{
+            //    x = 0;
+            //}
 
             if (jump)
             {
@@ -95,27 +95,44 @@ namespace LegallyDistinctDino
         //animation part
         public static void Draw()
         {
-            Console.CursorVisible = false;
-            Console.Clear();
+            string person =
+                " o\n" +
+                "/|\\\n" +
+                "/ \\";
 
-            Console.SetCursorPosition(x, y);
+            string crouched =
+                "\n" +
+                " ___\\o\n" +
+                "/)  | ";
+            GameScreen.ClearArea(x, y+50, x+50, y-50);
+            if (!crouch) GameScreen.SetStringAt(x, y, person);
+            else GameScreen.SetStringAt(x, y, crouched);
 
-            if (jump)
-            {
-                Console.Write("O");
-            }
-            else if (crouch)
-            {
-                Console.Write("-"); 
-            }
-            else
-            {
-                Console.Write("O"); 
-            }
+            GameScreen.SetRow(new string('_', Console.WindowWidth).ToCharArray(), ground);
+
+            GameScreen.Render();
+
+            //Console.CursorVisible = false;
+            //Console.Clear();
+
+            //Console.SetCursorPosition(x, y);
+
+            //if (jump)
+            //{
+            //    Console.Write("O");
+            //}
+            //else if (crouch)
+            //{
+            //    Console.Write("-"); 
+            //}
+            //else
+            //{
+            //    Console.Write("O"); 
+            //}
 
             //ground drawn
-            Console.SetCursorPosition(0, ground + 1);
-            Console.Write(new string('_', Console.WindowWidth));
+            //Console.SetCursorPosition(0, ground + 1);
+            //Console.Write(new string('_', Console.WindowWidth));
         }
 
     }
