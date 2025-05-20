@@ -118,12 +118,13 @@
         public static void ClearArea(int x1, int y1, int x2, int y2)
         {
             char fill = ' ';
-            for (int j = x1; j < x2; j++)
+            for (int x = x1; x < x2; x++)
             {
-                for (int i = y1; i < y2; i++)
+                // in the Console y:0 is the top left corner. To get around this we decrease the y instead of increasing it
+                for (int y = y1; y > y2; y--)
                 {
-                    NextFrame[j, i] = fill;
-                    ChangedFrame[j, i] = true;
+                    NextFrame[x, y] = fill;
+                    ChangedFrame[x, y] = true;
                 }
             }
         }
