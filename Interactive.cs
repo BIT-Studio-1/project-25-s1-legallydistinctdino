@@ -98,8 +98,9 @@ namespace LegallyDistinctDino
                 //when it leaves the console by scrolling away, it spawns new one
                 if (obstacleX[i] < 0)
                 {
+                    int furthestX = FurthestObstacle();
 
-                    obstacleX[i] = rand.Next(minSpace, maxSpace);
+                    obstacleX[i] = furthestX + rand.Next(minSpace, maxSpace);
                     obstacleY[i] = ground;
                 }
 
@@ -111,11 +112,11 @@ namespace LegallyDistinctDino
             }
 
 
-                if (jump)
+            if(jump)
             {
                 y = ground - jumpProgress; //starts at 5, goes down slowly
                 jumpProgress--;
-                
+
                 //at the ground, resets ground back to 10 
                 if (y >= ground)
                 {
@@ -135,6 +136,18 @@ namespace LegallyDistinctDino
             }
 
             
+        }
+
+        //checks for where the furthest obstacle is and spawns it BEHIND it
+        static int FurthestObstacle()
+        {
+            int max = 0;
+            for (int i = 0; i < obstacleX.Length; i++)
+            {
+                if (obstacleX[i] > max)
+                    max = obstacleX[i];
+            }
+            return max; //bring value into update method in furthestX
         }
 
         //animation part
