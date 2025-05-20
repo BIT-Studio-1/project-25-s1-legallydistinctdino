@@ -125,6 +125,14 @@ namespace LegallyDistinctDino
             Console.SetCursorPosition(0, ground + 1);
             Console.Write(new string('_', Console.WindowWidth));
         }
+        public static void CollisionDetection()
+        {
+            if (x == (FutureObjectX)&& y == (FutureObjectY))
+            {
+                GameOver();
+            }
+
+        }
 
     }
 }
