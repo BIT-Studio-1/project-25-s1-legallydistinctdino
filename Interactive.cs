@@ -9,9 +9,9 @@ namespace LegallyDistinctDino
     internal class Interactive
     {
         //Player location
-        static int x = 0;
-        static int y = 25;
-        static int ground = 25;
+        static int x = 5;
+        static int y = 10;
+        static int ground = 10;
 
         //Variables needed for jump
         static bool jump = false;
@@ -70,6 +70,13 @@ namespace LegallyDistinctDino
             //    x = 0;
             //}
 
+            //obstacle movement instead of player
+            obstacleX--;
+            if (obstacleX < 0)
+            {
+                obstacleX = Console.WindowWidth - 1;
+            }
+
             if (jump)
             {
                 y = ground - jumpProgress; //starts at 5, goes down slowly
@@ -93,6 +100,10 @@ namespace LegallyDistinctDino
                 crouch = false;
             }
 
+            if (x == obstacleX && y == obstacleY)
+            {
+                Game.GameOver();
+            }
         }
 
         //animation part
@@ -148,14 +159,14 @@ namespace LegallyDistinctDino
         
         
         //method to detect collisions
-        public static void CollisionDetection()
-        {
-            if (x == obstacleX && y == obstacleY)
-            {
-                Game.GameOver();
-            }
+        //public static void CollisionDetection()
+        //{
+        //    if (x == obstacleX && y == obstacleY)
+        //    {
+        //        Game.GameOver();
+        //    }
 
-        }
+        //}
 
     }
 }
