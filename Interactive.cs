@@ -298,7 +298,7 @@ namespace LegallyDistinctDino
 
             //}
             string chaser =
-            " \\   \\  ,,\r\n /   /  \\\\\r\n .---.  //\r\n(:::::)(_)():\r\n `---'  \\\\\r\n \\   \\  //\r\n /   / '''";
+            " \\   \\  ,,\n /   /  \\\\\n .---.  //\n(:::::)(_)():\n `---'  \\\\\n \\   \\  //\n /   / '''";
             // Clear old character
             GameScreen.SetStringAt(xC, yC - 2, chaser);
         }
