@@ -24,7 +24,7 @@ namespace LegallyDistinctDino
         static bool crouch = false;
         static bool holdingCrouch = false;
         static int crouchTimer = 0;
-        static int crouchDuration = 10; //set crouch time
+        static int crouchDuration = 7; //set crouch time
 
         static int[] obstacleX = new int[10];
         static int[] obstacleY = new int[10];
@@ -137,10 +137,12 @@ namespace LegallyDistinctDino
             {
                 crouchTimer--;
                 crouch = true;
+                y = ground + 1;
             }
             else
             {
                 crouch = false;
+                y = ground;
             }
 
             
@@ -186,7 +188,7 @@ namespace LegallyDistinctDino
             //Console.SetCursorPosition(x, y);
 
             //This is to draw player
-            //Console.Write(jump ? "O" : crouch ? "-" : "O");
+            Console.Write(jump ? "O" : crouch ? "-" : "O");
 
             //if (jump)
             //{
@@ -211,8 +213,8 @@ namespace LegallyDistinctDino
             }
 
             //ground drawn
-            //Console.SetCursorPosition(0, ground + 1);
-            //Console.Write(new string('_', Console.WindowWidth));
+            Console.SetCursorPosition(0, ground + 2);
+            Console.Write(new string('_', Console.WindowWidth));
         }
         
         
