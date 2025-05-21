@@ -137,19 +137,22 @@ namespace LegallyDistinctDino
                 }
             }
 
-            if (crouchTimer > 0)
+            if (!jump)
             {
-                crouchTimer--;
-                crouch = true;
-                y = ground + 1;
-            }
-            else
-            {
-                crouch = false;
-                y = ground;
+                if (crouchTimer > 0)
+                {
+                    crouchTimer--;
+                    crouch = true;
+                    y = ground + 1;
+                }
+                else
+                {
+                    crouch = false;
+                    y = ground;
+                }
             }
 
-            
+
         }
 
         //checks for where the furthest obstacle is and spawns it BEHIND it
