@@ -63,8 +63,11 @@
 
             for (int x = 0; x < rowData.Length; x++)
             {
-                NextFrame[x, y] = rowData[x];
-                ChangedFrame[x, y] = true;
+                if (NextFrame[x, y] == '\0' || NextFrame[x, y] == ' ')
+                {
+                    NextFrame[x, y] = rowData[x];
+                    ChangedFrame[x, y] = true;
+                }
             }
         }
 
@@ -144,7 +147,17 @@
         // Clear a specified area on the screen
         public static void ClearArea(int x1, int y1, int x2, int y2)
         {
-            char fill = ' ';
+            char fill = '*';
+            if (x1 >= Width) x1 = Width;
+            if (x2 >= Width) x2 = Width;
+            if (y1 >= Height) y1 = Height;
+            if (y2 >= Height) y2 = Height;
+
+            if (x1 < 0) x1 = 0;
+            if (x2 < 0) x2 = 0;
+            if (y1 < 0) y1 = 0;
+            if (y2 < 0) y2 = 0;
+
             for (int x = x1; x < x2; x++)
             {
                 // in the Console y:0 is the top left corner. To get around this we decrease the y instead of increasing it
