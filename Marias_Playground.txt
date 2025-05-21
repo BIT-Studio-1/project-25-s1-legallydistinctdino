@@ -21,7 +21,7 @@ namespace STUDIO1_PROJECT
         static bool crouch = false;
         static bool holdingCrouch = false;
         static int crouchTimer = 0;
-        static int crouchDuration = 10;
+        static int crouchDuration = 7;
 
         static int[] obstacleX = new int[10]; 
         static int[] obstacleY = new int[10];
@@ -119,11 +119,14 @@ namespace STUDIO1_PROJECT
             {
                 crouchTimer--;
                 crouch = true;
+                y = ground + 1;
             }
             else
             {
                 crouch = false;
+                y = ground;
             }
+            
 
             // Reset y position if not jumping or crouching
             if (!jump && !crouch)
@@ -203,7 +206,7 @@ namespace STUDIO1_PROJECT
             }
 
             // Optional ground line
-            Console.SetCursorPosition(0, ground + 1);
+            Console.SetCursorPosition(0, ground + 2);
             Console.Write(new string('_', Console.WindowWidth));
 
            
