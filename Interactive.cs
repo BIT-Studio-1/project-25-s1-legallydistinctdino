@@ -101,6 +101,7 @@ namespace LegallyDistinctDino
                 Thread.Sleep(50);
             }
             Menu.MainMenu();
+            task.Dispose();
         }
 
         static void SpawnObstacle()
