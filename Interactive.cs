@@ -24,6 +24,12 @@ namespace LegallyDistinctDino
         static double gravity = 0.4;
         static double jumps = 10;
 
+
+        static bool preJump = false;
+        static int preJumpT = 0;
+        static int preJumpD = 3;
+
+
         //Variables needed for crouch
         static bool crouch = false;
         static bool holdingCrouch = false;
@@ -108,10 +114,12 @@ namespace LegallyDistinctDino
                     break;
                 }
 
-                if (key.Key == ConsoleKey.Spacebar && !jump && crouchTimer == 0)
+                if (key.Key == ConsoleKey.Spacebar && !jump)
                 {
-                    jump = true;
-                    jumpVelocity = -2;
+                    preJump = true;
+
+                    preJumpT = preJumpD;
+
                 }
                 else if (key.Key == ConsoleKey.C && !jump)
                 {
@@ -164,8 +172,22 @@ namespace LegallyDistinctDino
 
             }
 
+            if (preJump)
+            {
+                //starts 3
+                preJumpT--;
 
-            if(jump)
+                if (preJumpT <= 0) //pre jump crouch ending 
+                {
+                    preJump = false;
+                    jump = true; //start the rest of jump when legs stretched 
+                    jumpVelocity = -2;
+
+                }
+            }
+
+
+            if (jump)
             {
                 jumps += jumpVelocity;
                 jumpVelocity += gravity;
