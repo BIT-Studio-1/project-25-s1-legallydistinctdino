@@ -18,8 +18,7 @@ namespace LegallyDistinctDino
 
         //Variables needed for jump
         static bool jump = false;
-        static int jumpHeight = 5;
-        static int jumpProgress = 0;
+       
 
         static double jumpVelocity = 0;
         static double gravity = 0.4;
