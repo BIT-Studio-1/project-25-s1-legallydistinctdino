@@ -56,8 +56,8 @@ namespace LegallyDistinctDino
         static int prevY = y;
 
         static string jumpUp =
-    "\\o/\n" +
-    " |\n" +
+    "\\o\n" +
+    " |\\\n" +
     "/ \\";
         static string person = 
                 " o\n" +
@@ -277,7 +277,12 @@ namespace LegallyDistinctDino
             if (preJump)
                 GameScreen.SetStringAt(x, y - 2, preJumpPerson);
             else if(!crouch)
-                GameScreen.SetStringAt(x, y - 2, person);
+            {
+                if (jumpVelocity < 0)
+                    GameScreen.SetStringAt(x, y - 2, jumpUp);    
+                else
+                    GameScreen.SetStringAt(x, y - 2, person);
+            }
 
             else
                 GameScreen.SetStringAt(x, y - 3, crouched);
