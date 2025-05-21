@@ -22,14 +22,28 @@
 
         public static void StartTimer()
         {
-            int timer = 0;
+            int seconds = 0;
+            int minutes = 0;
 
             while (true)
             {
-                Thread.Sleep(1000);
-                timer++;
-                String time = timer.ToString();
-                GameScreen.SetStringAt(System.Console.WindowWidth - 10, 5, time);
+                 for (int i = 0; i < 60; i++) {
+                    Thread.Sleep(1000);
+                    seconds++;
+                    if (seconds < 10)
+                    {
+                        GameScreen.SetStringAt(System.Console.WindowWidth - 5, 1, minutes + ":0" + seconds);
+                        GameScreen.Render();
+                    }
+                    else
+                    {
+                        GameScreen.SetStringAt(System.Console.WindowWidth - 5, 1, minutes + ":" + seconds);
+                        GameScreen.Render();
+                    }
+                }
+                minutes+=1;
+                seconds = 0;
+                GameScreen.SetStringAt(System.Console.WindowWidth - 5, 1, minutes + ":" + seconds);
                 GameScreen.Render();
             }
         }
