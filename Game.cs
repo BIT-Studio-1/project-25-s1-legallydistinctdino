@@ -26,10 +26,14 @@
             int minutes = 0;
             bool isPlaying = true;
 
+            // isPlaying has to be set to false when GameOver
             while (isPlaying)
             {
+                // print the current minutes and seconds
                 GameScreen.SetStringAt(System.Console.WindowWidth - 5, 1, minutes + ":0" + seconds);
                 GameScreen.Render();
+
+                // counting and printing the seconds
                 for (int i = 0; i < 60; i++) {
                     Thread.Sleep(1000);
                     seconds++;
@@ -46,8 +50,6 @@
                 }
                 minutes+=1;
                 seconds = 0;
-                GameScreen.SetStringAt(System.Console.WindowWidth - 5, 1, minutes + ":" + seconds);
-                GameScreen.Render();
             }
         }
 
