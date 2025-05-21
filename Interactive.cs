@@ -54,6 +54,11 @@ namespace LegallyDistinctDino
 
         static int prevX = x;
         static int prevY = y;
+
+        static string jumpUp =
+    "\\o/\n" +
+    " |\n" +
+    "/ \\";
         static string person = 
                 " o\n" +
                 "/|\\\n" +
@@ -277,12 +282,9 @@ namespace LegallyDistinctDino
             else
                 GameScreen.SetStringAt(x, y - 3, crouched);
             Chaser();
-<<<<<<< HEAD
-            //Game.StartTimer();
-=======
-            
 
->>>>>>> 0e6bfdcb233e5464df7ed084697e395fcc546e58
+            //Game.StartTimer();
+
             // Render Changes
             GameScreen.Render();
         }
