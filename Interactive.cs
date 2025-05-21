@@ -21,6 +21,10 @@ namespace LegallyDistinctDino
         static int jumpHeight = 5;
         static int jumpProgress = 0;
 
+        static double jumpVelocity = 0;
+        static double gravity = 0.4;
+        static double jumps = 10;
+
         //Variables needed for crouch
         static bool crouch = false;
         static bool holdingCrouch = false;
@@ -99,7 +103,7 @@ namespace LegallyDistinctDino
                 if (key.Key == ConsoleKey.Spacebar && !jump && crouchTimer == 0)
                 {
                     jump = true;
-                    jumpProgress = jumpHeight;
+                    jumpVelocity = -2;
                 }
                 else if (key.Key == ConsoleKey.C && !jump)
                 {
@@ -153,15 +157,17 @@ namespace LegallyDistinctDino
 
             if(jump)
             {
-                y = ground - jumpProgress; //starts at 5, goes down slowly
-                jumpProgress--;
+                jumps += jumpVelocity;
+                jumpVelocity += gravity;
 
-                //at the ground, resets ground back to 10 
-                if (y >= ground)
+                if (jumps >= ground)
                 {
-                    y = ground;
+                    jumps = ground;
                     jump = false;
+                    jumpVelocity = 0;
                 }
+
+                y = (int)jumps;
             }
 
             if (!jump)
