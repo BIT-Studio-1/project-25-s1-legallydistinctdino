@@ -29,6 +29,10 @@ namespace LegallyDistinctDino
         static int preJumpT = 0;
         static int preJumpD = 3;
 
+        static bool endJump = false;
+        static int endJumpT = 0;
+        static int endJumpD = 3;
+
 
         //Variables needed for crouch
         static bool crouch = false;
@@ -55,6 +59,11 @@ namespace LegallyDistinctDino
                 "/|\\\n" +
                 "/ \\";
 
+        static string preJumpPerson =
+               " o\n" +
+                "/|\\\n" +
+                "< >";
+
         static string crouched =
             "\n" +
             " ___\\o\n" +
@@ -68,7 +77,7 @@ namespace LegallyDistinctDino
 
         //Chaser position
         static int xC = 0;
-        static int yC = 5;
+        static int yC = 6;
 
         //escape bool
         static bool exit = false;
@@ -202,6 +211,8 @@ namespace LegallyDistinctDino
                 y = (int)jumps;
             }
 
+            
+
             if (!jump)
             {
                 if (crouchTimer > 0)
@@ -257,13 +268,21 @@ namespace LegallyDistinctDino
             GameScreen.SetRow(new string('_', Console.WindowWidth).ToCharArray(), ground);
 
             // Draw new character
-            if (!crouch)
+
+            if (preJump)
+                GameScreen.SetStringAt(x, y - 2, preJumpPerson);
+            else if(!crouch)
                 GameScreen.SetStringAt(x, y - 2, person);
+
             else
                 GameScreen.SetStringAt(x, y - 3, crouched);
             Chaser();
+<<<<<<< HEAD
+            //Game.StartTimer();
+=======
             
 
+>>>>>>> 0e6bfdcb233e5464df7ed084697e395fcc546e58
             // Render Changes
             GameScreen.Render();
         }
@@ -299,7 +318,7 @@ namespace LegallyDistinctDino
 
             //}
             string chaser =
-            " \\   \\  ,,\r\n /   /  \\\\\r\n .---.  //\r\n(:::::)(_)():\r\n `---'  \\\\\r\n \\   \\  //\r\n /   / '''";
+            " \\   \\  ,,\n /   /  \\\\\n .---.  //\n(:::::)(_)():\n `---'  \\\\\n \\   \\  //\n /   / '''";
             // Clear old character
             GameScreen.SetStringAt(xC, yC - 2, chaser);
         }
