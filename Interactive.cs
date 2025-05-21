@@ -29,11 +29,7 @@ namespace LegallyDistinctDino
         static int preJumpT = 0;
         static int preJumpD = 3;
 
-        static bool endJump = false;
-        static int endJumpT = 0;
-        static int endJumpD = 3;
-
-
+       
         //Variables needed for crouch
         static bool crouch = false;
         static bool holdingCrouch = false;
