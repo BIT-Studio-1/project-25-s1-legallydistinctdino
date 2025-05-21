@@ -288,8 +288,6 @@ namespace LegallyDistinctDino
                 GameScreen.SetStringAt(x, y - 3, crouched);
             Chaser();
 
-            //Game.StartTimer();
-
             // Render Changes
             GameScreen.Render();
         }
