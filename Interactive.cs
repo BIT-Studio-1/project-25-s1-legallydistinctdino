@@ -84,6 +84,10 @@ namespace LegallyDistinctDino
                     obstacleSpeed = 2;
 
                 }
+                else if (key.Key == ConsoleKey.LeftArrow)
+                {
+                    obstacleSpeed = 1;
+                }
             }
 
         }
