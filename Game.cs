@@ -9,7 +9,12 @@
         static int ObjectPOS; // Object Position
         static int PlayerPOS = 1; // Player Position
 
-        
+        // timer variables
+        static int seconds = 0;
+        static int minutes = 0;
+        static bool isPlaying = true;
+
+
 
         // Starting point for code, anyone can adjust as needed
         static void Main(string[] args)
@@ -22,10 +27,6 @@
 
         public static void StartTimer()
         {
-            int seconds = 0;
-            int minutes = 0;
-            bool isPlaying = true;
-
             // isPlaying has to be set to false when GameOver
             while (isPlaying)
             {
