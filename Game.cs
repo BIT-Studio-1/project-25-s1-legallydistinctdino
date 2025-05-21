@@ -25,7 +25,7 @@
             
         }
 
-        public static void StartTimer()
+        public static async Task StartTimer()
         {
             // isPlaying has to be set to false when GameOver
             while (isPlaying)
@@ -36,7 +36,7 @@
 
                 // counting and printing the seconds
                 for (int i = 0; i < 60; i++) {
-                    Thread.Sleep(1000);
+                    await Task.Delay(1000);
                     seconds++;
                     if (seconds < 10)
                     {
