@@ -116,20 +116,23 @@
 
         public static void ClearStringAt(int startX, int startY, string value)
         {
+            char fill = ' ';
             string[] lines = value.Split('\n');
             int currentY = startY;
 
-            int clearWidth = 8;
+            //int clearWidth = 8;
 
             foreach (string line in lines)
             {
                 if (currentY >= Height) break;
 
+                char[] chars = line.ToCharArray();
+
                 int currentX = startX;
-                for (int i = 0; i < clearWidth; i++)
+                foreach (char c in chars)
                 {
                     if (currentX >= Width) break;
-                    NextFrame[currentX, currentY] = ' ';
+                    NextFrame[currentX, currentY] = fill;
                     ChangedFrame[currentX, currentY] = true;
                     currentX++;
                 }
