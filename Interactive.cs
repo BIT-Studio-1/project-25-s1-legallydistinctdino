@@ -11,7 +11,7 @@ namespace LegallyDistinctDino
         static Random rand = new Random();
 
         //Player location
-        static int x = 5;
+        static int x = 18;
         static int y = 10;
         static int ground = 10;
 
@@ -47,6 +47,10 @@ namespace LegallyDistinctDino
             " ___\\o\n" +
             "/)  | ";
 
+        //Chaser position
+        static int xC = 0;
+        static int yC = 5;
+
         //loops while playing
         public static void Calls()
         {
@@ -58,6 +62,7 @@ namespace LegallyDistinctDino
                 Input();
                 Update();
                 Draw();
+                Chaser();
                 Thread.Sleep(50);
             }
         }
@@ -221,8 +226,18 @@ namespace LegallyDistinctDino
                 }
             }
         }
-        
-        
+
+        public static void Chaser()
+        {
+            string chaser =
+                " \\   \\  ,,\r\n /   /  \\\\\r\n .---.  //\r\n(:::::)(_)():\r\n `---'  \\\\\r\n \\   \\  //\r\n /   / '''";
+            // Clear old character
+            GameScreen.SetStringAt(xC, yC - 2, chaser);
+            // Render Changes
+            GameScreen.Render();
+        }
+
+
         //method to detect collisions
         //public static void CollisionDetection()
         //{
