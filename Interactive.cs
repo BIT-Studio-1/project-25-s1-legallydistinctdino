@@ -54,6 +54,11 @@ namespace LegallyDistinctDino
 
         static int prevX = x;
         static int prevY = y;
+
+        static string jumpUp =
+    "\\o/\n" +
+    " |\n" +
+    "/ \\";
         static string person = 
                 " o\n" +
                 "/|\\\n" +
