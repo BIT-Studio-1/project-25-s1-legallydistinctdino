@@ -180,7 +180,7 @@ namespace LegallyDistinctDino
                 " ___\\o\n" +
                 "/)  | ";
 
-            GameScreen.ClearArea(x, y, x + 20, y - 20);
+            //GameScreen.ClearArea(x, y, x + 20, y - 20);
             if (!crouch) GameScreen.SetStringAt(x, y-3, person);
             else GameScreen.SetStringAt(x, y-3, crouched);
             //GameScreen.Clear('#');
