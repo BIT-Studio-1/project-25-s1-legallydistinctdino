@@ -32,7 +32,6 @@
             {
                 // print the current minutes and seconds
                 GameScreen.SetStringAt(System.Console.WindowWidth - 5, 1, minutes + ":0" + seconds);
-                GameScreen.Render();
 
                 // counting and printing the seconds
                 for (int i = 0; i < 60; i++) {
@@ -41,12 +40,10 @@
                     if (seconds < 10)
                     {
                         GameScreen.SetStringAt(System.Console.WindowWidth - 5, 1, minutes + ":0" + seconds);
-                        GameScreen.Render();
                     }
                     else
                     {
                         GameScreen.SetStringAt(System.Console.WindowWidth - 5, 1, minutes + ":" + seconds);
-                        GameScreen.Render();
                     }
                 }
                 minutes+=1;
