@@ -269,8 +269,36 @@ namespace LegallyDistinctDino
 
         public static void Chaser()
         {
+            ////Displays 1st chaser
+            //if ()
+            //{
+            //    string chaser =
+            //    " \\   \\  ,,\r\n /   /  \\\\\r\n .---.  //\r\n(:::::)(_)():\r\n `---'  \\\\\r\n \\   \\  //\r\n /   / '''";
+            //    // Clear old character
+            //    GameScreen.SetStringAt(xC, yC - 2, chaser);
+            //}
+            ////Displays 2nd chaser
+            //else if ()
+            //{
+
+            //}
+            ////Displays 3rd chaser
+            //else if ()
+            //{
+
+            //}
+            ////Displays 4th chaser
+            //else if ()
+            //{
+
+            //}
+            ////Displays final chaser
+            //else
+            //{
+
+            //}
             string chaser =
-                " \\   \\  ,,\r\n /   /  \\\\\r\n .---.  //\r\n(:::::)(_)():\r\n `---'  \\\\\r\n \\   \\  //\r\n /   / '''";
+            " \\   \\  ,,\r\n /   /  \\\\\r\n .---.  //\r\n(:::::)(_)():\r\n `---'  \\\\\r\n \\   \\  //\r\n /   / '''";
             // Clear old character
             GameScreen.SetStringAt(xC, yC - 2, chaser);
         }
