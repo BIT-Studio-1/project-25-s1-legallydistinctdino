@@ -114,6 +114,28 @@
             }
         }
 
+        public static void ClearStringAt(int startX, int startY, string value)
+        {
+            string[] lines = value.Split('\n');
+            int currentY = startY;
+
+            foreach (string line in lines)
+            {
+                if (currentY >= Height) break;
+
+                int currentX = startX;
+                for (int i = 0; i < line.Length; i++)
+                {
+                    if (currentX >= Width) break;
+                    NextFrame[currentX, currentY] = ' ';
+                    ChangedFrame[currentX, currentY] = true;
+                    currentX++;
+                }
+
+                currentY++;
+            }
+        }
+
         // Clear a specified area on the screen
         public static void ClearArea(int x1, int y1, int x2, int y2)
         {
