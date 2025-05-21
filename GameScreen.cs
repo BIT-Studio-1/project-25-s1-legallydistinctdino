@@ -147,7 +147,7 @@
         // Clear a specified area on the screen
         public static void ClearArea(int x1, int y1, int x2, int y2)
         {
-            char fill = '*';
+            char fill = ' ';
             if (x1 >= Width) x1 = Width;
             if (x2 >= Width) x2 = Width;
             if (y1 >= Height) y1 = Height;
