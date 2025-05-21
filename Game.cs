@@ -121,6 +121,8 @@
             //Clears and then prints a bottle of gin in ASCII and says gin collected in ASCII
             Console.WriteLine(" ______\n |    |\n |    |\n |    |\n/      \\\n|      |\n|      |\n|      |\n|      |\n|      |\n|      |\n________");
             Console.WriteLine("   ___ _           ___      _ _           _           _ \r\n  / _ (_)_ __     / __\\___ | | | ___  ___| |_ ___  __| |\r\n / /_\\/ | '_ \\   / /  / _ \\| | |/ _ \\/ __| __/ _ \\/ _` |\r\n/ /_\\\\| | | | | / /__| (_) | | |  __/ (__| ||  __/ (_| |\r\n\\____/|_|_| |_| \\____/\\___/|_|_|\\___|\\___|\\__\\___|\\__,_|");
+
+
         }
 
         //(Braedon) Checks if the conditions for playing are active and returns if changes allowing the game to end
@@ -151,6 +153,7 @@
                 Console.ReadKey(intercept: true);
             }
             Console.ReadLine();
+            Console.Clear();
             MainMenu();
         }
 
