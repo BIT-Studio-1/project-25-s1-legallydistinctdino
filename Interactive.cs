@@ -57,28 +57,6 @@ namespace LegallyDistinctDino
             {
                 Input();
                 Update();
-                Input();
-                Update();
-
-                // Clear old character
-                GameScreen.ClearStringAt(prevX, prevY - 3, crouch ? crouched : person);
-
-                // Draw new character
-                if (!crouch)
-                    GameScreen.SetStringAt(x, y - 3, person);
-                else
-                    GameScreen.SetStringAt(x, y - 3, crouched);
-
-                // Draw ground line
-                GameScreen.SetRow(new string('_', Console.WindowWidth).ToCharArray(), ground);
-
-                // ✅ Render here
-                GameScreen.Render();
-
-                // Update previous position tracker
-                prevX = x;
-                prevY = y;
-
                 Draw();
                 Thread.Sleep(50);
             }
@@ -214,35 +192,25 @@ namespace LegallyDistinctDino
                 " ___\\o\n" +
                 "/)  | ";
 
-            //GameScreen.ClearArea(x, y, x + 20, y - 20);
-            if (!crouch) GameScreen.SetStringAt(x, y-3, person);
-            else GameScreen.SetStringAt(x, y-3, crouched);
-            //GameScreen.Clear('#');
+            // Clear old character
+            GameScreen.ClearArea(prevX, prevY, prevX+6, prevY-3);
+
+            // Draw ground line
             GameScreen.SetRow(new string('_', Console.WindowWidth).ToCharArray(), ground);
 
-            
+            // Draw new character
+            if (!crouch)
+                GameScreen.SetStringAt(x, y - 2, person);
+            else
+                GameScreen.SetStringAt(x, y - 3, crouched);
+
+            // Render Changes
             GameScreen.Render();
 
-            //Console.CursorVisible = false;
-            //Console.Clear();
+            // Update previous position tracker
+            prevX = x;
+            prevY = y;
 
-            //Console.SetCursorPosition(x, y);
-
-            //This is to draw player
-            //Console.Write(jump ? "O" : crouch ? "-" : "O");
-
-            //if (jump)
-            //{
-            //    Console.Write("O");
-            //}
-            //else if (crouch)
-            //{
-            //    Console.Write("-"); 
-            //}
-            //else
-            //{
-            //    Console.Write("O"); 
-            //}
 
             for (int i = 0; i < obstacleX.Length; i++)
             {
@@ -252,10 +220,6 @@ namespace LegallyDistinctDino
                     Console.Write("#");
                 }
             }
-
-            //ground drawn
-            Console.SetCursorPosition(0, ground + 2);
-            Console.Write(new string('_', Console.WindowWidth));
         }
         
         
