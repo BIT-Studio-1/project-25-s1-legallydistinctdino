@@ -62,7 +62,6 @@ namespace LegallyDistinctDino
                 Input();
                 Update();
                 Draw();
-                Chaser();
                 Thread.Sleep(50);
             }
         }
@@ -208,7 +207,7 @@ namespace LegallyDistinctDino
                 GameScreen.SetStringAt(x, y - 2, person);
             else
                 GameScreen.SetStringAt(x, y - 3, crouched);
-
+            Chaser();
             // Render Changes
             GameScreen.Render();
 
@@ -233,8 +232,6 @@ namespace LegallyDistinctDino
                 " \\   \\  ,,\r\n /   /  \\\\\r\n .---.  //\r\n(:::::)(_)():\r\n `---'  \\\\\r\n \\   \\  //\r\n /   / '''";
             // Clear old character
             GameScreen.SetStringAt(xC, yC - 2, chaser);
-            // Render Changes
-            GameScreen.Render();
         }
 
 
