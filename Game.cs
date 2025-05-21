@@ -17,16 +17,40 @@
             
             Menu.TitleScreen();
             
+            
         }
 
-        
-
-        // Maria
-        static void MainMenu()
+        public static void StartTimer()
         {
+            int seconds = 0;
+            int minutes = 0;
+            bool isPlaying = true;
 
-            
+            // isPlaying has to be set to false when GameOver
+            while (isPlaying)
+            {
+                // print the current minutes and seconds
+                GameScreen.SetStringAt(System.Console.WindowWidth - 5, 1, minutes + ":0" + seconds);
+                GameScreen.Render();
 
+                // counting and printing the seconds
+                for (int i = 0; i < 60; i++) {
+                    Thread.Sleep(1000);
+                    seconds++;
+                    if (seconds < 10)
+                    {
+                        GameScreen.SetStringAt(System.Console.WindowWidth - 5, 1, minutes + ":0" + seconds);
+                        GameScreen.Render();
+                    }
+                    else
+                    {
+                        GameScreen.SetStringAt(System.Console.WindowWidth - 5, 1, minutes + ":" + seconds);
+                        GameScreen.Render();
+                    }
+                }
+                minutes+=1;
+                seconds = 0;
+            }
         }
 
         // Samuel
@@ -50,32 +74,6 @@
             //ClearGameScreen();
             //SetRow(new string(' ', 120).ToCharArray(), 28);
             RunGame();
-        }
-
-
-
-        // Braedon & Samuel
-        static void SetupBackground()
-            //test background/concept background
-        {
-            Console.WriteLine("                          _____                               ____               ");
-            Console.WriteLine("                       ___|   \\                              _|   \\              ");
-            Console.WriteLine("                      /________\\                           /________\\            ");
-            Console.WriteLine("                                                                                 ");
-            Console.WriteLine("                                                                                 ");
-            Console.WriteLine("                                                                                 ");
-            Console.WriteLine("                                                                                 ");
-            Console.WriteLine("                                                                                 ");
-            Console.WriteLine("                                                                                 ");
-            Console.WriteLine("                                                                                 ");
-            Console.WriteLine("                                                                                 ");
-            Console.WriteLine("                                                                                 ");
-            Console.WriteLine("_________________________________________________________________________________");
-
-            string person = 
-                "  o\r\n" +
-                " /|\\\r\n" +
-                " / \\";
         }
 
         // Samuel & Braedon
@@ -154,7 +152,6 @@
             }
             Console.ReadLine();
             Console.Clear();
-            MainMenu();
         }
 
         //when you decide you don't actually want to play
