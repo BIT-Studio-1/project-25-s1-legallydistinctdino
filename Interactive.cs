@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Runtime.InteropServices;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -51,13 +52,16 @@ namespace LegallyDistinctDino
         static int xC = 0;
         static int yC = 5;
 
+        //escape bool
+        static bool exit = false;
+
         //loops while playing
         public static void Calls()
         {
-
+            exit = false;
             SpawnObstacle();
 
-            while (true)
+            while (!exit)
             {
                 Input();
                 Update();
@@ -65,6 +69,7 @@ namespace LegallyDistinctDino
                 Chaser();
                 Thread.Sleep(50);
             }
+            Menu.MainMenu();
         }
 
         static void SpawnObstacle()
@@ -85,6 +90,12 @@ namespace LegallyDistinctDino
             while (Console.KeyAvailable)
             {
                 ConsoleKeyInfo key = Console.ReadKey(true);
+                // if escape is pushed go back to the main menu instantly
+                if (key.Key == ConsoleKey.Escape)
+                {
+                    exit = true;
+                    break;
+                }
 
                 if (key.Key == ConsoleKey.Spacebar && !jump && crouchTimer == 0)
                 {
@@ -187,16 +198,6 @@ namespace LegallyDistinctDino
         //animation part
         public static void Draw()
         {
-            string person =
-                " o\n" +
-                "/|\\\n" +
-                "/ \\";
-
-            string crouched =
-                "\n" +
-                " ___\\o\n" +
-                "/)  | ";
-
             // Clear old character
             GameScreen.ClearArea(prevX, prevY, prevX+6, prevY-3);
 
