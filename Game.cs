@@ -24,10 +24,13 @@
         {
             int seconds = 0;
             int minutes = 0;
+            bool isPlaying = true;
 
-            while (true)
+            while (isPlaying)
             {
-                 for (int i = 0; i < 60; i++) {
+                GameScreen.SetStringAt(System.Console.WindowWidth - 5, 1, minutes + ":0" + seconds);
+                GameScreen.Render();
+                for (int i = 0; i < 60; i++) {
                     Thread.Sleep(1000);
                     seconds++;
                     if (seconds < 10)
