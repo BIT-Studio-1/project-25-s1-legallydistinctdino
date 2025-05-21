@@ -35,6 +35,18 @@ namespace LegallyDistinctDino
         static bool rightArrowPressed = false;
         static int obstacleSpeed = 1;
 
+        static int prevX = x;
+        static int prevY = y;
+        static string person = 
+                " o\n" +
+                "/|\\\n" +
+                "/ \\";
+
+        static string crouched =
+            "\n" +
+            " ___\\o\n" +
+            "/)  | ";
+
         //loops while playing
         public static void Calls()
         {
@@ -45,6 +57,28 @@ namespace LegallyDistinctDino
             {
                 Input();
                 Update();
+                Input();
+                Update();
+
+                // Clear old character
+                GameScreen.ClearStringAt(prevX, prevY - 3, crouch ? crouched : person);
+
+                // Draw new character
+                if (!crouch)
+                    GameScreen.SetStringAt(x, y - 3, person);
+                else
+                    GameScreen.SetStringAt(x, y - 3, crouched);
+
+                // Draw ground line
+                GameScreen.SetRow(new string('_', Console.WindowWidth).ToCharArray(), ground);
+
+                // ✅ Render here
+                GameScreen.Render();
+
+                // Update previous position tracker
+                prevX = x;
+                prevY = y;
+
                 Draw();
                 Thread.Sleep(50);
             }
@@ -118,7 +152,7 @@ namespace LegallyDistinctDino
 
                 if (x == obstacleX[i] && y == obstacleY[i])
                 {
-                    Game.GameOver();
+                    //Game.GameOver();
                 }
 
             }
