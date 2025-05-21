@@ -87,7 +87,7 @@ namespace LegallyDistinctDino
         {
             exit = false;
             SpawnObstacle();
-
+            Task task = Game.StartTimer();
             while (!exit)
             {
                 Input();
@@ -277,15 +277,48 @@ namespace LegallyDistinctDino
             else
                 GameScreen.SetStringAt(x, y - 3, crouched);
             Chaser();
+<<<<<<< HEAD
             //Game.StartTimer();
+=======
+            
+
+>>>>>>> 0e6bfdcb233e5464df7ed084697e395fcc546e58
             // Render Changes
             GameScreen.Render();
         }
 
         public static void Chaser()
         {
+            ////Displays 1st chaser
+            //if ()
+            //{
+            //    string chaser =
+            //    " \\   \\  ,,\r\n /   /  \\\\\r\n .---.  //\r\n(:::::)(_)():\r\n `---'  \\\\\r\n \\   \\  //\r\n /   / '''";
+            //    // Clear old character
+            //    GameScreen.SetStringAt(xC, yC - 2, chaser);
+            //}
+            ////Displays 2nd chaser
+            //else if ()
+            //{
+
+            //}
+            ////Displays 3rd chaser
+            //else if ()
+            //{
+
+            //}
+            ////Displays 4th chaser
+            //else if ()
+            //{
+
+            //}
+            ////Displays final chaser
+            //else
+            //{
+
+            //}
             string chaser =
-                " \\   \\  ,,\r\n /   /  \\\\\r\n .---.  //\r\n(:::::)(_)():\r\n `---'  \\\\\r\n \\   \\  //\r\n /   / '''";
+            " \\   \\  ,,\r\n /   /  \\\\\r\n .---.  //\r\n(:::::)(_)():\r\n `---'  \\\\\r\n \\   \\  //\r\n /   / '''";
             // Clear old character
             GameScreen.SetStringAt(xC, yC - 2, chaser);
         }
