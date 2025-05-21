@@ -119,12 +119,14 @@
             string[] lines = value.Split('\n');
             int currentY = startY;
 
+            int clearWidth = 8;
+
             foreach (string line in lines)
             {
                 if (currentY >= Height) break;
 
                 int currentX = startX;
-                for (int i = 0; i < line.Length; i++)
+                for (int i = 0; i < clearWidth; i++)
                 {
                     if (currentX >= Width) break;
                     NextFrame[currentX, currentY] = ' ';
