@@ -33,15 +33,6 @@
                 GameScreen.Render();
             }
         }
-        
-
-        // Maria
-        static void MainMenu()
-        {
-
-            
-
-        }
 
         // Samuel
         // Called before the game is started to setup variables and generate required variables
@@ -64,32 +55,6 @@
             //ClearGameScreen();
             //SetRow(new string(' ', 120).ToCharArray(), 28);
             RunGame();
-        }
-
-
-
-        // Braedon & Samuel
-        static void SetupBackground()
-            //test background/concept background
-        {
-            Console.WriteLine("                          _____                               ____               ");
-            Console.WriteLine("                       ___|   \\                              _|   \\              ");
-            Console.WriteLine("                      /________\\                           /________\\            ");
-            Console.WriteLine("                                                                                 ");
-            Console.WriteLine("                                                                                 ");
-            Console.WriteLine("                                                                                 ");
-            Console.WriteLine("                                                                                 ");
-            Console.WriteLine("                                                                                 ");
-            Console.WriteLine("                                                                                 ");
-            Console.WriteLine("                                                                                 ");
-            Console.WriteLine("                                                                                 ");
-            Console.WriteLine("                                                                                 ");
-            Console.WriteLine("_________________________________________________________________________________");
-
-            string person = 
-                "  o\r\n" +
-                " /|\\\r\n" +
-                " / \\";
         }
 
         // Samuel & Braedon
@@ -168,7 +133,6 @@
             }
             Console.ReadLine();
             Console.Clear();
-            MainMenu();
         }
 
         //when you decide you don't actually want to play
