@@ -29,6 +29,10 @@ namespace LegallyDistinctDino
         static int preJumpT = 0;
         static int preJumpD = 3;
 
+        static bool endJump = false;
+        static int endJumpT = 0;
+        static int endJumpD = 3;
+
 
         //Variables needed for crouch
         static bool crouch = false;
@@ -54,6 +58,11 @@ namespace LegallyDistinctDino
                 " o\n" +
                 "/|\\\n" +
                 "/ \\";
+
+        static string preJumpPerson =
+               " o\n" +
+                "/|\\\n" +
+                "< >";
 
         static string crouched =
             "\n" +
@@ -202,6 +211,8 @@ namespace LegallyDistinctDino
                 y = (int)jumps;
             }
 
+            
+
             if (!jump)
             {
                 if (crouchTimer > 0)
@@ -257,12 +268,16 @@ namespace LegallyDistinctDino
             GameScreen.SetRow(new string('_', Console.WindowWidth).ToCharArray(), ground);
 
             // Draw new character
-            if (!crouch)
+
+            if (preJump)
+                GameScreen.SetStringAt(x, y - 2, preJumpPerson);
+            else if(!crouch)
                 GameScreen.SetStringAt(x, y - 2, person);
+
             else
                 GameScreen.SetStringAt(x, y - 3, crouched);
             Chaser();
-            Game.StartTimer();
+            //Game.StartTimer();
             // Render Changes
             GameScreen.Render();
         }
