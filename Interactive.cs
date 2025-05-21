@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Runtime.InteropServices;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -11,14 +12,17 @@ namespace LegallyDistinctDino
         static Random rand = new Random();
 
         //Player location
-        static int x = 5;
+        static int x = 18;
         static int y = 10;
         static int ground = 10;
 
         //Variables needed for jump
         static bool jump = false;
-        static int jumpHeight = 5;
-        static int jumpProgress = 0;
+       
+
+        static double jumpVelocity = 0;
+        static double gravity = 0.4;
+        static double jumps = 10;
 
         //Variables needed for crouch
         static bool crouch = false;
@@ -47,19 +51,27 @@ namespace LegallyDistinctDino
             " ___\\o\n" +
             "/)  | ";
 
+        //Chaser position
+        static int xC = 0;
+        static int yC = 5;
+
+        //escape bool
+        static bool exit = false;
+
         //loops while playing
         public static void Calls()
         {
-
+            exit = false;
             SpawnObstacle();
 
-            while (true)
+            while (!exit)
             {
                 Input();
                 Update();
                 Draw();
                 Thread.Sleep(50);
             }
+            Menu.MainMenu();
         }
 
         static void SpawnObstacle()
@@ -80,11 +92,17 @@ namespace LegallyDistinctDino
             while (Console.KeyAvailable)
             {
                 ConsoleKeyInfo key = Console.ReadKey(true);
+                // if escape is pushed go back to the main menu instantly
+                if (key.Key == ConsoleKey.Escape)
+                {
+                    exit = true;
+                    break;
+                }
 
                 if (key.Key == ConsoleKey.Spacebar && !jump && crouchTimer == 0)
                 {
                     jump = true;
-                    jumpProgress = jumpHeight;
+                    jumpVelocity = -2;
                 }
                 else if (key.Key == ConsoleKey.C && !jump)
                 {
@@ -138,15 +156,17 @@ namespace LegallyDistinctDino
 
             if(jump)
             {
-                y = ground - jumpProgress; //starts at 5, goes down slowly
-                jumpProgress--;
+                jumps += jumpVelocity;
+                jumpVelocity += gravity;
 
-                //at the ground, resets ground back to 10 
-                if (y >= ground)
+                if (jumps >= ground)
                 {
-                    y = ground;
+                    jumps = ground;
                     jump = false;
+                    jumpVelocity = 0;
                 }
+
+                y = (int)jumps;
             }
 
             if (!jump)
@@ -182,16 +202,6 @@ namespace LegallyDistinctDino
         //animation part
         public static void Draw()
         {
-            string person =
-                " o\n" +
-                "/|\\\n" +
-                "/ \\";
-
-            string crouched =
-                "\n" +
-                " ___\\o\n" +
-                "/)  | ";
-
             // Clear old character
             GameScreen.ClearArea(prevX, prevY, prevX+6, prevY-3);
 
@@ -203,7 +213,7 @@ namespace LegallyDistinctDino
                 GameScreen.SetStringAt(x, y - 2, person);
             else
                 GameScreen.SetStringAt(x, y - 3, crouched);
-
+            Chaser();
             // Render Changes
             GameScreen.Render();
 
@@ -221,8 +231,16 @@ namespace LegallyDistinctDino
                 }
             }
         }
-        
-        
+
+        public static void Chaser()
+        {
+            string chaser =
+                " \\   \\  ,,\r\n /   /  \\\\\r\n .---.  //\r\n(:::::)(_)():\r\n `---'  \\\\\r\n \\   \\  //\r\n /   / '''";
+            // Clear old character
+            GameScreen.SetStringAt(xC, yC - 2, chaser);
+        }
+
+
         //method to detect collisions
         //public static void CollisionDetection()
         //{
