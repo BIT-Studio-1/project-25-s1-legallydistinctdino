@@ -82,7 +82,7 @@ namespace LegallyDistinctDino
 
         //Chaser position
         static int xC = 0;
-        static int yC = 5;
+        static int yC = 6;
 
         //escape bool
         static bool exit = false;
