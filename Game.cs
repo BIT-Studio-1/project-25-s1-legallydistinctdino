@@ -17,8 +17,22 @@
             
             Menu.TitleScreen();
             
+            
         }
 
+        public static void StartTimer()
+        {
+            int timer = 0;
+
+            while (true)
+            {
+                Thread.Sleep(1000);
+                timer++;
+                String time = timer.ToString();
+                GameScreen.SetStringAt(System.Console.WindowWidth - 10, 5, time);
+                GameScreen.Render();
+            }
+        }
         
 
         // Maria
