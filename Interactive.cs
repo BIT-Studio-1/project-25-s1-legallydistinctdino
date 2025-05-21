@@ -277,12 +277,7 @@ namespace LegallyDistinctDino
             else
                 GameScreen.SetStringAt(x, y - 3, crouched);
             Chaser();
-<<<<<<< HEAD
-            //Game.StartTimer();
-=======
-            
 
->>>>>>> 0e6bfdcb233e5464df7ed084697e395fcc546e58
             // Render Changes
             GameScreen.Render();
         }
