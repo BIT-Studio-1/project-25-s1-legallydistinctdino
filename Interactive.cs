@@ -13,8 +13,8 @@ namespace LegallyDistinctDino
 
         //Player location
         static int x = 18;
-        static int y = 10;
-        static int ground = 10;
+        static int y = 25;
+        static int ground = 25;
 
         //Variables needed for jump
         static bool jump = false;
@@ -22,7 +22,7 @@ namespace LegallyDistinctDino
 
         static double jumpVelocity = 0;
         static double gravity = 0.4;
-        static double jumps = 10;
+        static double jumps = 25;
 
 
         static bool preJump = false;
@@ -78,7 +78,7 @@ namespace LegallyDistinctDino
 
         //Chaser position
         static int xC = 0;
-        static int yC = 6;
+        static int yC = 21;
 
         //escape bool
         static bool exit = false;
@@ -91,6 +91,7 @@ namespace LegallyDistinctDino
             Task task = Game.StartTimer();
             while (!exit)
             {
+                //GameScreen.SetScreenDimensions(Console.WindowWidth, Console.WindowHeight);
                 Input();
                 Update();
                 Draw();
