@@ -42,8 +42,8 @@ namespace LegallyDistinctDino
         static int[] prevObstacleX = new int[10];
         static int[] prevObstacleY = new int[10];
 
-        static int minSpace = 10;
-        static int maxSpace = 30;
+        static int minSpace = 25;
+        static int maxSpace = 60;
 
         static bool rightArrowPressed = false;
         static int obstacleSpeed = 1;
@@ -75,7 +75,10 @@ namespace LegallyDistinctDino
             " /  \\\n" +
             "/____\\\n" +
             "  ||";
-
+        static string smallObstacle =
+            " /\\\n" +
+            "/__\\\n" +
+            " ||";
         //Chaser position
         static int xC = 0;
         static int yC = 21;
@@ -91,7 +94,6 @@ namespace LegallyDistinctDino
             Task task = Game.StartTimer();
             while (!exit)
             {
-                //GameScreen.SetScreenDimensions(Console.WindowWidth, Console.WindowHeight);
                 Input();
                 Update();
                 Draw();
@@ -108,7 +110,7 @@ namespace LegallyDistinctDino
             for (int i = 0; i < obstacleX.Length; i++)
             {
                 obstacleX[i] = start;
-                obstacleY[i] = ground-3;
+                obstacleY[i] = ground-2;
                 start += rand.Next(minSpace, maxSpace);
             }
         }
@@ -174,7 +176,7 @@ namespace LegallyDistinctDino
                     int furthestX = FurthestObstacle();
 
                     obstacleX[i] = furthestX + rand.Next(minSpace, maxSpace);
-                    obstacleY[i] = ground-3;
+                    obstacleY[i] = ground-2;
                 }
 
                 if (x == obstacleX[i] && y == obstacleY[i])
@@ -263,12 +265,11 @@ namespace LegallyDistinctDino
                 if (obstacleX[i] >= 0 && obstacleX[i] < Console.WindowWidth)
                 {
                     GameScreen.ClearArea(prevObstacleX[i], prevObstacleY[i]+3, prevObstacleX[i]+6, prevObstacleY[i]-1);
-                    GameScreen.SetStringAt(obstacleX[i], obstacleY[i], obstacle);
+                    GameScreen.SetStringAt(obstacleX[i], obstacleY[i], smallObstacle);
                 }
             }
 
-            // Draw ground line
-            GameScreen.SetRow(new string('_', Console.WindowWidth).ToCharArray(), ground);
+            
 
             // Draw new character
 
@@ -284,6 +285,10 @@ namespace LegallyDistinctDino
 
             else
                 GameScreen.SetStringAt(x, y - 3, crouched);
+
+            // Draw ground line
+            GameScreen.SetRow(new string('_', Console.WindowWidth).ToCharArray(), ground);
+
             Chaser();
 
             // Render Changes
