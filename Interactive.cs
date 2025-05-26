@@ -297,36 +297,52 @@ namespace LegallyDistinctDino
 
         public static void Chaser()
         {
+            //COMMENTED OUT DUE TO BUGS
+            //int seconds = 40;
+            //int minutes = 1;
+            //string chaser;
             ////Displays 2nd chaser
-            //if ()
+            //if (seconds == 20 && minutes == 0)
             //{
-                
+            //    chaser =
+            //    "  _\r\n {_}\r\n | |\r\n |=|\r\n/   \\    .\r\n|.--|  '\r\n||  |  \\~~~/\r\n||  |   \\_/     \r\n|'--|    Y   \r\n'-=-'   _|_";
+            //    // Clear old character
+            //    GameScreen.SetStringAt(xC, yC - 2, chaser);
             //}
             ////Displays 3rd chaser
-            //else if ()
+            //else if (seconds == 45 && minutes == 0)
             //{
-
+            //    chaser =
+            //    "    __//\r\n   / .. \\\r\n   \\ \\/ /\r\n`__/    \\\r\n \\______/\r\n   |  |";
+            //    // Clear old character
+            //    GameScreen.SetStringAt(xC, yC - 2, chaser);
             //}
             ////Displays 4th chaser
-            //else if ()
+            //else if (minutes == 1 && seconds == 20)
             //{
-
+            //    chaser =
+            //    "      _____\r\n\t / . _<~\r\n  __/  /\r\n (_____)_\r\n(________)";
+            //    // Clear old character
+            //    GameScreen.SetStringAt(xC, yC - 2, chaser);
             //}
             ////Displays final chaser
-            //else if ()
+            //else if (minutes == 1 && seconds == 40)
             //{
-
+            //    chaser =
+            //    "           _____\r\n\t\t  /_/  0\\\r\n/--------/ ______-\r\n |________/\r\n  | |  | |";
+            //    // Clear old character
+            //    GameScreen.SetStringAt(xC, yC - 2, chaser);
             //}
             ////Displays 1st chaser
             //else
             //{
-            //    string chaser =
+            //    chaser =
             //    " \\   \\  ,,\r\n /   /  \\\\\r\n .---.  //\r\n(:::::)(_)():\r\n `---'  \\\\\r\n \\   \\  //\r\n /   / '''";
             //    // Clear old character
             //    GameScreen.SetStringAt(xC, yC - 2, chaser);
             //}
             string chaser =
-            " \\   \\  ,,\n /   /  \\\\\n .---.  //\n(:::::)(_)():\n `---'  \\\\\n \\   \\  //\n /   / '''";
+                " \\   \\  ,,\r\n /   /  \\\\\r\n .---.  //\r\n(:::::)(_)():\r\n `---'  \\\\\r\n \\   \\  //\r\n /   / '''";
             // Clear old character
             GameScreen.SetStringAt(xC, yC - 2, chaser);
         }
