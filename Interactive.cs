@@ -18,7 +18,7 @@ namespace LegallyDistinctDino
 
         //Variables needed for jump
         static bool jump = false;
-       
+
 
         static double jumpVelocity = 0;
         static double gravity = 0.4;
@@ -29,7 +29,7 @@ namespace LegallyDistinctDino
         static int preJumpT = 0;
         static int preJumpD = 3;
 
-       
+
         //Variables needed for crouch
         static bool crouch = false;
         static bool holdingCrouch = false;
@@ -55,7 +55,7 @@ namespace LegallyDistinctDino
     "\\o\n" +
     " |\\\n" +
     "/ \\";
-        static string person = 
+        static string person =
                 " o\n" +
                 "/|\\\n" +
                 "/ \\";
@@ -110,7 +110,7 @@ namespace LegallyDistinctDino
             for (int i = 0; i < obstacleX.Length; i++)
             {
                 obstacleX[i] = start;
-                obstacleY[i] = ground-2;
+                obstacleY[i] = ground - 2;
                 start += rand.Next(minSpace, maxSpace);
             }
         }
@@ -176,12 +176,12 @@ namespace LegallyDistinctDino
                     int furthestX = FurthestObstacle();
 
                     obstacleX[i] = furthestX + rand.Next(minSpace, maxSpace);
-                    obstacleY[i] = ground-2;
+                    obstacleY[i] = ground - 2;
                 }
 
-                if (x == obstacleX[i] && y == obstacleY[i])
+                if (CollisionDetection(obstacleX[i], obstacleY[i]))
                 {
-                    //Game.GameOver();
+                    Game.GameOver();
                 }
 
             }
@@ -216,7 +216,7 @@ namespace LegallyDistinctDino
                 y = (int)jumps;
             }
 
-            
+
 
             if (!jump)
             {
@@ -252,7 +252,7 @@ namespace LegallyDistinctDino
         public static void Draw()
         {
             // Clear old character
-            GameScreen.ClearArea(prevX, prevY, prevX+6, prevY-3);
+            GameScreen.ClearArea(prevX, prevY, prevX + 6, prevY - 3);
 
             // Update previous position tracker
             prevX = x;
@@ -261,24 +261,24 @@ namespace LegallyDistinctDino
 
             for (int i = 0; i < obstacleX.Length; i++)
             {
-                
+
                 if (obstacleX[i] >= 0 && obstacleX[i] < Console.WindowWidth)
                 {
-                    GameScreen.ClearArea(prevObstacleX[i], prevObstacleY[i]+3, prevObstacleX[i]+6, prevObstacleY[i]-1);
+                    GameScreen.ClearArea(prevObstacleX[i], prevObstacleY[i] + 3, prevObstacleX[i] + 6, prevObstacleY[i] - 1);
                     GameScreen.SetStringAt(obstacleX[i], obstacleY[i], smallObstacle);
                 }
             }
 
-            
+
 
             // Draw new character
 
             if (preJump)
                 GameScreen.SetStringAt(x, y - 2, preJumpPerson);
-            else if(!crouch)
+            else if (!crouch)
             {
                 if (jumpVelocity < 0)
-                    GameScreen.SetStringAt(x, y - 2, jumpUp);    
+                    GameScreen.SetStringAt(x, y - 2, jumpUp);
                 else
                     GameScreen.SetStringAt(x, y - 2, person);
             }
@@ -299,7 +299,7 @@ namespace LegallyDistinctDino
         {
             string chaser;
             //Displays 1st character
-            if(Game.seconds<=20 && Game.minutes==0)
+            if (Game.seconds <= 20 && Game.minutes == 0)
             {
                 chaser =
                 " \\   \\  ,,\r\n /   /  \\\\\r\n .---.  //\r\n(:::::)(_)():\r\n `---'  \\\\\r\n \\   \\  //\r\n /   / '''";
@@ -307,7 +307,7 @@ namespace LegallyDistinctDino
                 GameScreen.SetStringAt(xC, yC - 2, chaser);
             }
             //Displays 2nd chaser
-            else if (Game.seconds<=45 && Game.minutes == 0)
+            else if (Game.seconds <= 45 && Game.minutes == 0)
             {
                 chaser =
                 "  _\r\n {_}\r\n | |\r\n |=|\r\n/   \\    .\r\n|.--|  '\r\n||  |  \\~~~/\r\n||  |   \\_/     \r\n|'--|    Y   \r\n'-=-'   _|_";
@@ -315,7 +315,7 @@ namespace LegallyDistinctDino
                 GameScreen.SetStringAt(xC, yC - 2, chaser);
             }
             //Displays 3rd chaser
-            else if (Game.seconds <=20 && Game.minutes <=1)
+            else if (Game.seconds <= 20 && Game.minutes <= 1)
             {
                 chaser =
                 "    __//\r\n   / .. \\\r\n   \\ \\/ /\r\n`__/    \\\r\n \\______/\r\n   |  |";
@@ -342,14 +342,35 @@ namespace LegallyDistinctDino
 
 
         //method to detect collisions
-        //public static void CollisionDetection()
-        //{
-        //    if (x == obstacleX && y == obstacleY)
-        //    {
-        //        Game.GameOver();
-        //    }
+        public static bool CollisionDetection(int obX, int obY)
+        {
+            int playerX = x+2, playerY = y-2;
 
-        //}
 
+            if (obX == playerX && obY == playerY)
+            {
+                return true;
+            }
+            else if (obX == playerX && obY + 1 == playerY)
+            {
+                return true;
+            }
+            else if (obX == playerX && obY + 1 == playerY)
+            {
+                return true;
+            }
+            else if (obX + 1 == playerX && obY == playerY)
+            {
+                return true;
+            }
+            else if (obX + 2 == playerX && obY == playerY)
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+        }
     }
 }
