@@ -155,9 +155,6 @@
             {
                 Console.ReadKey(intercept: true);
             }
-            Console.ReadLine();
-            Console.Clear();
-            Menu.MainMenu();
         }
 
         //when you decide you don't actually want to play
