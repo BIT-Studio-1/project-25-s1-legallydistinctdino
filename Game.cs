@@ -30,6 +30,9 @@
             // isPlaying has to be set to false when GameOver
             while (isPlaying)
             {
+                // print frame around timer
+                // TODO: Test if it actually looks good
+                // GameScreen.SetStringAt(System.Console.WindowWidth -1, 0.5, "----------\n|        |\n----------");
                 // print the current minutes and seconds
                 GameScreen.SetStringAt(System.Console.WindowWidth - 5, 1, minutes + ":0" + seconds);
 
