@@ -10,9 +10,9 @@
         static int PlayerPOS = 1; // Player Position
 
         // timer variables
-        static int seconds = 0;
-        static int minutes = 0;
-        static bool isPlaying = true;
+        public static int seconds = 0;
+        public static int minutes = 0;
+        public static bool isPlaying = true;
 
 
 
