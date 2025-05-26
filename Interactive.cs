@@ -84,7 +84,8 @@ namespace LegallyDistinctDino
         static int yC = 21;
 
         //escape bool
-        static bool exit = false;
+        public static bool exit = false;
+        public static bool playerDied = false;
 
         //loops while playing
         public static void Calls()
@@ -99,11 +100,15 @@ namespace LegallyDistinctDino
                 Draw();
                 Thread.Sleep(50);
             }
-            Menu.MainMenu();
+            if (playerDied)
+            {
+                Game.GameOver();
+                // set is Playing to false so that the time stops
+                Game.isPlaying = false;
+                Menu.MainMenu();
+            }
             
-            // not sure if it's necessary to set isPlaying to false
-            isPlaying = false;
-            task.Dispose();
+            
         }
 
         static void SpawnObstacle()
@@ -184,7 +189,8 @@ namespace LegallyDistinctDino
 
                 if (CollisionDetection(obstacleX[i], obstacleY[i]))
                 {
-                    Game.GameOver();
+                    playerDied = true;
+                    exit = true;
                 }
 
             }
