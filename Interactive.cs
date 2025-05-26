@@ -100,6 +100,9 @@ namespace LegallyDistinctDino
                 Thread.Sleep(50);
             }
             Menu.MainMenu();
+            
+            // not sure if it's necessary to set isPlaying to false
+            isPlaying = false;
             task.Dispose();
         }
 
@@ -286,10 +289,10 @@ namespace LegallyDistinctDino
             else
                 GameScreen.SetStringAt(x, y - 3, crouched);
 
+            Chaser();
+
             // Draw ground line
             GameScreen.SetRow(new string('_', Console.WindowWidth).ToCharArray(), ground);
-
-            Chaser();
 
             // Render Changes
             GameScreen.Render();
@@ -297,6 +300,7 @@ namespace LegallyDistinctDino
 
         public static void Chaser()
         {
+            bool clearPrev=false;
             string chaser;
             //Displays 1st character
             if (Game.seconds <= 20 && Game.minutes == 0)
@@ -305,38 +309,59 @@ namespace LegallyDistinctDino
                 " \\   \\  ,,\r\n /   /  \\\\\r\n .---.  //\r\n(:::::)(_)():\r\n `---'  \\\\\r\n \\   \\  //\r\n /   / '''";
                 // Clear old character
                 GameScreen.SetStringAt(xC, yC - 2, chaser);
+                clearPrev = true;
             }
             //Displays 2nd chaser
             else if (Game.seconds <= 45 && Game.minutes == 0)
             {
+                if (clearPrev==true)
+                {
+                    GameScreen.ClearArea(0, 29, 17, 8);
+                    clearPrev=false;
+                }
                 chaser =
                 "  _\r\n {_}\r\n | |\r\n |=|\r\n/   \\    .\r\n|.--|  '\r\n||  |  \\~~~/\r\n||  |   \\_/     \r\n|'--|    Y   \r\n'-=-'   _|_";
                 // Clear old character
-                GameScreen.SetStringAt(xC, yC - 2, chaser);
+                GameScreen.SetStringAt(xC, yC - 5, chaser);
             }
             //Displays 3rd chaser
-            else if (Game.seconds <= 20 && Game.minutes <= 1)
+            else if ((Game.seconds <=60 && Game.minutes ==0) || (Game.seconds <= 20 && Game.minutes ==1))
             {
+                if (clearPrev == false)
+                {
+                    GameScreen.ClearArea(0, 29, 17, 12);
+                    clearPrev = true;
+                }
                 chaser =
                 "    __//\r\n   / .. \\\r\n   \\ \\/ /\r\n`__/    \\\r\n \\______/\r\n   |  |";
                 // Clear old character
-                GameScreen.SetStringAt(xC, yC - 2, chaser);
+                GameScreen.SetStringAt(xC, yC - 1, chaser);
             }
             //Displays 4th chaser
             else if (Game.minutes == 1 && Game.seconds <= 40)
             {
+                if (clearPrev == true)
+                {
+                    GameScreen.ClearArea(0, 29, 17, 12);
+                    clearPrev = false;
+                }
                 chaser =
                 "      _____\r\n\t / . _<~\r\n  __/  /\r\n (_____)_\r\n(________)";
                 // Clear old character
-                GameScreen.SetStringAt(xC, yC - 2, chaser);
+                GameScreen.SetStringAt(xC, yC - 4, chaser);
             }
             //Displays final chaser
-            else if (Game.minutes <= 1 && Game.seconds <= 40)
+            else if (Game.minutes >= 1)
             {
+                if (clearPrev == false)
+                {
+                    GameScreen.ClearArea(0, 29, 17, 12);
+                    clearPrev = true;
+                }
                 chaser =
                 "           _____\r\n\t\t  /_/  0\\\r\n/--------/ ______-\r\n |________/\r\n  | |  | |";
                 // Clear old character
-                GameScreen.SetStringAt(xC, yC - 2, chaser);
+                GameScreen.SetStringAt(xC, yC - 4, chaser);
             }
         }
 
