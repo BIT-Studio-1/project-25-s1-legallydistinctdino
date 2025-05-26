@@ -132,7 +132,7 @@
         }
 
         // Called once the game has finished
-        public static void GameOver()
+        public static void GameOver(bool won = true)
         {
             Thread.Sleep(50);
             if (PlayerDFS <= 0)
