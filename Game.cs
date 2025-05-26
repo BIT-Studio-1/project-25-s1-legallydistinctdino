@@ -12,7 +12,7 @@
         // timer variables
         public static int seconds = 0;
         public static int minutes = 0;
-        public static bool isPlaying = true;
+        static bool isPlaying = true;
 
 
 
