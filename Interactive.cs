@@ -100,6 +100,9 @@ namespace LegallyDistinctDino
                 Thread.Sleep(50);
             }
             Menu.MainMenu();
+            
+            // not sure if it's necessary to set isPlaying to false
+            isPlaying = false;
             task.Dispose();
         }
 
