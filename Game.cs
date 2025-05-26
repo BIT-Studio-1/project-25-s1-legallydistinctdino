@@ -12,7 +12,7 @@
         // timer variables
         public static int seconds = 0;
         public static int minutes = 0;
-        static bool isPlaying = true;
+        public static bool isPlaying = true;
 
 
 
@@ -139,7 +139,7 @@
         }
 
         // Called once the game has finished
-        public static void GameOver()
+        public static void GameOver(bool won = true)
         {
             Thread.Sleep(50);
             if (PlayerDFS <= 0)
@@ -155,8 +155,6 @@
             {
                 Console.ReadKey(intercept: true);
             }
-            Console.ReadLine();
-            Console.Clear();
         }
 
         //when you decide you don't actually want to play
