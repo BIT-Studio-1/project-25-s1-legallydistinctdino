@@ -27,6 +27,10 @@
 
         public static async Task StartTimer()
         {
+            // reset variables
+            seconds = 0;
+            minutes = 0;
+            isPlaying = true;
             // isPlaying has to be set to false when GameOver
             while (isPlaying)
             {
