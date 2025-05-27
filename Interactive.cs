@@ -106,7 +106,7 @@ namespace LegallyDistinctDino
             if (playerDied)
             {
                 Game.GameOver();
-                // set is Playing to false so that the time stops
+                // set isPlaying to false so that the time stops
                 Game.isPlaying = false;
                 Menu.MainMenu();
             }
