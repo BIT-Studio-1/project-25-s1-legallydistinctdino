@@ -14,6 +14,8 @@
         public static int minutes = 0;
         public static bool isPlaying = true;
 
+        public static double levelSpeed = 0.4;
+
 
 
         // Starting point for code, anyone can adjust as needed
@@ -30,6 +32,9 @@
             // reset variables
             seconds = 0;
             minutes = 0;
+
+          
+
             isPlaying = true;
             // isPlaying has to be set to false when GameOver
             while (isPlaying)
@@ -50,6 +55,12 @@
                     else
                     {
                         GameScreen.SetStringAt(System.Console.WindowWidth - 7, 2, minutes + ":" + seconds);
+                    }
+
+                    if (seconds % 10 == 0 && Interactive.obstacleSpeed < 5)
+                    {
+                        Console.WriteLine(Interactive.obstacleSpeed);
+                        Interactive.obstacleSpeed += (int)levelSpeed;
                     }
                 }
                 minutes+=1;
