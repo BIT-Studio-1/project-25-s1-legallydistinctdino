@@ -14,7 +14,7 @@
         public static int minutes = 0;
         public static bool isPlaying = true;
 
-        public static double levelSpeed = 0.4;
+        public static double levelSpeed = 1;
 
         public static int deathMinutes = 0;
         public static int deathSeconds = 0;
