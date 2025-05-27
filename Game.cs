@@ -16,6 +16,9 @@
 
         public static double levelSpeed = 0.4;
 
+        public static int deathMinutes = 0;
+        public static int deathSeconds = 0;
+
 
 
         // Starting point for code, anyone can adjust as needed
@@ -48,6 +51,15 @@
                 for (int i = 0; i < 60; i++)
                 {
                     await Task.Delay(1000);
+
+                    if (Interactive.playerDied)
+                    {
+                        deathMinutes = minutes;
+                        deathSeconds = seconds;
+                        Console.WriteLine($"You survived for: {deathMinutes}:{deathSeconds:D2}");
+                        return;
+                    }
+
                     seconds++;
                     if (seconds < 10)
                     {
@@ -66,7 +78,10 @@
                 }
                 minutes += 1;
                 seconds = 0;
+
+                
             }
+
         }
 
         // Samuel
@@ -167,7 +182,8 @@
             // You got caught in ascii arts
 
             Console.WriteLine("   ______    ___     __  ___    ______          ____  _    __    ______    ____     __\r\n  / ____/   /   |   /  |/  /   / ____/         / __ \\| |  / /   / ____/   / __ \\   / /\r\n / / __    / /| |  / /|_/ /   / __/           / / / /| | / /   / __/     / /_/ /  / / \r\n/ /_/ /   / ___ | / /  / /   / /___          / /_/ / | |/ /   / /___    / _, _/  /_/  \r\n\\____/   /_/  |_|/_/  /_/   /_____/          \\____/  |___/   /_____/   /_/ |_|  (_)   \r\n                                                                                      ");
-           Console.WriteLine("Vaughn hit a tree and was caught by the chaser!!!");
+            Console.WriteLine("Vaughn hit a tree and was caught by the chaser!!!");
+            
             while (Console.KeyAvailable)
             {
                 Console.ReadKey(intercept: true);
