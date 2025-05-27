@@ -146,8 +146,8 @@ namespace LegallyDistinctDino
                     case 0:
                         Console.Clear();
                         HowToPlay();
-                        Console.Clear();
-                        Interactive.Calls();
+                        //Console.Clear();
+                        //Interactive.Calls();
                         break;
 
                     case 1:
@@ -197,7 +197,7 @@ namespace LegallyDistinctDino
             Console.WriteLine("to run faster\n\n");
             Console.WriteLine("-- Press ENTER to return to the Main Menu! --");
             Console.ReadLine();
-            MainMenu();
+            Interactive.Calls();
         }
         public static void Troll()
         {
