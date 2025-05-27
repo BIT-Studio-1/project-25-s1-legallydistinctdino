@@ -93,6 +93,7 @@ namespace LegallyDistinctDino
         //loops while playing
         public static void Calls()
         {
+            Console.Clear();
             exit = false;
             SpawnObstacle();
             Task task = Game.StartTimer();
