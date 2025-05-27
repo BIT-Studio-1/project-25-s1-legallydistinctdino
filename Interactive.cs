@@ -274,10 +274,9 @@ namespace LegallyDistinctDino
 
             for (int i = 0; i < obstacleX.Length; i++)
             {
-
+                GameScreen.ClearArea(prevObstacleX[i], prevObstacleY[i] + 3, prevObstacleX[i] + 6, prevObstacleY[i] - 1);
                 if (obstacleX[i] >= 0 && obstacleX[i] < Console.WindowWidth)
                 {
-                    GameScreen.ClearArea(prevObstacleX[i], prevObstacleY[i] + 3, prevObstacleX[i] + 6, prevObstacleY[i] - 1);
                     GameScreen.SetStringAt(obstacleX[i], obstacleY[i], smallObstacle);
                 }
             }
@@ -323,10 +322,10 @@ namespace LegallyDistinctDino
             //Displays 2nd chaser
             else if (Game.seconds <= 45 && Game.minutes == 0)
             {
-                if (chaserClearPrev==true)
+                if (chaserClearPrev == true)
                 {
                     GameScreen.ClearArea(0, 29, 17, 12);
-                    chaserClearPrev =false;
+                    chaserClearPrev = false;
                 }
                 chaser =
                 "  _\n {_}\n | |\n |=|\n/   \\    .\n|.--|  '\n||  |  \\~~~/\n||  |   \\_/     \n|'--|    Y   \n'-=-'   _|_";
@@ -334,7 +333,7 @@ namespace LegallyDistinctDino
                 GameScreen.SetStringAt(xC, yC - 5, chaser);
             }
             //Displays 3rd chaser
-            else if ((Game.seconds <=60 && Game.minutes ==0) || (Game.seconds <= 20 && Game.minutes ==1))
+            else if ((Game.seconds <= 60 && Game.minutes == 0) || (Game.seconds <= 20 && Game.minutes == 1))
             {
                 if (chaserClearPrev == false)
                 {
@@ -355,7 +354,7 @@ namespace LegallyDistinctDino
                     chaserClearPrev = false;
                 }
                 chaser =
-                "      _____\n\t / . _<~\n  __/  /\n (_____)_\n(________)";
+                "      _____\n\t\t\t  / . _<~\n  __/  /\n (_____)_\n(________)";
                 // Clear old character
                 GameScreen.SetStringAt(xC, yC, chaser);
             }
