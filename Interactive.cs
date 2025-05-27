@@ -106,9 +106,19 @@ namespace LegallyDistinctDino
         {
             Console.Clear();
             GameScreen.Clear();
+
             exit = false;
+            playerDied = false;
+
+            Game.minutes = 0;
+            Game.seconds = 0;
+            Game.isPlaying = true;
+
+
             SpawnObstacle();
+
             Task task = Game.StartTimer();
+
             while (!exit)
             {
                 Input();
@@ -116,15 +126,18 @@ namespace LegallyDistinctDino
                 Draw();
                 Thread.Sleep(50);
             }
+
+            Game.isPlaying = false;
             if (playerDied)
             {
                 Game.GameOver();
                 // set isPlaying to false so that the time stops
-                Game.isPlaying = false;
-                Menu.MainMenu();
+                
+                
             }
-            
-            
+            Menu.MainMenu();
+
+
         }
 
         static void SpawnObstacle()
