@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace LegallyDistinctDino
 {
-    internal class Interactive
+    public class Interactive
     {
         static Random rand = new Random();
 
@@ -52,7 +52,8 @@ namespace LegallyDistinctDino
         static int maxSpace = 60;
 
         static bool rightArrowPressed = false;
-        static int obstacleSpeed = 1;
+        public static int obstacleSpeed = 1;
+        
 
         static int prevX = x;
         static int prevY = y;
@@ -180,6 +181,7 @@ namespace LegallyDistinctDino
                 {
                     obstacleSpeed = 1;
                 }
+                
             }
 
         }
@@ -195,12 +197,15 @@ namespace LegallyDistinctDino
             //}
 
             //obstacle movement instead of player
+
+            
+
             for (int i = 0; i < obstacleX.Length; i++)
             {
                 prevObstacleX[i] = obstacleX[i];
                 prevObstacleY[i] = obstacleY[i];
                 obstacleX[i] -= obstacleSpeed;
-
+                
                 //when it leaves the console by scrolling away, it spawns new one
                 if (obstacleX[i] < 0)
                 {
