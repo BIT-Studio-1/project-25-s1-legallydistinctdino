@@ -107,6 +107,7 @@ namespace LegallyDistinctDino
         public static void Calls()
         {
             Console.Clear();
+            GameScreen.Clear();
             exit = false;
             SpawnObstacle();
             Task task = Game.StartTimer();
