@@ -93,9 +93,6 @@ namespace LegallyDistinctDino
         static int xC = 0;
         static int yC = 21;
 
-        //Chaser switch
-        static int chasesw=0;
-
         //escape bool
         public static bool exit = false;
         public static bool playerDied = false;
@@ -373,7 +370,6 @@ namespace LegallyDistinctDino
         {
             string chaser;
             //Displays 1st character
-
             if (Game.seconds <= 20 && Game.minutes == 0)
             {
                 chaser =
