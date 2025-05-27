@@ -195,7 +195,7 @@ namespace LegallyDistinctDino
             Console.Write("right arrow ");
             Console.ResetColor();
             Console.WriteLine("to run faster\n\n");
-            Console.WriteLine("-- Press ENTER to return to the Main Menu! --");
+            Console.WriteLine("-- Press ENTER to Start! --");
             Console.ReadLine();
             Interactive.Calls();
         }
