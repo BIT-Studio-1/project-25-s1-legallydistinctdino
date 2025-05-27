@@ -70,7 +70,7 @@
                         GameScreen.SetStringAt(System.Console.WindowWidth - 7, 2, minutes + ":" + seconds);
                     }
 
-                    if (seconds % 10 == 0 && Interactive.obstacleSpeed < 5)
+                    if (seconds % 15 == 0 && Interactive.obstacleSpeed < 5)
                     {
                         Console.WriteLine(Interactive.obstacleSpeed);
                         Interactive.obstacleSpeed += (int)levelSpeed;
