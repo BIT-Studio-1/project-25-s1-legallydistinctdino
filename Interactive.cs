@@ -12,7 +12,7 @@ namespace LegallyDistinctDino
         static Random rand = new Random();
 
         //Player location
-        static int x = 18;
+        static int x = 25;
         static int y = 25;
         static int ground = 25;
 
@@ -98,6 +98,12 @@ namespace LegallyDistinctDino
         public static bool exit = false;
         public static bool playerDied = false;
 
+
+        public static int chaserCooldown = 0;
+        public static bool rightArrowHeld = false;
+        public static int rightArrowCooldown = 0;
+
+
         //Used to see if we should clear previous chaser 
         static bool chaserClearPrev = false;
 
@@ -113,6 +119,10 @@ namespace LegallyDistinctDino
             Game.minutes = 0;
             Game.seconds = 0;
             Game.isPlaying = true;
+
+            xC = 0; 
+            chaserCooldown = 0;
+
 
 
             SpawnObstacle();
@@ -164,6 +174,7 @@ namespace LegallyDistinctDino
         //player input
         public static void Input()
         {
+            
             while (Console.KeyAvailable)
             {
                 ConsoleKeyInfo key = Console.ReadKey(true);
@@ -188,6 +199,7 @@ namespace LegallyDistinctDino
                 }
                 else if (key.Key == ConsoleKey.RightArrow)
                 {
+                    rightArrowCooldown = 5;
                     obstacleSpeed = 2;
 
                 }
@@ -199,7 +211,7 @@ namespace LegallyDistinctDino
             }
 
         }
-
+        
         //Updates the player location after input is made
         public static void Update()
         {
@@ -210,10 +222,19 @@ namespace LegallyDistinctDino
             //    x = 0;
             //}
 
-            //obstacle movement instead of player
-
             
 
+            //if (rightArrowCooldown > 0)
+            //{
+            //    rightArrowHeld = true;
+            //    rightArrowCooldown--;
+            //}
+            //else
+            //{
+            //    rightArrowHeld = false;
+            //}
+
+            //obstacle movement instead of player
             for (int i = 0; i < obstacleX.Length; i++)
             {
                 prevObstacleX[i] = obstacleX[i];
@@ -236,6 +257,24 @@ namespace LegallyDistinctDino
                 }
 
             }
+
+
+
+            //if (!rightArrowHeld)
+            //{
+            //    chaserCooldown--;
+            //    if (chaserCooldown <= 0)
+            //    {
+            //        xC++; //chaser position variable
+            //        chaserCooldown = 30;
+            //    }
+            //}
+            //else
+            //{
+            //    //slow chaser cooldown recovery when holding key
+            //    chaserCooldown = Math.Min(chaserCooldown + 1, 20);
+            //}
+
 
             //for (int i = 0; i < birdCount; i++)
             //{
