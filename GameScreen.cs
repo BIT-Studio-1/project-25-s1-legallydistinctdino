@@ -91,7 +91,7 @@
                 throw new ArgumentOutOfRangeException("Start coordinates are out of bounds.");
             }
             // Split value up into an array were each part of the array ends in a \n or line break
-            string[] lines = value.Split('\n');
+            string[] lines = value.Replace("\r\n", "\n").Split('\n');
             // set our current y value to the y we want to start at
             int currentY = startY;
             foreach (string line in lines)
