@@ -42,6 +42,12 @@ namespace LegallyDistinctDino
         static int[] prevObstacleX = new int[10];
         static int[] prevObstacleY = new int[10];
 
+        static int[] birdX = new int[10];
+        static int[] birdY = new int[10];
+        static int[] prevBirdX = new int[10];
+        static int[] prevBirdY = new int[10];
+        static int birdCount = 3;
+
         static int minSpace = 25;
         static int maxSpace = 60;
 
@@ -79,6 +85,10 @@ namespace LegallyDistinctDino
             " /\\\n" +
             "/__\\\n" +
             " ||";
+        static string bird =
+            " /\\\n" +
+            "/__\\\n" +
+            "   ";
         //Chaser position
         static int xC = 0;
         static int yC = 21;
@@ -87,9 +97,13 @@ namespace LegallyDistinctDino
         public static bool exit = false;
         public static bool playerDied = false;
 
+        //Used to see if we should clear previous chaser 
+        static bool chaserClearPrev = false;
+
         //loops while playing
         public static void Calls()
         {
+            Console.Clear();
             exit = false;
             SpawnObstacle();
             Task task = Game.StartTimer();
@@ -103,7 +117,7 @@ namespace LegallyDistinctDino
             if (playerDied)
             {
                 Game.GameOver();
-                // set is Playing to false so that the time stops
+                // set isPlaying to false so that the time stops
                 Game.isPlaying = false;
                 Menu.MainMenu();
             }
@@ -121,6 +135,15 @@ namespace LegallyDistinctDino
                 obstacleY[i] = ground - 2;
                 start += rand.Next(minSpace, maxSpace);
             }
+
+            start = Console.WindowWidth + 10;
+            
+            //for (int i = 0; i < birdX.Length; i++)
+            //{
+            //    birdX[i] = start;
+            //    birdY[i] = rand.Next(ground - 6, ground - 3); 
+            //    start += rand.Next(minSpace, maxSpace); 
+            //}
         }
 
         //player input
@@ -195,6 +218,26 @@ namespace LegallyDistinctDino
 
             }
 
+            //for (int i = 0; i < birdCount; i++)
+            //{
+            //    prevBirdX[i] = birdX[i];
+            //    prevBirdY[i] = birdY[i];
+            //    birdX[i] -= obstacleSpeed;
+
+            //    if (birdX[i] < 0)
+            //    {
+            //        int furthestBirdX = FurthestBird();
+            //        birdX[i] = furthestBirdX + rand.Next(minSpace + 5, maxSpace + 10);
+            //        birdY[i] = rand.Next(ground - 6, ground - 3);
+            //    }
+
+            //    if (CollisionDetection(birdX[i], birdY[i]))
+            //    {
+            //        playerDied = true;
+            //        exit = true;
+            //    }
+            //}
+
             if (preJump)
             {
                 //starts 3
@@ -257,6 +300,17 @@ namespace LegallyDistinctDino
             return max; //bring value into update method in furthestX
         }
 
+        static int FurthestBird()
+        {
+            int max = 0;
+            for (int i = 0; i < birdCount; i++)
+            {
+                if (birdX[i] > max)
+                    max = birdX[i];
+            }
+            return max;
+        }
+
         //animation part
         public static void Draw()
         {
@@ -270,13 +324,21 @@ namespace LegallyDistinctDino
 
             for (int i = 0; i < obstacleX.Length; i++)
             {
-
+                GameScreen.ClearArea(prevObstacleX[i], prevObstacleY[i] + 3, prevObstacleX[i] + 6, prevObstacleY[i] - 1);
                 if (obstacleX[i] >= 0 && obstacleX[i] < Console.WindowWidth)
                 {
-                    GameScreen.ClearArea(prevObstacleX[i], prevObstacleY[i] + 3, prevObstacleX[i] + 6, prevObstacleY[i] - 1);
                     GameScreen.SetStringAt(obstacleX[i], obstacleY[i], smallObstacle);
                 }
             }
+
+            //for (int i = 0; i < birdCount; i++)
+            //{
+            //    if (birdX[i] >= 0 && birdX[i] < Console.WindowWidth)
+            //    {
+            //        GameScreen.ClearArea(prevBirdX[i], prevBirdY[i] + 2, prevBirdX[i] + 3, prevBirdY[i]);
+            //        GameScreen.SetStringAt(birdX[i], birdY[i], bird);
+            //    }
+            //}
 
 
 
@@ -306,68 +368,67 @@ namespace LegallyDistinctDino
 
         public static void Chaser()
         {
-            bool clearPrev=false;
             string chaser;
             //Displays 1st character
             if (Game.seconds <= 20 && Game.minutes == 0)
             {
                 chaser =
-                " \\   \\  ,,\r\n /   /  \\\\\r\n .---.  //\r\n(:::::)(_)():\r\n `---'  \\\\\r\n \\   \\  //\r\n /   / '''";
+                " \\   \\  ,,\n /   /  \\\\\n .---.  //\n(:::::)(_)():\n `---'  \\\\\n \\   \\  //\n /   / '''";
                 // Clear old character
                 GameScreen.SetStringAt(xC, yC - 2, chaser);
-                clearPrev = true;
+                chaserClearPrev = true;
             }
             //Displays 2nd chaser
             else if (Game.seconds <= 45 && Game.minutes == 0)
             {
-                if (clearPrev==true)
+                if (chaserClearPrev == true)
                 {
-                    GameScreen.ClearArea(0, 29, 17, 8);
-                    clearPrev=false;
+                    GameScreen.ClearArea(0, 29, 17, 12);
+                    chaserClearPrev = false;
                 }
                 chaser =
-                "  _\r\n {_}\r\n | |\r\n |=|\r\n/   \\    .\r\n|.--|  '\r\n||  |  \\~~~/\r\n||  |   \\_/     \r\n|'--|    Y   \r\n'-=-'   _|_";
+                "  _\n {_}\n | |\n |=|\n/   \\    .\n|.--|  '\n||  |  \\~~~/\n||  |   \\_/     \n|'--|    Y   \n'-=-'   _|_";
                 // Clear old character
                 GameScreen.SetStringAt(xC, yC - 5, chaser);
             }
             //Displays 3rd chaser
-            else if ((Game.seconds <=60 && Game.minutes ==0) || (Game.seconds <= 20 && Game.minutes ==1))
+            else if ((Game.seconds <= 60 && Game.minutes == 0) || (Game.seconds <= 20 && Game.minutes == 1))
             {
-                if (clearPrev == false)
+                if (chaserClearPrev == false)
                 {
                     GameScreen.ClearArea(0, 29, 17, 12);
-                    clearPrev = true;
+                    chaserClearPrev = true;
                 }
                 chaser =
-                "    __//\r\n   / .. \\\r\n   \\ \\/ /\r\n`__/    \\\r\n \\______/\r\n   |  |";
+                "    __//\n   / .. \\\n   \\ \\/ /\n`__/    \\\n \\______/\n   |  |";
                 // Clear old character
                 GameScreen.SetStringAt(xC, yC - 1, chaser);
             }
             //Displays 4th chaser
             else if (Game.minutes == 1 && Game.seconds <= 40)
             {
-                if (clearPrev == true)
+                if (chaserClearPrev == true)
                 {
                     GameScreen.ClearArea(0, 29, 17, 12);
-                    clearPrev = false;
+                    chaserClearPrev = false;
                 }
                 chaser =
-                "      _____\r\n\t / . _<~\r\n  __/  /\r\n (_____)_\r\n(________)";
+                "      _____\n\t\t\t  / . _<~\n  __/  /\n (_____)_\n(________)";
                 // Clear old character
-                GameScreen.SetStringAt(xC, yC - 4, chaser);
+                GameScreen.SetStringAt(xC, yC, chaser);
             }
             //Displays final chaser
             else if (Game.minutes >= 1)
             {
-                if (clearPrev == false)
+                if (chaserClearPrev == false)
                 {
                     GameScreen.ClearArea(0, 29, 17, 12);
-                    clearPrev = true;
+                    chaserClearPrev = true;
                 }
                 chaser =
-                "           _____\r\n\t\t  /_/  0\\\r\n/--------/ ______-\r\n |________/\r\n  | |  | |";
+                "           _\n   /-----/ 0-\n  / ------/\n\t|| ||";
                 // Clear old character
-                GameScreen.SetStringAt(xC, yC - 4, chaser);
+                GameScreen.SetStringAt(xC, yC, chaser);
             }
         }
 
@@ -377,7 +438,7 @@ namespace LegallyDistinctDino
         {
             int playerX = x+2, playerY = y-2;
 
-
+            return false;
             if (obX == playerX && obY == playerY)
             {
                 return true;

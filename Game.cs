@@ -35,10 +35,9 @@
             while (isPlaying)
             {
                 // print frame around timer
-                // TODO: Test if it actually looks good
-                // GameScreen.SetStringAt(System.Console.WindowWidth -1, 0.5, "----------\n|        |\n----------");
+                GameScreen.SetStringAt(System.Console.WindowWidth -9, 1, "--------\n|      |\n--------");
                 // print the current minutes and seconds
-                GameScreen.SetStringAt(System.Console.WindowWidth - 5, 1, minutes + ":0" + seconds);
+                GameScreen.SetStringAt(System.Console.WindowWidth - 7, 2, minutes + ":0" + seconds);
 
                 // counting and printing the seconds
                 for (int i = 0; i < 60; i++)
@@ -47,11 +46,11 @@
                     seconds++;
                     if (seconds < 10)
                     {
-                        GameScreen.SetStringAt(System.Console.WindowWidth - 5, 1, minutes + ":0" + seconds);
+                        GameScreen.SetStringAt(System.Console.WindowWidth - 7, 2, minutes + ":0" + seconds);
                     }
                     else
                     {
-                        GameScreen.SetStringAt(System.Console.WindowWidth - 5, 1, minutes + ":" + seconds);
+                        GameScreen.SetStringAt(System.Console.WindowWidth - 7, 2, minutes + ":" + seconds);
                     }
                 }
                 minutes += 1;

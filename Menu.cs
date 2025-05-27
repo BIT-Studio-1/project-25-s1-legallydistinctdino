@@ -113,63 +113,65 @@ namespace LegallyDistinctDino
         // Maria
         public static void MainMenu()
         {
-            Console.Clear();
-
-            Console.WriteLine(" __   __  _______  ___   __    _      __   __  _______  __    _  __   __ ");
-            Console.WriteLine("|  |_|  ||   _   ||   | |  |  | |    |  |_|  ||       ||  |  | ||  | |  |");
-            Console.WriteLine("|       ||  |_|  ||   | |   |_| |    |       ||    ___||   |_| ||  | |  |");
-            Console.WriteLine("|       ||       ||   | |       |    |       ||   |___ |       ||  |_|  |");
-            Console.WriteLine("|       ||       ||   | |  _    |    |       ||    ___||  _    ||       |");
-            Console.WriteLine("| ||_|| ||   _   ||   | | | |   |    | ||_|| ||   |___ | | |   ||       |");
-            Console.WriteLine("|_|   |_||__| |__||___| |_|  |__|    |_|   |_||_______||_|  |__||_______|");
-            Console.WriteLine();
-            Console.WriteLine("Press 0 to start");
-            Console.WriteLine("Press 1 : Back to Title Screen");
-            Console.WriteLine("Press 2 : Exit");
-            Console.WriteLine("Press 3 : INTERACTIVE TEST");
-            Console.WriteLine("Press 4 : How to play");
-            int num = Convert.ToInt32(Console.ReadLine());
-
-            switch (num)
+            while (true)
             {
-                case 0:
-                    Console.Clear();
-                    Game.SetupGame(); //starts game
-                    break;
+                Console.Clear();
 
-                case 1:
-                    Console.Clear();
-                    TitleScreen(); //back to title screen
-                    break;
-
-
-                case 2:
-                    Console.Clear();
-                    Game.ExitGame();
-                    break;
-
-                case 3:
-                    Console.Clear();
-                    Interactive.Calls();
-                    break;
-
-                case 4:
-                    Console.Clear();
-                    HowToPlay();
-                    break;
-
-                case 9999: // Dev menu item to test render engine
-                    GameScreen.TestRenderEngine();
-                    TitleScreen();
-                    break;
-                default:
-                    Troll();
-                    break;
+                Console.WriteLine(" __   __  _______  ___   __    _      __   __  _______  __    _  __   __ ");
+                Console.WriteLine("|  |_|  ||   _   ||   | |  |  | |    |  |_|  ||       ||  |  | ||  | |  |");
+                Console.WriteLine("|       ||  |_|  ||   | |   |_| |    |       ||    ___||   |_| ||  | |  |");
+                Console.WriteLine("|       ||       ||   | |       |    |       ||   |___ |       ||  |_|  |");
+                Console.WriteLine("|       ||       ||   | |  _    |    |       ||    ___||  _    ||       |");
+                Console.WriteLine("| ||_|| ||   _   ||   | | | |   |    | ||_|| ||   |___ | | |   ||       |");
+                Console.WriteLine("|_|   |_||__| |__||___| |_|  |__|    |_|   |_||_______||_|  |__||_______|");
+                Console.WriteLine();
+                Console.WriteLine("Press 0 : To Play");
+                Console.WriteLine("Press 1 : Back to Title Screen");
+                Console.WriteLine("Press 2 : Exit");
+                //Console.WriteLine("Press 3 : INTERACTIVE TEST");
+                //Console.WriteLine("Press 4 : How to play");
+                string input = Console.ReadLine();
 
 
+                if (!int.TryParse(input, out int num))
+                {
+                    Console.WriteLine("Invalid input. Please enter a number.");
+                    Console.ReadKey();
+                    continue;
+                }
 
 
+                switch (num)
+                {
+                    case 0:
+                        Console.Clear();
+                        HowToPlay();
+                        //Console.Clear();
+                        //Interactive.Calls();
+                        break;
+
+                    case 1:
+                        Console.Clear();
+                        TitleScreen(); //back to title screen
+                        break;
+
+                    case 2:
+                        Console.Clear();
+                        Game.ExitGame();
+                        break;
+
+
+                    case 9999: // Dev menu item to test render engine
+                        GameScreen.TestRenderEngine();
+                        TitleScreen();
+                        break;
+                    default:
+                        Troll();
+                        break;
+
+                }
             }
+            
 
             
         }
@@ -193,9 +195,9 @@ namespace LegallyDistinctDino
             Console.Write("right arrow ");
             Console.ResetColor();
             Console.WriteLine("to run faster\n\n");
-            Console.WriteLine("-- Press ENTER to return to the Main Menu! --");
+            Console.WriteLine("-- Press ENTER to Start! --");
             Console.ReadLine();
-            MainMenu();
+            Interactive.Calls();
         }
         public static void Troll()
         {
