@@ -42,6 +42,12 @@ namespace LegallyDistinctDino
         static int[] prevObstacleX = new int[10];
         static int[] prevObstacleY = new int[10];
 
+        static int[] birdX = new int[10];
+        static int[] birdY = new int[10];
+        static int[] prevBirdX = new int[10];
+        static int[] prevBirdY = new int[10];
+        static int birdCount = 3;
+
         static int minSpace = 25;
         static int maxSpace = 60;
 
@@ -79,6 +85,10 @@ namespace LegallyDistinctDino
             " /\\\n" +
             "/__\\\n" +
             " ||";
+        static string bird =
+            " /\\\n" +
+            "/__\\\n" +
+            "   ";
         //Chaser position
         static int xC = 0;
         static int yC = 21;
@@ -107,7 +117,7 @@ namespace LegallyDistinctDino
             if (playerDied)
             {
                 Game.GameOver();
-                // set is Playing to false so that the time stops
+                // set isPlaying to false so that the time stops
                 Game.isPlaying = false;
                 Menu.MainMenu();
             }
@@ -125,6 +135,15 @@ namespace LegallyDistinctDino
                 obstacleY[i] = ground - 2;
                 start += rand.Next(minSpace, maxSpace);
             }
+
+            start = Console.WindowWidth + 10;
+            
+            //for (int i = 0; i < birdX.Length; i++)
+            //{
+            //    birdX[i] = start;
+            //    birdY[i] = rand.Next(ground - 6, ground - 3); 
+            //    start += rand.Next(minSpace, maxSpace); 
+            //}
         }
 
         //player input
@@ -199,6 +218,26 @@ namespace LegallyDistinctDino
 
             }
 
+            //for (int i = 0; i < birdCount; i++)
+            //{
+            //    prevBirdX[i] = birdX[i];
+            //    prevBirdY[i] = birdY[i];
+            //    birdX[i] -= obstacleSpeed;
+
+            //    if (birdX[i] < 0)
+            //    {
+            //        int furthestBirdX = FurthestBird();
+            //        birdX[i] = furthestBirdX + rand.Next(minSpace + 5, maxSpace + 10);
+            //        birdY[i] = rand.Next(ground - 6, ground - 3);
+            //    }
+
+            //    if (CollisionDetection(birdX[i], birdY[i]))
+            //    {
+            //        playerDied = true;
+            //        exit = true;
+            //    }
+            //}
+
             if (preJump)
             {
                 //starts 3
@@ -261,6 +300,17 @@ namespace LegallyDistinctDino
             return max; //bring value into update method in furthestX
         }
 
+        static int FurthestBird()
+        {
+            int max = 0;
+            for (int i = 0; i < birdCount; i++)
+            {
+                if (birdX[i] > max)
+                    max = birdX[i];
+            }
+            return max;
+        }
+
         //animation part
         public static void Draw()
         {
@@ -280,6 +330,15 @@ namespace LegallyDistinctDino
                     GameScreen.SetStringAt(obstacleX[i], obstacleY[i], smallObstacle);
                 }
             }
+
+            //for (int i = 0; i < birdCount; i++)
+            //{
+            //    if (birdX[i] >= 0 && birdX[i] < Console.WindowWidth)
+            //    {
+            //        GameScreen.ClearArea(prevBirdX[i], prevBirdY[i] + 2, prevBirdX[i] + 3, prevBirdY[i]);
+            //        GameScreen.SetStringAt(birdX[i], birdY[i], bird);
+            //    }
+            //}
 
 
 

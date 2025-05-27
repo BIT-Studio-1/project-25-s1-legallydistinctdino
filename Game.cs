@@ -35,7 +35,7 @@
             while (isPlaying)
             {
                 // print frame around timer
-                GameScreen.SetStringAt(System.Console.WindowWidth -9, 1, "-------\n|      |\n-------");
+                GameScreen.SetStringAt(System.Console.WindowWidth -9, 1, "--------\n|      |\n--------");
                 // print the current minutes and seconds
                 GameScreen.SetStringAt(System.Console.WindowWidth - 7, 2, minutes + ":0" + seconds);
 
