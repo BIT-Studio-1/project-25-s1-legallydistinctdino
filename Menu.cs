@@ -21,7 +21,6 @@ namespace LegallyDistinctDino
                 ConsoleColor.DarkRed,
                 ConsoleColor.DarkYellow,
                 ConsoleColor.Gray,
-                ConsoleColor.DarkGray,
                 ConsoleColor.Blue,
                 ConsoleColor.Green,
                 ConsoleColor.DarkMagenta,
@@ -194,7 +193,11 @@ namespace LegallyDistinctDino
             Console.ForegroundColor = ConsoleColor.Green;
             Console.Write("right arrow ");
             Console.ResetColor();
-            Console.WriteLine("to run faster\n\n");
+            Console.Write("to run faster \n\tPress ");
+            Console.ForegroundColor = ConsoleColor.Green;
+            Console.Write("left arrow ");
+            Console.ResetColor();
+            Console.WriteLine("to run slower\n\n");
             Console.WriteLine("-- Press ENTER to Start! --");
             Console.ReadLine();
             Interactive.Calls();
