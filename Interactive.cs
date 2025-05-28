@@ -122,6 +122,12 @@ namespace LegallyDistinctDino
 
             xC = 0; 
             chaserCooldown = 0;
+            obstacleSpeed = 1;
+            x = 25;
+            y = 25;
+            preJump = false;
+            prevX = 25;
+            prevY = 25;
 
 
 
@@ -197,17 +203,17 @@ namespace LegallyDistinctDino
                     crouchTimer = crouchDuration;
                     crouch = true;
                 }
-                else if (key.Key == ConsoleKey.RightArrow)
+                else if (key.Key == ConsoleKey.RightArrow && obstacleSpeed < 5)
                 {
                     rightArrowCooldown = 5;
-                    obstacleSpeed = 2;
+                    obstacleSpeed += 1;
 
                 }
-                else if (key.Key == ConsoleKey.LeftArrow)
+                else if (key.Key == ConsoleKey.LeftArrow && obstacleSpeed > 0)
                 {
-                    obstacleSpeed = 1;
+                    obstacleSpeed -= 1;
                 }
-                
+
             }
 
         }
