@@ -122,7 +122,9 @@ namespace LegallyDistinctDino
                 Console.WriteLine("| ||_|| ||   _   ||   | | | |   |    | ||_|| ||   |___ | | |   ||       |");
                 Console.WriteLine("|_|   |_||__| |__||___| |_|  |__|    |_|   |_||_______||_|  |__||_______|");
                 Console.WriteLine();
+                Console.ForegroundColor = ConsoleColor.Green;
                 Console.WriteLine("Press 0 : To Play");
+                Console.ResetColor();
                 Console.WriteLine("Press 1 : Back to Title Screen");
                 Console.WriteLine("Press 2 : Exit");
                 //Console.WriteLine("Press 3 : INTERACTIVE TEST");
