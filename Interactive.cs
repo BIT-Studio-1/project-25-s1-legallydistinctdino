@@ -506,26 +506,22 @@ namespace LegallyDistinctDino
             {
                 return true;
             }
-            else if (obX == playerX && obY + 1 == playerY)
+
+            for (int i = 1; i <= 3; i++)
             {
-                return true;
+                if (obY - i == playerY)
+                {
+                    for (int j = 0; j <= 3; j++)
+                    {
+                        if (obX + j == playerX)
+                        {
+                            return true;
+                        }
+                    }
+                }
             }
-            else if (obX == playerX && obY + 1 == playerY)
-            {
-                return true;
-            }
-            else if (obX + 1 == playerX && obY == playerY)
-            {
-                return true;
-            }
-            else if (obX + 2 == playerX && obY == playerY)
-            {
-                return true;
-            }
-            else
-            {
-                return false;
-            }
+
+            return false;
         }
     }
 }
