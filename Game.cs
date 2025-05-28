@@ -72,7 +72,7 @@
 
                     if (seconds % 15 == 0 && Interactive.obstacleSpeed < 5)
                     {
-                        Console.WriteLine(Interactive.obstacleSpeed);
+                        //Console.WriteLine(Interactive.obstacleSpeed);
                         Interactive.obstacleSpeed += (int)levelSpeed;
                     }
                 }
