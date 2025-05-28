@@ -21,7 +21,6 @@ namespace LegallyDistinctDino
                 ConsoleColor.DarkRed,
                 ConsoleColor.DarkYellow,
                 ConsoleColor.Gray,
-                ConsoleColor.DarkGray,
                 ConsoleColor.Blue,
                 ConsoleColor.Green,
                 ConsoleColor.DarkMagenta,
