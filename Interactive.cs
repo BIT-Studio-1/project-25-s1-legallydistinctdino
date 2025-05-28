@@ -451,16 +451,16 @@ namespace LegallyDistinctDino
                     chaserClearPrev = false;
                 }
                 chaser =
-                "  _\n {_}\n | |\n |=|\n/   \\    .\n|.--|  '\n||  |  \\~~~/\n||  |   \\_/     \n|'--|    Y   \n'-=-'   _|_";
+                "     (()__(()\r\n     /       \\ \r\n    ( /    \\  \\\r\n     \\ o o    /\r\n     (_()_)__/ \\\r\n    / _,==.____ \\\r\n   (   |--|      )\r\n   /\\_.|__|'-.__/\\_\r\n  / (        /     \\\r\n  \\  \\      (      /\r\n   )  '._____)    /\r\n(((____.--(((____/";
                 // Clear old character
-                GameScreen.SetStringAt(xC, yC - 5, chaser);
+                GameScreen.SetStringAt(xC, yC - 7, chaser);
             }
             //Displays 3rd chaser
             else if ((Game.seconds <= 60 && Game.minutes == 0) || (Game.seconds <= 20 && Game.minutes == 1))
             {
                 if (chaserClearPrev == false)
                 {
-                    GameScreen.ClearArea(0, 29, 17, 12);
+                    GameScreen.ClearArea(0, 29, 20, 12);
                     chaserClearPrev = true;
                 }
                 chaser =
