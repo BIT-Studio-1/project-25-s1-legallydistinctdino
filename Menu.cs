@@ -36,8 +36,6 @@ namespace LegallyDistinctDino
             {
                 Console.ForegroundColor = colors[iterator];
                 PrintWelcome();
-                // GameScreen.SetStringAt(System.Console.WindowWidth / 2 - 46, System.Console.CursorTop, "____     ____  _________  ____       _________  _________   ____        ____  _________  ____\n|  |     |  |  |   ____|  |  |       |   ____|  |  ____  |  |   \\  __  /   |  |   ____|  |  |\n|  | ___ |  |  |  |___    |  |       |  |       |  |  |  |  |    \\/  \\/    |  |  |___    |  \n|  \\/   \\/  |  |   ___|   |  |       |  |       |  |  |  |  |  |\\__/\\__/|  |  |   ___|   |__|\n\\     _     |  |  |_____  |  |_____  |  |_____  |  |__|  |  |  |        |  |  |  |_____  ____\n \\___/ \\___/   |_______|  |_______|  |_______|  |________|  |__|        |__|  |_______|  |__|\n");
-                // GameScreen.Render();
                 PrintDino();
                 Thread.Sleep(300);
                 Console.Clear();
