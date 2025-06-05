@@ -438,7 +438,6 @@ namespace LegallyDistinctDino
             {
                 chaser =
                 " \\   \\  ,,\n /   /  \\\\\n .---.  //\n(:::::)(_)():\n `---'  \\\\\n \\   \\  //\n /   / '''";
-                // Clear old character
                 GameScreen.SetStringAt(xC, yC - 2, chaser);
                 chaserClearPrev = true;
             }
@@ -452,7 +451,6 @@ namespace LegallyDistinctDino
                 }
                 chaser =
                 "     (()__(()\r\n     /       \\ \r\n    ( /    \\  \\\r\n     \\ o o    /\r\n     (_()_)__/ \\\r\n    / _,==.____ \\\r\n   (   |--|      )\r\n   /\\_.|__|'-.__/\\_\r\n  / (        /     \\\r\n  \\  \\      (      /\r\n   )  '._____)    /\r\n(((____.--(((____/";
-                // Clear old character
                 GameScreen.SetStringAt(xC, yC - 7, chaser);
             }
             //Displays 3rd chaser
@@ -465,7 +463,6 @@ namespace LegallyDistinctDino
                 }
                 chaser =
                 "    __//\n   / .. \\\n   \\ \\/ /\n`__/    \\\n \\______/\n   |  |";
-                // Clear old character
                 GameScreen.SetStringAt(xC, yC - 1, chaser);
             }
             //Displays 4th chaser
@@ -478,7 +475,6 @@ namespace LegallyDistinctDino
                 }
                 chaser =
                 "      _____\n\t\t\t  / . _<~\n  __/  /\n (_____)_\n(________)";
-                // Clear old character
                 GameScreen.SetStringAt(xC, yC, chaser);
             }
             //Displays final chaser
@@ -491,7 +487,6 @@ namespace LegallyDistinctDino
                 }
                 chaser =
                 "           _\n   /-----/ 0-\n  / ------/\n\t|| ||";
-                // Clear old character
                 GameScreen.SetStringAt(xC, yC, chaser);
             }
         }
